@@ -12,6 +12,7 @@ from main.models import BwogArticle
 from main.models import BwogComment
 from django.db import models
 from django.core.exceptions import ValidationError
+import string
 
 os.environ['TZ'] = 'America/New York'
 
@@ -57,27 +58,10 @@ class BwogParser:
                 comment_author_candidates = comment_info.xpath('cite')
                 link_candidates = comment_info.xpath('a')
                 if (0 < len(comment_author_candidates)) and (0 == len(link_candidates)):
-                    comment_author = etree.tostring(comment_author_candidates[0])
-                    if None == comment_author:
-                        print len(comment_author_candidates)
-                        for candidate in comment_author_candidates:
-                            print etree.tostring(candidate, method="text", encoding="unicode")
-                        exit()
+                    comment_author = etree.tostring(comment_author_candidates[0], method="text", encoding="unicode")
                 elif 0 < len(link_cadidates):
                     link = link_candidates[0].text
                     comment_author = etree.tostring(link, method="text", encoding="unicode")
-                    if None == comment_author:
-                        print "blame the link"
-                        print comment_url
-
-                else:
-                    print comment_li
-                    print "BREAK"
-                    print comment_info_candidates
-                    print "BREAK"
-                    print comment_author_candidates
-                    print "BREAK"
-                    exit()
                     
                 comment_meta_candidates = comment_info.xpath('span[@class="comment-meta commentmetadata"]')
                 
@@ -169,6 +153,10 @@ class BwogParser:
                 print "somehow no items"
             exit()
     
+        # processing
+        comment_author = string.strip(comment_author)
+        comment_body = string.string(comment_body)
+
         comment = BwogComment(author=comment_author,
                               body=comment_body,
                               pub_date=comment_time,
