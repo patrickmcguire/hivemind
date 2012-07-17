@@ -12,6 +12,8 @@ from nltk import PunktSentenceTokenizer
 
 class Command(BaseCommand):
     def handle(self, *app_labels, **options):
+        print app_labels
+        print options
         for article in BwogArticle.objects.all():
             sentence_tokenizer = PunktSentenceTokenizer()
             sentences = sentence_tokenizer.tokenize(article.body)
