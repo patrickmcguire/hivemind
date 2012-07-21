@@ -8,3 +8,4 @@ from reddit.models import RedditComment
 
 class Command(BaseCommand):
     def handle(self, *app_lables, **options):
+        print 
