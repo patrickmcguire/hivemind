@@ -140,7 +140,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'south',
     'djcelery',
-    'main'
+    'main',
+    'reddit'
 )
 
 # A sample logging configuration. The only tangible logging
