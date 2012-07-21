@@ -5,6 +5,7 @@ from django.contrib.contenttypes import generic
 class Subreddit(models.Model):
     url = models.TextField(default="")
     name = models.TextField(default="")
+    description = models.TextField(default="")
 
 class RedditArticle(models.Model):
     url = models.TextField()
