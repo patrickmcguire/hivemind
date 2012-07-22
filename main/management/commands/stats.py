@@ -9,6 +9,7 @@ import numpy
 import scipy
 from scipy.sparse import lil_matrix
 from scipy.sparse.linalg import lsqr
+import pickle
 
 class Command(BaseCommand):
     def handle(self, *app_labels, **options):
@@ -59,26 +60,23 @@ class Command(BaseCommand):
         upvotes = array(upvotes)
         downvotes = array(downvotes)
         
-        upvote_sol = lsqr(A, upvotes, damp=4.0)
-        print upvote_sol[0]
+        upvote_sol = lsqr(A, upvotes, damp=0.5)
+
         upvote_weights = upvote_sol[0]
         upvote_tuples = []
         for ngram_index in range(0,len(upvote_weights)-1):
             upvote_tuples.append([all_trigrams[ngram_index], upvote_weights[ngram_index]])
         upvote_tuples.sort(key=lambda gram_weight: gram_weight[1])
         upvote_tuples.reverse()
-        print "UPVOTES"
-        for tup in upvote_tuples:
-            print tup
 
-        downvote_sol = lsqr(A, downvotes, damp=4.0)
-        print downvote_sol[0]
+        pickle.dump(upvote_tuples, "upvotes.weight")
+
+        downvote_sol = lsqr(A, downvotes, damp=0.5)
+        
         downvote_weights = downvote_sol[0]
         downvote_tuples = []
         for ngram_index in range(0, len(downvote_weights) - 1):
             downvote_tuples.append([all_trigrams[ngram_index], upvote_weights[ngram_index]])
         downvote_tuples.sort(key=lambda gram_weight: gram_weight[1])
         downvote_tuples.reverse()
-        print "DOWNVOTES"
-        for tup in downvote_tuples:
-            print tup
+        pickle.dump(downvote_tuples, "downvotes.weight")
