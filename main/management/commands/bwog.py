@@ -155,7 +155,7 @@ class BwogParser:
     
         # processing
         comment_author = string.strip(comment_author)
-        comment_body = string.string(comment_body)
+        comment_body = string.strip(comment_body)
 
         comment = BwogComment(author=comment_author,
                               body=comment_body,
