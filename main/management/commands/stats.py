@@ -24,6 +24,7 @@ class Command(BaseCommand):
                     all_trigrams.append(trigram)
                     trigram_indices[trigram] = len(all_trigrams) - 1
         
+        print len(trigram_indices.keys())
         trigram_counts = {}
         for comment in BwogComment.objects.all():
             body = comment.body
@@ -38,8 +39,11 @@ class Command(BaseCommand):
                     this_count[trigram_index] += 1
             trigram_counts[comment.id] = this_count
        
+        print len(trigram_counts.keys())
+        print len(all_trigrams)
         first_id = min(trigram_counts.keys())
-        A = lil_matrix([len(trigram_counts.keys()), len(all_trigrams)])
+        A = lil_matrix((len(trigram_counts.keys()) + 1, len(all_trigrams) + 1))
+        print A.shape
         for comment_id in trigram_counts.keys():
             m = comment_id - first_id
             comment_trigram_count = trigram_counts[comment_id]
@@ -47,18 +51,20 @@ class Command(BaseCommand):
                     trigram_count = comment_trigram_count[trigram_index]
                     n = trigram_index
                     try:
-                        A[m,n] = trigram_count
+                      A[m,n] = trigram_count
                     except:
-                        exit()
+                      print m
+                      print n
+                      exit()
 
-        upvates = []
+        upvotes = []
         downvotes = []
         for comment in BwogComment.objects.all():
             upvotes.append([comment.upvotes])
             downvotes.append([comment.downvotes])
         
-        upvotes = array(upvotes)
-        downvotes = array(downvotes)
+        upvotes = numpy.array(upvotes)
+        downvotes = numpy.array(downvotes)
         
         upvote_sol = lsqr(A, upvotes, damp=0.5)
 
