@@ -42,7 +42,7 @@ class Command(BaseCommand):
         print len(trigram_counts.keys())
         print len(all_trigrams)
         first_id = min(trigram_counts.keys())
-        A = lil_matrix((len(trigram_counts.keys()) + 1, len(all_trigrams) + 1))
+        A = lil_matrix((len(trigram_counts.keys()), len(all_trigrams)))
         print A.shape
         for comment_id in trigram_counts.keys():
             m = comment_id - first_id
@@ -75,14 +75,14 @@ class Command(BaseCommand):
         upvote_tuples.sort(key=lambda gram_weight: gram_weight[1])
         upvote_tuples.reverse()
 
-        pickle.dump(upvote_tuples, "upvotes.weight")
+        pickle.dump(upvote_tuples, file("upvotes.weight", 'w'))
 
         downvote_sol = lsqr(A, downvotes, damp=0.5)
         
         downvote_weights = downvote_sol[0]
         downvote_tuples = []
         for ngram_index in range(0, len(downvote_weights) - 1):
-            downvote_tuples.append([all_trigrams[ngram_index], upvote_weights[ngram_index]])
+            downvote_tuples.append([all_trigrams[ngram_index], downvote_weights[ngram_index]])
         downvote_tuples.sort(key=lambda gram_weight: gram_weight[1])
         downvote_tuples.reverse()
-        pickle.dump(downvote_tuples, "downvotes.weight")
+        pickle.dump(downvote_tuples, file("downvotes.weight", 'w'))
