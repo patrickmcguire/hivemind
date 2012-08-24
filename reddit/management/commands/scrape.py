@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import urllib2
+import urlparse
+import urllib
 import json
 import time
 from reddit.models import RedditArticle
@@ -10,11 +12,42 @@ from reddit.models import Subreddit
 class RedditRequest:
     def __init__(self, url, wait_time=60):
         self._url = url
+        self._parsed_url = self._fix_url(url)
         self._wait_time = wait_time
+
+    def _fix_url(self, url):
+        # turn string into unicode
+        if not isinstance(url, unicode):
+            url = url.decode('utf8')
+
+        # parse it
+        parsed = urlparse.urlsplit(url)
+
+        # divide the netloc further
+        userpass, at, hostport = parsed.netloc.rpartition('@')
+        user, colon1, pass_ = userpass.partition(':')
+        host, colon2, port = hostport.partition(':')
+
+        # encode each component
+        scheme = parsed.scheme.encode('utf8')
+        user = urllib.quote(user.encode('utf8'))
+        colon1 = colon1.encode('utf8')
+        pass_ = urllib.quote(pass_.encode('utf8'))
+        at = at.encode('utf8')
+        host = host.encode('idna')
+        colon2 = colon2.encode('utf8')
+        port = port.encode('utf8')
+        path = '/'.join(urllib.quote(urllib.unquote(pce).encode('utf8'), '') for pce in parsed.path.split('/'))
+        query = urllib.quote(urllib.unquote(parsed.query).encode('utf8'), '=&?/')
+        fragment = urllib.quote(urllib.unquote(parsed.fragment).encode('utf8'))
+
+        netloc = ''.join((user, colon1, pass_, at, host, colon2, port))
+        return urlparse.urlunsplit((scheme, netloc, path, query, fragment))
 
     def read(self):
         print self._url
-        r = urllib2.Request(self._url, headers={'User-agent': 'pseudorandomstring'})
+        print self._parsed_url
+        r = urllib2.Request(self._parsed_url, headers={'User-agent': 'pseudorandomstring'})
         handler = urllib2.urlopen(r)
         for i in range(1, 3):
             try:

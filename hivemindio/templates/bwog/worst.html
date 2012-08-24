@@ -1,0 +1,7 @@
+{% if worst_comments %}
+    <ul>
+    {% for comment in worst_comments %}
+        <li><a href="/bwog/comments/{{ comment.bwog_id }}/">{{ comment.author }}</a> - {{ comment.downvotes }} downvotes on <a href="/bwog/articles/{{ comment.article.id }}/">{{ comment.article.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}

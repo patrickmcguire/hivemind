@@ -1,23 +1,27 @@
 import djcelery
+import os.path
 djcelery.setup_loader()
 # Django settings for hivemindio project.
 
+PWD = os.path.dirname(os.path.realpath(__file__))
+
 BROKER_HOST = "localhost"
-BROKER_BACKEND="redis"
-REDIS_PORT=6379
+BROKER_BACKEND = "redis"
+REDIS_PORT = 6379
 REDIS_HOST = "localhost"
 BROKER_USER = ""
-BROKER_PASSWORD =""
+BROKER_PASSWORD = ""
 BROKER_VHOST = "0"
 REDIS_DB = 0
 REDIS_CONNECT_RETRY = True
-CELERY_SEND_EVENTS=True
-CELERY_RESULT_BACKEND='redis'
-CELERY_TASK_RESULT_EXPIRES =  10
-CELERYBEAT_SCHEDULER="djcelery.schedulers.DatabaseScheduler"
+CELERY_SEND_EVENTS = True
+CELERY_RESULT_BACKEND = 'redis'
+CELERY_TASK_RESULT_EXPIRES = 10
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -27,7 +31,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'hivemindio',                      # Or path to database file if using sqlite3.
         'USER': 'hivemindio',                      # Not used with sqlite3.
         'PASSWORD': 'calculus',                  # Not used with sqlite3.
@@ -92,8 +96,7 @@ STATICFILES_DIRS = (
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 )
 
 # Make this unique, and don't share it with anybody.
@@ -102,8 +105,7 @@ SECRET_KEY = '+j7w@3yy8b1a9shavbn#7)(5fzm!6s$6p6d5+nz3x0tm+a9rtr'
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.app_directories.Loader'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -122,6 +124,7 @@ ROOT_URLCONF = 'hivemindio.urls'
 WSGI_APPLICATION = 'hivemindio.wsgi.application'
 
 TEMPLATE_DIRS = (
+    os.path.join(PWD, 'templates')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

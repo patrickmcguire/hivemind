@@ -2,7 +2,7 @@ import urllib2
 import re
 import os
 import sys
-from lxml import etree 
+from lxml import etree
 from lxml.etree import ElementTextIterator
 from datetime import date
 from datetime import datetime
@@ -26,7 +26,7 @@ class BwogParser:
 
     def _parseComments(self, page, bwog_internal_article_id):
         return self._recParseComments(page, bwog_internal_article_id);
-    
+
     def _recParseComments(self, page, bwog_internal_article_id, depth = 1, parent_node = None):
         if parent_node == None:
             li_xpath_string = '//li[contains(concat(" ", @class, " "), " depth-1 ")]'
@@ -51,7 +51,7 @@ class BwogParser:
             comment_div = comment_div_candidates[0]
             comment_id_string = comment_div.get('id')
             bwog_internal_id = comment_id_string[8:]
-            
+
             comment_info_candidates = comment_div.xpath("div[@class='comment-info']")
             if 0 < len(comment_info_candidates):
                 comment_info = comment_info_candidates[0]
@@ -62,12 +62,12 @@ class BwogParser:
                 elif 0 < len(link_cadidates):
                     link = link_candidates[0].text
                     comment_author = etree.tostring(link, method="text", encoding="unicode")
-                    
+
                 comment_meta_candidates = comment_info.xpath('span[@class="comment-meta commentmetadata"]')
-                
+
                 if -1 < len(comment_meta_candidates):
                     comment_meta = comment_meta_candidates[0]
-                    
+
                     votes = comment_meta.xpath('span')
                     if 1 == len(votes): # administrator
                         comment_upvotes = 0
@@ -77,7 +77,7 @@ class BwogParser:
                         comment_upvotes = int(comment_upvote_span.text)
                         comment_downvote_span = votes[1]
                         comment_downvotes = int(comment_downvote_span.text)
-    
+
                     comment_time_candidates = comment_meta.xpath('a')
                     comment_time_div = comment_time_candidates[0]
                     # begins with \r\n for some reason
@@ -97,9 +97,9 @@ class BwogParser:
                     elif 12 == hour:
                         hour -= 12
 
-                    eastern = timezone("US/Eastern") 
+                    eastern = timezone("US/Eastern")
                     comment_time = eastern.localize(datetime(year, month, day, hour, minute, 0))
-                    
+
                     comment_track_hash_candidates = comment_meta.xpath('a')
                     last = len(comment_track_hash_candidates) - 1
                     comment_track_hash_div = comment_track_hash_candidates[last]
@@ -112,7 +112,7 @@ class BwogParser:
                 paragraphs = comment_body_div.xpath("p")
             else:
                 paragraphs = comment_div.xpath("p")
-            
+
             comment_paragraphs = []
             for paragraph in paragraphs:
                     paragraph_text = paragraph.text
@@ -134,17 +134,17 @@ class BwogParser:
                 parent_bwog_internal_id = None
             else:
                 parent_bwog_internal_id = None
-        
+
         try:
             int_bwog_article_id = int(bwog_internal_article_id)
             parent_article = BwogArticle.objects.get(bwog_id=int_bwog_article_id)
         except:
             print bwog_internal_article_id
             exit()
-        
+
         if None == comment_author:
             print etree.tostring(comment_li, method="html", encoding="unicode")
-            items = comment_li.xpath("div[@class='comment-info']") 
+            items = comment_li.xpath("div[@class='comment-info']")
             for item in items:
                 print "break"
                 print etree.tostring(item)
@@ -152,7 +152,7 @@ class BwogParser:
             if 0 == len(items):
                 print "somehow no items"
             exit()
-    
+
         # processing
         comment_author = string.strip(comment_author)
         comment_body = string.strip(comment_body)
@@ -195,7 +195,7 @@ class BwogParser:
             article_bwog_internal_id = post.get('id')
         else:
             raise Exception("No id")
-        
+
         potential_bodies = page.xpath('//div[@class="contenttext"]')
         if 0 < len(potential_bodies):
             body_node = potential_bodies[0]
@@ -205,7 +205,7 @@ class BwogParser:
 
         url_slash_split = self.url.split("/")
         # http://bwog.com/(year)/(month)/(day)
-        
+
         if 6 <= len(url_slash_split):
             year = int(url_slash_split[3])
             month = int(url_slash_split[4])
@@ -213,9 +213,9 @@ class BwogParser:
             eastern = timezone("US/Eastern")
             article_date = eastern.localize(datetime(year, month, day))
         else:
-            raise Exception("No date") 
-        
-        article = BwogArticle(url=self.url, 
+            raise Exception("No date")
+
+        article = BwogArticle(url=self.url,
                               title=article_title,
                               body=article_body,
                               pub_date=article_date,

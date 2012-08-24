@@ -8,8 +8,9 @@ from django.core.management.base import BaseCommand, CommandError
 from main.models import BwogArticle
 from main.models import BwogComment
 
+
 class Command(BaseCommand):
-    
+
     def handle(self, *app_labels, **options):
         print "downloading"
         sitemap_url = "http://www.bwog.com/sitemap.xml"
