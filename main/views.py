@@ -3,8 +3,9 @@ from django.http import Http404
 from django.shortcuts import render_to_response
 from main.models import BwogArticle
 from main.models import BwogComment
-from django.db import connection, transaction
+from django.db import connection
 from django.utils import simplejson
+from main.forms import ZeitgeistForm
 
 
 def index(request):
@@ -54,5 +55,6 @@ def trend(request, term):
     return HttpResponse(simplejson.dumps(t1), mimetype="application.json")
 
 
-def zeitgeist(request, term_list):
-    a = 1
+def zeitgeist(request):
+    form = ZeitgeistForm()
+    return render_to_response('bwog/zeitgeist.html', {'form': form})

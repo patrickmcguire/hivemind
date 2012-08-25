@@ -1,2 +1,9 @@
-<script type="text/javascript">
-    var form = jQuery("#contactform")
+<form>
+    {{ form.as_p }}
+</form>
+<button type="button" id="zeitgeist_button">Submit</button>
+<div id="plot"></div>
+<link href="{{ STATIC_URL }}jqplot/jquery.jqplot.css" rel="stylesheet" type="text/css">
+<script src="{{ STATIC_URL }}jquery-1.8.0.js"></script>
+<script src="{{ STATIC_URL }}bwog/zeitgeist.js"></script>
+<script src="{{ STATIC_URL }}jqplot/jquery.jqlot.js"></script>
