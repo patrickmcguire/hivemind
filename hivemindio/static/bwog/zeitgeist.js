@@ -22,7 +22,7 @@ $("#zeitgesit-button").click(function() {
                 plotData.push(data);
             }
         });
-    }
+    });
 }
 
 function replot() {
