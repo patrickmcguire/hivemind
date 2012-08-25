@@ -56,5 +56,11 @@ def trend(request, term):
 
 
 def zeitgeist(request):
-    form = ZeitgeistForm()
+    params = request.GET
+    possible = ['term1', 'term2', 'term3', 'term4']
+    prefilled = {}
+    for term in possible:
+        if term in params:
+            prefilled[term] = params[term]
+    form = ZeitgeistForm(initial=prefilled)
     return render_to_response('bwog/zeitgeist.html', {'form': form})

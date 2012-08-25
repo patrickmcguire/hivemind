@@ -1,7 +1,7 @@
 var plotData = [];
 var keys = [];
 
-$("#zeitgesit-button").click(function() {
+$(document).ready(function() {
     plotData = [];
     keys = [];
     var terms = []
@@ -30,3 +30,34 @@ function replot() {
         title: "Bwog phrase data"
     })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
