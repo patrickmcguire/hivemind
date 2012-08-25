@@ -23,10 +23,10 @@ $("#zeitgesit-button").click(function() {
             }
         });
     });
-}
+});
 
 function replot() {
     var plot = $.jqplot('plot', plotData, {
         title: "Bwog phrase data"
-    }
+    })
 }
