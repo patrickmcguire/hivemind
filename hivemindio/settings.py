@@ -87,7 +87,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(PWD, 'static_storage')
+    os.path.join(PWD, 'static_storage'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -97,7 +97,7 @@ STATICFILES_DIRS = (
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -106,7 +106,7 @@ SECRET_KEY = '+j7w@3yy8b1a9shavbn#7)(5fzm!6s$6p6d5+nz3x0tm+a9rtr'
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader'
+    'django.template.loaders.app_directories.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -125,7 +125,7 @@ ROOT_URLCONF = 'hivemindio.urls'
 WSGI_APPLICATION = 'hivemindio.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(PWD, 'templates')
+    os.path.join(PWD, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -145,7 +145,7 @@ INSTALLED_APPS = (
     'south',
     'djcelery',
     'main',
-    'reddit'
+    'reddit',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -171,5 +171,5 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-    }
+    },
 }
