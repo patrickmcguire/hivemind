@@ -2,7 +2,7 @@
 import urllib2
 from django.core.management.base import BaseCommand
 from reddit.models import Subreddit
-from scrape import RedditScraper
+from redditscraper import RedditScraper
 import json
 import time
 
