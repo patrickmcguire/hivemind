@@ -115,7 +115,7 @@ def correlation(request):
         term1_given_term2_prob = both_prob / term2_prob
         term2_given_term1_prob = both_prob / term1_prob
         independent_prob = term1_prob * term2_prob
-        correlation_coefficient = both_prob / independent_prob
-        result = {'term1': term1, 'term2': term2, 'term1_prob': term1_prob, 'term2_prob': term2_prob, 'term1_given_term2_prob': term1_given_term2_prob, 'term2_given_term1_prob': term2_given_term1_prob, 'joint_prob': both_prob, 'independent_joint_prob': independent_prob, 'correlation_coefficient': correlation_coefficient}
+        covariance = both_prob - independent_prob
+        result = {'term1': term1, 'term2': term2, 'term1_prob': term1_prob, 'term2_prob': term2_prob, 'term1_given_term2_prob': term1_given_term2_prob, 'term2_given_term1_prob': term2_given_term1_prob, 'joint_prob': both_prob, 'independent_joint_prob': independent_prob, 'covariance': covariance, 'ratio': both_prob / independent_prob}
         form = CorrelationForm(initial={'term1': term1, 'term2': term2})
         return render_to_response('bwog/correlation.html', {'res': result, 'form': form})
