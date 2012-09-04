@@ -24,7 +24,9 @@ urlpatterns = patterns(
     url(r'^bwog/comments/daily_best/$', 'main.views.best_daily_comments'),
     url(r'^bwog/comments/daily_worst/$', 'main.views.worst_daily_comments'),
     url(r'^bwog/articles/(?P<article_id>\d+)/$', 'main.views.article'),
+    url(r'^bwog/articles/(?P<article_id>\d+)/comments/$', 'main.views.article_comments'),
     url(r'^bwog/trend/(?P<term>[A-Za-z0-9"\'-* ]+)/$', 'main.views.trend'),
     url(r'^bwog/zeitgeist/$', 'main.views.zeitgeist'),
     url(r'^bwog/correlation/$', 'main.views.correlation'),
+    url(r'^bwog/predictions/$', 'main.views.predictions')
 )

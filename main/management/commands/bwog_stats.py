@@ -7,19 +7,11 @@ from nltk import ngrams
 import scipy
 from scipy.sparse import *
 from scipy.sparse.linalg import *
-import pickle
+import redis
+import simplejson
 
 
 class Command(BaseCommand):
-
-    def _sparse_transpose(self, m):
-        shape = m.shape
-        m2 = lil_matrix(shape[1], shape[0])
-        for i in range(0, len(shape[0])):
-            for j in range(0, len(shape[1])):
-                if 0 != m[i, j]:
-                    m2[j, i] = m[i, j]
-        return m2.tocsr
 
     def handle(self, *args, **options):
         damp = int(args[0])
@@ -81,15 +73,15 @@ class Command(BaseCommand):
         upvote_tuples = []
         for ngram_index in range(0, len(upvote_weights) - 1):
             upvote_tuples.append([all_trigrams[ngram_index], upvote_weights[ngram_index]])
-        upvote_tuples.sort(key=lambda gram_weight: gram_weight[1])
-        upvote_tuples.reverse()
-
-        pickle.dump(upvote_tuples, file("upvotes.weight" + str(damp), 'w'))
 
         downvote_weights = scipy.sparse.linalg.lsqr(A, downvotes, damp=damp)[0]
         downvote_tuples = []
         for ngram_index in range(0, len(downvote_weights) - 1):
             downvote_tuples.append([all_trigrams[ngram_index], downvote_weights[ngram_index]])
-        downvote_tuples.sort(key=lambda gram_weight: gram_weight[1])
-        downvote_tuples.reverse()
-        pickle.dump(downvote_tuples, file("downvotes.weight" + str(damp), 'w'))
+
+        r = redis.Redis()
+        for tup in upvote_tuples:
+            r.set('up:' + simplejson.dumps(tup[0]), tup[1])
+
+        for tup in downvote_tuples:
+            r.set('down:' + simplejson.dumps(tup[0]), tup[1])

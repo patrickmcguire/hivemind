@@ -11,3 +11,7 @@ class ZeitgeistForm(forms.Form):
 class CorrelationForm(forms.Form):
     term1 = forms.CharField()
     term2 = forms.CharField()
+
+
+class PredictionForm(forms.Form):
+    comment_text = forms.TextField()

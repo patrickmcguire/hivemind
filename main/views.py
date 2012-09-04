@@ -9,8 +9,10 @@ from django.utils import simplejson
 from main.forms import ZeitgeistForm
 from main.forms import CorrelationForm
 from datetime import date, timedelta
+import nltk
+from nltk import ngrams
 import math
-
+import redis
 
 def index(request):
     return render_to_response('bwog/index.html')
@@ -91,6 +93,29 @@ def zeitgeist(request):
     return render_to_response('bwog/zeitgeist.html', {'form': form})
 
 
+def prediction(article):
+    redis = redis.Redis()
+    params = request.GET
+    if not ('comment_text' in params):
+        form = PredictionForm()
+        return render_to_response('bwog/prediction.html', {'res': False, 'form': form})
+    else:
+        text = params['comment_text']
+        tokens = nltk.word_tokenize(text)
+        grams = ngrams(tokens, 3)
+        upvotes = 0
+        downvotes = 0
+        for gram in grams:
+            up_val = redis.get('up:' + simplejson.dumps(gram))
+            if None != up_val:
+                upvotes += val
+            down_val = redis.get('down:' + simplejson.dumps(gram))
+            if None != down_val:
+                downvotes += val
+        form = PredictionForm(initial={'comment_text': text})
+        return render_to_response('bwog/prediction.html', {'res': True, 'form': form, 'downvotes': downvotes, 'upvotes': upvotes})
+
+
 def correlation(request):
     params = request.GET
     if not ('term1' in params and 'term2' in params):
@@ -137,6 +162,14 @@ def correlation(request):
         form = CorrelationForm(initial={'term1': term1, 'term2': term2})
         return render_to_response('bwog/correlation.html', {'res': result, 'form': form})
 
+
+def article_comments(request, article_id):
+    try:
+        bwog_article = BwogArticle.objects.get(id=article_id)
+    except: BwogArticle.DoesNotExist:
+        raise Http404
+    article_comments = {}
+    return render_to_response('bwog/article_comments.html', {'article_comments': article_comments})
 
 # private
 
