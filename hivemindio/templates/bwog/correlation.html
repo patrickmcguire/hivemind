@@ -8,9 +8,13 @@
         <li>{{ res.term2 }} frequency: {{ res.term2_prob }}</li>
         <li>{{ res.term1 }} frequency given {{ res.term2 }}: {{ res.term1_given_term2_prob }}</li>
         <li>{{ res.term2 }} frequency given {{ res.term1 }}: {{ res.term2_given_term1_prob }}</li>
-        <li>Joint probabitdty: {{ res.joint_prob }}</li>
-        <li>IID Probability: {{ res.independent_joint_prob }}</li>
+        <li>{{ res.term1 }} variance: {{ res.term1_variance }}</li>
+        <li>{{ res.term2 }} variance: {{ res.term2_variance }}</li>
+        <li>Joint probability: {{ res.joint_prob }}</li>
+        <li>IID probability: {{ res.independent_joint_prob }}</li>
         <li>Covariance: {{ res.covariance }}</li>
         <li>Ratio: {{ res.ratio }}</li>
+        <li>r: {{ res.r }}</li>
+        <li>r_squared: {{ res.r_squared }}</li>
     </ul>
 {% endif %}

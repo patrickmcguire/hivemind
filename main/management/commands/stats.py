@@ -29,6 +29,7 @@ class NgramCount:
                 else:
                     this_count[gram_index] += 1
             gram_counts[id_extractor(model)] = this_count
+
         self.counts = gram_counts
         self.all_grams = all_grams
         self.gram_indices = gram_indices

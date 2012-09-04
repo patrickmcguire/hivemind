@@ -1,7 +1,7 @@
 {% if best_comments %}
     <ul>
     {% for comment in best_comments %}
-        <li><a href="/bwog/comments/{{ comment.bwog_id }}/">{{ comment.author }}</a> - {{ comment.upvotes }} upvotes on <a href="bwog/articles/{{ comment.article.id }}/">{{ comment.article.title }}</a></li>
+        <li><a href="/bwog/comments/{{ comment.bwog_id }}/">{{ comment.author }}</a> - {{ comment.upvotes }} upvotes on <a href="/bwog/articles/{{ comment.article.id }}/">{{ comment.article.title }}</a></li>
     {% endfor %}
     </ul>
 {% endif %}
