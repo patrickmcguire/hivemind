@@ -14,4 +14,4 @@ class CorrelationForm(forms.Form):
 
 
 class PredictionForm(forms.Form):
-    comment_text = forms.TextField()
+    comment_text = forms.CharField(widget=forms.Textarea)

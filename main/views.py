@@ -6,8 +6,7 @@ from main.models import BwogArticle
 from main.models import BwogComment
 from django.db import connection
 from django.utils import simplejson
-from main.forms import ZeitgeistForm
-from main.forms import CorrelationForm
+from main.forms import ZeitgeistForm, CorrelationForm, PredictionForm
 from datetime import date, timedelta
 import nltk
 from nltk import ngrams
@@ -93,8 +92,8 @@ def zeitgeist(request):
     return render_to_response('bwog/zeitgeist.html', {'form': form})
 
 
-def prediction(article):
-    redis = redis.Redis()
+def predictions(request):
+    r = redis.Redis()
     params = request.GET
     if not ('comment_text' in params):
         form = PredictionForm()
@@ -103,16 +102,18 @@ def prediction(article):
         text = params['comment_text']
         tokens = nltk.word_tokenize(text)
         grams = ngrams(tokens, 3)
-        upvotes = 0
-        downvotes = 0
+        upvotes = 0.0
+        downvotes = 0.0
         for gram in grams:
-            up_val = redis.get('up:' + simplejson.dumps(gram))
+            up_val = r.get('up:' + simplejson.dumps(gram))
             if None != up_val:
-                upvotes += val
-            down_val = redis.get('down:' + simplejson.dumps(gram))
+                upvotes += float(up_val)
+            down_val = r.get('down:' + simplejson.dumps(gram))
             if None != down_val:
-                downvotes += val
+                downvotes += float(down_val)
         form = PredictionForm(initial={'comment_text': text})
+        print downvotes
+        print upvotes
         return render_to_response('bwog/prediction.html', {'res': True, 'form': form, 'downvotes': downvotes, 'upvotes': upvotes})
 
 
@@ -166,7 +167,8 @@ def correlation(request):
 def article_comments(request, article_id):
     try:
         bwog_article = BwogArticle.objects.get(id=article_id)
-    except: BwogArticle.DoesNotExist:
+        bwog_article += 2
+    except BwogArticle.DoesNotExist:
         raise Http404
     article_comments = {}
     return render_to_response('bwog/article_comments.html', {'article_comments': article_comments})

@@ -4,8 +4,8 @@
 </form>
 {% if res %}
     <ul>
-        <li>Expected upvotes {{ res.upvotes }}</li>
-        <li>Expected downvotes {{ res.downvotes }}</li>
+        <li>Expected upvotes {{ upvotes }}</li>
+        <li>Expected downvotes {{ downvotes }}</li>
     {% if downvotes > upvotes %}
         <li>You be trolling. Cut that shit out.</li>
     {% endif %}
