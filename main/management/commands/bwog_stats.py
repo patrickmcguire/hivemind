@@ -2,58 +2,34 @@
 import numpy
 from django.core.management.base import BaseCommand
 from main.models import BwogComment
-import nltk
-from nltk import ngrams
 import scipy
-from scipy.sparse import *
-from scipy.sparse.linalg import *
+from scipy.sparse import lil_matrix
 import redis
 import simplejson
+from stats import NgramCount
 
 
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        damp = int(args[0])
-        all_trigrams = []
-        trigram_indices = {}
-        for comment in BwogComment.objects.all():
-            body = comment.body
-            words = nltk.word_tokenize(body)
-            trigrams = ngrams(words, 3)
-            for trigram in trigrams:
-                if not trigram in trigram_indices:
-                    all_trigrams.append(trigram)
-                    trigram_indices[trigram] = len(all_trigrams) - 1
+        ngram_size = int(args[0])
+        damp = int(args[1])
+        models = BwogComment.objects.all()
+        ngram_count = NgramCount(models, lambda c: c.body, lambda c: c.id, ngram_size)
+        gram_counts = ngram_count.counts
+        all_grams = ngram_count.all_grams
 
-        print len(trigram_indices.keys())
-        trigram_counts = {}
-        for comment in BwogComment.objects.all():
-            body = comment.body
-            words = nltk.word_tokenize(body)
-            trigrams = ngrams(words, 3)
-            this_count = {}
-            for trigram in trigrams:
-                trigram_index = trigram_indices[trigram]
-                if not trigram_index in this_count:
-                    this_count[trigram_index] = 1
-                else:
-                    this_count[trigram_index] += 1
-            trigram_counts[comment.id] = this_count
-
-        print len(trigram_counts.keys())
-        print len(all_trigrams)
-        first_id = min(trigram_counts.keys())
-        A = lil_matrix((len(trigram_counts.keys()), len(all_trigrams)))
+        first_id = min(gram_counts.keys())
+        A = lil_matrix((len(gram_counts.keys()), len(all_grams)))
         print A.shape
-        for comment_id in trigram_counts.keys():
+        for comment_id in gram_counts.keys():
             m = comment_id - first_id
-            comment_trigram_count = trigram_counts[comment_id]
-            for trigram_index in comment_trigram_count.keys():
-                    trigram_count = comment_trigram_count[trigram_index]
-                    n = trigram_index
+            comment_gram_count = gram_counts[comment_id]
+            for gram_index in comment_gram_count.keys():
+                    gram_count = comment_gram_count[gram_index]
+                    n = gram_index
                     try:
-                        A[m, n] = trigram_count
+                        A[m, n] = gram_count
                     except:
                         print m
                         print n
@@ -61,7 +37,7 @@ class Command(BaseCommand):
 
         upvotes = []
         downvotes = []
-        for comment in BwogComment.objects.all():
+        for comment in models:
             upvotes.append([comment.upvotes])
             downvotes.append([comment.downvotes])
 
@@ -72,12 +48,12 @@ class Command(BaseCommand):
         upvote_weights = scipy.sparse.linalg.lsqr(A, upvotes, damp=damp)[0]
         upvote_tuples = []
         for ngram_index in range(0, len(upvote_weights) - 1):
-            upvote_tuples.append([all_trigrams[ngram_index], upvote_weights[ngram_index]])
+            upvote_tuples.append([all_grams[ngram_index], upvote_weights[ngram_index]])
 
         downvote_weights = scipy.sparse.linalg.lsqr(A, downvotes, damp=damp)[0]
         downvote_tuples = []
         for ngram_index in range(0, len(downvote_weights) - 1):
-            downvote_tuples.append([all_trigrams[ngram_index], downvote_weights[ngram_index]])
+            downvote_tuples.append([all_grams[ngram_index], downvote_weights[ngram_index]])
 
         r = redis.Redis()
         for tup in upvote_tuples:
