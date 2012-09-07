@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load bootstrap_toolkit %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>BwogStats</title>
+    <meta name="description" content="Stats for bwog">
+    <meta name="author" content="Noah Pryor">
+        <meta name="author" content="Patrick McGuire">
+
+    {% bootstrap_stylesheet_tag %}
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    {% bootstrap_javascript_tag "dropdown" %}
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/">BwogStats</a>
+ <div class="nav-collapse collapse">
+            <ul class="nav">               
+    <li><a href="/bwog/comments/best/">Best</a></li>
+    <li><a href="/bwog/comments/worst/">Worst</a></li>
+    <li><a href="/bwog/correlation/">Stats</a></li>
+    <li><a href="/bwog/zeitgeist/">Zeitgeist (capital beta)</a></li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    {% block content %}Empty page{% endblock %}
+
+    <p><hr></p>
+
+    <footer class="row">
+        <div class="span6">
+            <p>This is BwogStats</p>
+        </div>
+        <div class="span6" style="text-align:right">
+            <p>
+                &copy; <a href="http://twitter.com/mcguirejpatrick">Patrick McGuire</a> 2012
+                |
+                <a href="http://bwog.com">bwog</a>
+            </p>
+        </div>
+    </footer>
+
+</div> <!-- container -->
+
+</body>
+</html>
