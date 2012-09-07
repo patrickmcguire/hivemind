@@ -13,6 +13,12 @@ from nltk import ngrams
 import math
 import redis
 
+
+class GRAM_CLASS:
+    UP = 1
+    DOWN = 2
+
+
 def index(request):
     return render_to_response('bwog/index.html')
 
@@ -93,7 +99,6 @@ def zeitgeist(request):
 
 
 def predictions(request):
-    r = redis.Redis()
     params = request.GET
     if not ('comment_text' in params):
         form = PredictionForm()
@@ -105,12 +110,8 @@ def predictions(request):
         upvotes = 0.0
         downvotes = 0.0
         for gram in grams:
-            up_val = r.get('up:' + simplejson.dumps(gram))
-            if None != up_val:
-                upvotes += float(up_val)
-            down_val = r.get('down:' + simplejson.dumps(gram))
-            if None != down_val:
-                downvotes += float(down_val)
+            upvotes += gram_weight(gram, GRAM_CLASS.UP)
+            downvotes += gram_weight(gram, GRAM_CLASS.DOWN)
         form = PredictionForm(initial={'comment_text': text})
         print downvotes
         print upvotes
@@ -195,3 +196,53 @@ def cache_count_select(db_connection, select_array):
         result = cursor.fetchone()[0]
         cache.set(cache_string, result, 24 * 60 * 60)
     return result
+
+
+def gram_weight(gram, gram_class):  # only supports up to trigrams at the moment
+    if GRAM_CLASS.DOWN == gram_class:
+        prefix = 'down:'
+    elif GRAM_CLASS.UP == gram_class:
+        prefix = 'up:'
+    r = redis.Redis()
+
+    weight = r.get(prefix + simplejson.dumps(gram))
+    if None == weight:
+        bigram_one = gram[0:1]
+        bigram_two = gram[1:2]
+        bigram_one_weight = r.get(prefix + simplejson.dumps(bigram_one))
+        bigram_two_weight = r.get(prefix + simplejson.dumps(bigram_two))
+
+        if None == bigram_one_weight:
+            bg_one_first = r.get(prefix + simplejson.dumps(prefix + bigram_one_weight[0]))
+            bg_one_second = r.get(prefix + simplejson.dumps(prefix + bigram_one_weight[1]))
+            if None == bg_one_first:
+                bg_one_first = 0.0
+            else:
+                bg_one_first = float(bg_one_first)
+            if None == bg_one_second:
+                bg_one_second = 0.0
+            else:
+                bg_one_second = float(bg_one_second)
+            bigram_one_weight = bg_one_first / 2 + bg_one_second / 2
+        else:
+            bigram_one_weight = float(bigram_one_weight)
+
+        if None == bigram_two_weight:
+            bg_two_first = r.get(prefix + simplejson.dumps(prefix + bigram_two_weight[0]))
+            bg_two_second = r.get(prefix + simplejson.dumps(prefix + bigram_two_weight[1]))
+            if None == bg_two_first:
+                bg_two_first = 0.0
+            else:
+                bg_two_first = float(bg_two_first)
+            if None == bg_one_second:
+                bg_two_second = 0.0
+            else:
+                bg_two_second = float(bg_two_second)
+            bigram_two_weight = bg_one_first / 2 + bg_one_second / 2
+        else:
+            bigram_two_weight = float(bigram_two_weight)
+
+        weight = bigram_one_weight / 2 + bigram_one_weight / 2
+    else:
+        weight = float(weight)
+    return weight
