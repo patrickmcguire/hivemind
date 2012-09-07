@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/17445/django/trunk/tests/modeltests/invalid_models/invalid_models
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/16661/django/trunk/tests/modeltests/invalid_models/invalid_models/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/17445/django/trunk/tests/modeltests/invalid_models/invalid_models/models.py
+END

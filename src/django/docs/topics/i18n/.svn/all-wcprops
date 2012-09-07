@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/17934/django/trunk/docs/topics/i18n
+END
+index.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/17106/django/trunk/docs/topics/i18n/index.txt
+END
+formatting.txt
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/17542/django/trunk/docs/topics/i18n/formatting.txt
+END
+timezones.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/17934/django/trunk/docs/topics/i18n/timezones.txt
+END
+translation.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/17861/django/trunk/docs/topics/i18n/translation.txt
+END

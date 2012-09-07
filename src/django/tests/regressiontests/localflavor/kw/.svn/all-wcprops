@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/16680/django/trunk/tests/regressiontests/localflavor/kw
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/16680/django/trunk/tests/regressiontests/localflavor/kw/__init__.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/16680/django/trunk/tests/regressiontests/localflavor/kw/tests.py
+END

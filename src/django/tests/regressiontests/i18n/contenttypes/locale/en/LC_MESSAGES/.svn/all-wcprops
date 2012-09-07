@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/16839/django/trunk/tests/regressiontests/i18n/contenttypes/locale/en/LC_MESSAGES
+END
+django.po
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/16839/django/trunk/tests/regressiontests/i18n/contenttypes/locale/en/LC_MESSAGES/django.po
+END
+django.mo
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/16839/django/trunk/tests/regressiontests/i18n/contenttypes/locale/en/LC_MESSAGES/django.mo
+END

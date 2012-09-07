@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/17633/django/trunk/django/middleware
+END
+common.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/17621/django/trunk/django/middleware/common.py
+END
+gzip.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/17471/django/trunk/django/middleware/gzip.py
+END
+clickjacking.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/16298/django/trunk/django/middleware/clickjacking.py
+END
+csrf.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/17540/django/trunk/django/middleware/csrf.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/4265/django/trunk/django/middleware/__init__.py
+END
+http.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/16539/django/trunk/django/middleware/http.py
+END
+locale.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/17633/django/trunk/django/middleware/locale.py
+END
+cache.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/15705/django/trunk/django/middleware/cache.py
+END
+doc.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/16496/django/trunk/django/middleware/doc.py
+END
+transaction.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/4265/django/trunk/django/middleware/transaction.py
+END

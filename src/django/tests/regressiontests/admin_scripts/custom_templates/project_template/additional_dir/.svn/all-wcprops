@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/17432/django/trunk/tests/regressiontests/admin_scripts/custom_templates/project_template/additional_dir
+END
+requirements.txt
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/!svn/ver/17432/django/trunk/tests/regressiontests/admin_scripts/custom_templates/project_template/additional_dir/requirements.txt
+END
+Procfile
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/!svn/ver/17432/django/trunk/tests/regressiontests/admin_scripts/custom_templates/project_template/additional_dir/Procfile
+END
+additional_file.py
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/!svn/ver/17246/django/trunk/tests/regressiontests/admin_scripts/custom_templates/project_template/additional_dir/additional_file.py
+END

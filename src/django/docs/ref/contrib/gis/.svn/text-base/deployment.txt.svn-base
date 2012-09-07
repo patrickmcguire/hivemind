@@ -1,0 +1,67 @@
+===================
+Deploying GeoDjango
+===================
+
+.. warning::
+
+    GeoDjango uses the GDAL geospatial library which is
+    not thread safe at this time.  Thus, it is *highly* recommended
+    to not use threading when deploying -- in other words, use an
+    appropriate configuration of Apache or the prefork method
+    when using FastCGI through another Web server.
+
+Apache
+======
+In this section there are some example ``VirtualHost`` directives for
+when deploying using ``mod_wsgi``, which is now officially the recommended
+way to deploy Django applications with Apache.
+As long as ``mod_wsgi`` is configured correctly, it does not
+matter whether the version of Apache is prefork or worker.
+
+.. note::
+
+    The ``Alias`` and ``Directory`` configurations in the examples
+    below use an example path to a system-wide installation folder of Django.
+    Substitute in an appropriate location, if necessary, as it may be
+    different than the path on your system.
+
+``mod_wsgi``
+------------
+
+Example::
+
+    <VirtualHost *:80>
+      WSGIDaemonProcess geodjango user=geo group=geo processes=5 threads=1
+      WSGIProcessGroup geodjango
+      WSGIScriptAlias / /home/geo/geodjango/world.wsgi
+
+      Alias /media/ "/usr/lib/python2.6/site-packages/django/contrib/admin/media/"
+      <Directory "/usr/lib/python2.6/site-packages/django/contrib/admin/media/">
+        Order allow,deny
+        Options Indexes
+        Allow from all
+        IndexOptions FancyIndexing
+      </Directory>
+
+    </VirtualHost>
+
+.. warning::
+
+    If the ``WSGIDaemonProcess`` attribute ``threads`` is not set to ``1``, then
+    Apache may crash when running your GeoDjango application.  Increase the
+    number of ``processes`` instead.
+
+For more information, please consult Django's
+:doc:`mod_wsgi documentation </howto/deployment/wsgi/modwsgi>`.
+
+Lighttpd
+========
+
+FastCGI
+-------
+
+Nginx
+=====
+
+FastCGI
+-------

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/17899/django/trunk/tests/modeltests/prefetch_related
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/16930/django/trunk/tests/modeltests/prefetch_related/__init__.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/17899/django/trunk/tests/modeltests/prefetch_related/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/17744/django/trunk/tests/modeltests/prefetch_related/models.py
+END

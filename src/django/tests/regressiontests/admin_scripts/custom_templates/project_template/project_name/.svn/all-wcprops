@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/17246/django/trunk/tests/regressiontests/admin_scripts/custom_templates/project_template/project_name
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/!svn/ver/17246/django/trunk/tests/regressiontests/admin_scripts/custom_templates/project_template/project_name/__init__.py
+END
+settings.py
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/!svn/ver/17246/django/trunk/tests/regressiontests/admin_scripts/custom_templates/project_template/project_name/settings.py
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/17246/django/trunk/tests/regressiontests/admin_scripts/custom_templates/app_template
+END
+api.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/17246/django/trunk/tests/regressiontests/admin_scripts/custom_templates/app_template/api.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/17246/django/trunk/tests/regressiontests/admin_scripts/custom_templates/app_template/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/17246/django/trunk/tests/regressiontests/admin_scripts/custom_templates/app_template/models.py
+END

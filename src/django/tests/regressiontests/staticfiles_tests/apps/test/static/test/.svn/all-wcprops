@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/17519/django/trunk/tests/regressiontests/staticfiles_tests/apps/test/static/test
+END
+test.ignoreme
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/14293/django/trunk/tests/regressiontests/staticfiles_tests/apps/test/static/test/test.ignoreme
+END
+CVS
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/14293/django/trunk/tests/regressiontests/staticfiles_tests/apps/test/static/test/CVS
+END
+file.txt
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/14293/django/trunk/tests/regressiontests/staticfiles_tests/apps/test/static/test/file.txt
+END
+file1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/14293/django/trunk/tests/regressiontests/staticfiles_tests/apps/test/static/test/file1.txt
+END

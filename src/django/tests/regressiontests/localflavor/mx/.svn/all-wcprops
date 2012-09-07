@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/17414/django/trunk/tests/regressiontests/localflavor/mx
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/16572/django/trunk/tests/regressiontests/localflavor/mx/__init__.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/17414/django/trunk/tests/regressiontests/localflavor/mx/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/16981/django/trunk/tests/regressiontests/localflavor/mx/models.py
+END
+mx.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/16680/django/trunk/tests/regressiontests/localflavor/mx/mx.py
+END
+forms.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/16981/django/trunk/tests/regressiontests/localflavor/mx/forms.py
+END

@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/17153/django/trunk/tests/regressiontests/aggregation_regress/fixtures
+END
+aggregation_regress.json
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/17153/django/trunk/tests/regressiontests/aggregation_regress/fixtures/aggregation_regress.json
+END

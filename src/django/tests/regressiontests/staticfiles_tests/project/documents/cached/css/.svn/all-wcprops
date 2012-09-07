@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/17282/django/trunk/tests/regressiontests/staticfiles_tests/project/documents/cached/css
+END
+fragments.css
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/17282/django/trunk/tests/regressiontests/staticfiles_tests/project/documents/cached/css/fragments.css
+END
+window.css
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/16862/django/trunk/tests/regressiontests/staticfiles_tests/project/documents/cached/css/window.css
+END
