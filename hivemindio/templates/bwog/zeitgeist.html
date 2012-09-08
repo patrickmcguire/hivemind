@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <form "action" = "/bwog/zeitgeist/", method="get">
     {{ form.as_p }}
     <input type="submit" value="Submit" />
@@ -10,3 +13,4 @@
 <script src="/static/jqplot/plugins/jqplot.dateAxisRenderer.js"></script>
 <script src="/static/jqplot/plugins/jqplot.canvasAxisTickRenderer.js"></script>
 <script src="/static/jqplot/plugins/jqplot.canvasTextRenderer.js"></script>
+{% endblock %}

@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 <form "action"="/bwog/correlation/", method="get">
     {{ form.as_p }}
     <input type="submit" value="Submit">
@@ -18,3 +21,4 @@
         <li>r_squared: {{ res.r_squared }}</li>
     </ul>
 {% endif %}
+{% endblock %}
