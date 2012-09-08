@@ -111,7 +111,9 @@ def predictions(request):
         downvotes = 0.0
         for gram in grams:
             upvotes += gram_weight(gram, GRAM_CLASS.UP)
+            print upvotes
             downvotes += gram_weight(gram, GRAM_CLASS.DOWN)
+            print downvotes
         form = PredictionForm(initial={'comment_text': text})
         print downvotes
         print upvotes
@@ -206,15 +208,19 @@ def gram_weight(gram, gram_class):  # only supports up to trigrams at the moment
     r = redis.Redis()
 
     weight = r.get(prefix + simplejson.dumps(gram))
+    print weight, gram
     if None == weight:
-        bigram_one = gram[0:1]
-        bigram_two = gram[1:2]
+        bigram_one = (gram[0], gram[1])
+        bigram_two = (gram[1], gram[2])
         bigram_one_weight = r.get(prefix + simplejson.dumps(bigram_one))
         bigram_two_weight = r.get(prefix + simplejson.dumps(bigram_two))
+        print bigram_one_weight, bigram_one
+        print bigram_two_weight, bigram_two
 
         if None == bigram_one_weight:
-            bg_one_first = r.get(prefix + simplejson.dumps(prefix + bigram_one_weight[0]))
-            bg_one_second = r.get(prefix + simplejson.dumps(prefix + bigram_one_weight[1]))
+            print bigram_one
+            bg_one_first = r.get(prefix + simplejson.dumps(prefix + bigram_one[0]))
+            bg_one_second = r.get(prefix + simplejson.dumps(prefix + bigram_one[1]))
             if None == bg_one_first:
                 bg_one_first = 0.0
             else:
@@ -228,21 +234,21 @@ def gram_weight(gram, gram_class):  # only supports up to trigrams at the moment
             bigram_one_weight = float(bigram_one_weight)
 
         if None == bigram_two_weight:
-            bg_two_first = r.get(prefix + simplejson.dumps(prefix + bigram_two_weight[0]))
-            bg_two_second = r.get(prefix + simplejson.dumps(prefix + bigram_two_weight[1]))
+            bg_two_first = r.get(prefix + simplejson.dumps(prefix + bigram_two[0]))
+            bg_two_second = r.get(prefix + simplejson.dumps(prefix + bigram_two[1]))
             if None == bg_two_first:
                 bg_two_first = 0.0
             else:
                 bg_two_first = float(bg_two_first)
-            if None == bg_one_second:
+            if None == bg_two_second:
                 bg_two_second = 0.0
             else:
                 bg_two_second = float(bg_two_second)
-            bigram_two_weight = bg_one_first / 2 + bg_one_second / 2
+            bigram_two_weight = bg_two_first / 2 + bg_two_second / 2
         else:
             bigram_two_weight = float(bigram_two_weight)
 
-        weight = bigram_one_weight / 2 + bigram_one_weight / 2
+        weight = bigram_one_weight / 2 + bigram_two_weight / 2
     else:
         weight = float(weight)
     return weight
