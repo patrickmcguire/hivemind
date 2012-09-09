@@ -3,18 +3,16 @@ import re
 import os
 import sys
 from lxml import etree
-from lxml.etree import ElementTextIterator
-from datetime import date
 from datetime import datetime
 from time import strptime
 from pytz import timezone
 from main.models import BwogArticle
 from main.models import BwogComment
-from django.db import models
 from django.core.exceptions import ValidationError
 import string
 
 os.environ['TZ'] = 'America/New York'
+
 
 class BwogParser:
 
@@ -25,10 +23,10 @@ class BwogParser:
         self._parse()
 
     def _parseComments(self, page, bwog_internal_article_id):
-        return self._recParseComments(page, bwog_internal_article_id);
+        return self._recParseComments(page, bwog_internal_article_id)
 
-    def _recParseComments(self, page, bwog_internal_article_id, depth = 1, parent_node = None):
-        if parent_node == None:
+    def _recParseComments(self, page, bwog_internal_article_id, depth=1, parent_node=None):
+        if parent_node is None:
             li_xpath_string = '//li[contains(concat(" ", @class, " "), " depth-1 ")]'
             comment_lis = page.xpath(li_xpath_string)
         else:
@@ -59,7 +57,7 @@ class BwogParser:
                 link_candidates = comment_info.xpath('a')
                 if (0 < len(comment_author_candidates)) and (0 == len(link_candidates)):
                     comment_author = etree.tostring(comment_author_candidates[0], method="text", encoding="unicode")
-                elif 0 < len(link_cadidates):
+                elif 0 < len(link_candidates):
                     link = link_candidates[0].text
                     comment_author = etree.tostring(link, method="text", encoding="unicode")
 
@@ -69,7 +67,7 @@ class BwogParser:
                     comment_meta = comment_meta_candidates[0]
 
                     votes = comment_meta.xpath('span')
-                    if 1 == len(votes): # administrator
+                    if 1 == len(votes):  # administrator
                         comment_upvotes = 0
                         comment_downvotes = 0
                     else:
@@ -157,17 +155,23 @@ class BwogParser:
         comment_author = string.strip(comment_author)
         comment_body = string.strip(comment_body)
 
-        comment = BwogComment(author=comment_author,
-                              body=comment_body,
-                              pub_date=comment_time,
-                              track_hash=comment_track_hash,
-                              upvotes=comment_upvotes,
-                              downvotes=comment_downvotes,
-                              article=parent_article,
-                              parent=None,
-                              bwog_id=bwog_internal_id,
-                              parent_bwog_id=parent_bwog_internal_id,
-                              article_bwog_id=bwog_internal_article_id)
+        comment = None
+        try:
+            comment = BwogComment.objects.get(bwog_id=bwog_internal_id)
+            comment.upvotes = comment_upvotes
+            comment.downvotes = comment_downvotes
+        except:
+            comment = BwogComment(author=comment_author,
+                                  body=comment_body,
+                                  pub_date=comment_time,
+                                  track_hash=comment_track_hash,
+                                  upvotes=comment_upvotes,
+                                  downvotes=comment_downvotes,
+                                  article=parent_article,
+                                  parent=None,
+                                  bwog_id=bwog_internal_id,
+                                  parent_bwog_id=parent_bwog_internal_id,
+                                  article_bwog_id=bwog_internal_article_id)
         comment.save()
         parsed_comments.append(comment)
         child_comments = self._recParseComments(comment_li, bwog_internal_article_id, depth + 1, comment_li)
@@ -215,11 +219,15 @@ class BwogParser:
         else:
             raise Exception("No date")
 
-        article = BwogArticle(url=self.url,
-                              title=article_title,
-                              body=article_body,
-                              pub_date=article_date,
-                              bwog_id=article_bwog_internal_id)
+        article = None
+        try:
+            article = BwogArticle.objects.get(url=self.url)
+        except:
+            article = BwogArticle(url=self.url,
+                                  title=article_title,
+                                  body=article_body,
+                                  pub_date=article_date,
+                                  bwog_id=article_bwog_internal_id)
 
         try:
             article.full_clean()

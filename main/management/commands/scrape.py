@@ -3,10 +3,7 @@ import urllib2
 from lxml import etree
 from bwog import BwogParser
 import traceback
-from optparse import make_option
-from django.core.management.base import BaseCommand, CommandError
-from main.models import BwogArticle
-from main.models import BwogComment
+from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
@@ -31,24 +28,22 @@ class Command(BaseCommand):
                 url = url_node.text
                 urls.append(url)
 
+        urls = urls[0:50]
         for bwog_url in urls:
             try:
-                article = BwogArticle.objects.get(url=bwog_url)
-                print bwog_url + " already scraped"
-                continue
+                parser = BwogParser(bwog_url)
+                article = parser.article
+                print article.url
+            except SystemExit as e:
+                tb = traceback.format_exc()
+                print tb
+                print e
+                exit()
+            except KeyboardInterrupt as k:
+                tb = traceback.format_exc()
+                print tb
+                print k
+                exit()
             except:
-                try:
-                    parser = BwogParser(bwog_url)
-                    article = parser.article
-                    print article.url
-                except SystemExit as e:
-                    tb = traceback.format_exc()
-                    print tb
-                    exit()
-                except KeyboardInterrupt as k:
-                    tb = traceback.format_exc()
-                    print tb
-                    exit()
-                except:
-                    tb = traceback.format_exc()
-                    print tb
+                tb = traceback.format_exc()
+                print tb
