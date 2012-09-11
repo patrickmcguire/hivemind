@@ -39,7 +39,7 @@ class NgramCount:
         for model_id in gram_counts.keys():
             count_dict = gram_counts[model_id]
             for gram_id in count_dict.keys():
-                mat[count_dict - min_id, gram_id - min_ngram] = count_dict[gram_id]
+                mat[model_id - min_id, gram_id - min_ngram] = count_dict[gram_id]
 
         self.counts = gram_counts
         self.all_grams = all_grams

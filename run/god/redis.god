@@ -1,10 +1,9 @@
 God.watch do |w|
-	pid_file = '/persist/hivemind/run/postgres.pid'
+	pid_file = '/persist/hivemind/run/redis.pid'
 	daemonize = '/usr/local/sbin/daemonize'
-
-	w.name = 'postgres'
-	w.start = "#{daemonize} -p #{pid_file} /usr/lib/postgresql/9.1/bin/postgres -D /persist/postgres"
-	w.keepalive
+	
+	w.name = 'redis'
+	w.start = "#{daemonize} -p #{pid_file} /usr/bin/redis-server"
 	w.pid_file = pid_file
 	w.behavior(:clean_pid_file)
 	w.stop_signal = 'QUIT'

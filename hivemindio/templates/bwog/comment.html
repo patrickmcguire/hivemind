@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 {% if comment %}
     <ul>
         <li>Bwog id: {{ comment.bwog_id }}</li>
@@ -9,3 +12,4 @@
 {% else %}
 
 {% endif %}
+{% endblock %}

@@ -180,6 +180,7 @@ class BwogParser:
 
     def _parse(self):
         article_request = urllib2.Request(self.url)
+				article_request.add_header('User-Agent', 'BwogStatsBot')
         article_request_handler = urllib2.urlopen(article_request)
         article_html = article_request_handler.read()
 
