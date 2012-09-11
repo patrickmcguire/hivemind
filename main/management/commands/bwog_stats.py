@@ -15,6 +15,7 @@ class Command(BaseCommand):
         ngram_size = int(args[0])
         damp = int(args[1])
         models = BwogComment.objects.all()
+        print len(models)
         ngram_count = NgramCount(models, lambda c: c.body, lambda c: c.id, ngram_size)
         gram_counts = ngram_count.counts
         all_grams = ngram_count.all_grams

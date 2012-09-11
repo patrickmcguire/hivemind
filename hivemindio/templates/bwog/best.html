@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 {% if best_comments %}
     <ul>
     {% for comment in best_comments %}
@@ -5,3 +8,4 @@
     {% endfor %}
     </ul>
 {% endif %}
+{% endblock %}
