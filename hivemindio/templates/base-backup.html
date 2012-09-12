@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"{% block extra_html %}{% endblock extra_html %}>
+<head>
+
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet/less" type="text/css" href="/static/bootstrap/less/bootstrap.less">
+     
+
+    {% block extra_head %}{% endblock extra_head %}
+</head>
+
+<body {% block extra_body %}{% endblock extra_body %}>
+
+{% block nav %}{% endblock nav %}
+
+<div class="container">
+    <div class="row">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success">
+            <a class="close" data-dismiss="alert">×</a>
+            <h4 class="alert-heading">{{ message.tags }}</h4>
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/bwog/">BwogStats</a>
+ <div class="nav-collapse collapse">
+            <ul class="nav">               
+    <li><a href="/bwog/comments/best/">Best</a></li>
+    <li><a href="/bwog/comments/worst/">Worst</a></li>
+    <li><a href="/bwog/correlation/">Stats</a></li>
+    <li><a href="/bwog/zeitgeist/">Zeitgeist<span class="label label-info">Info</span>
+</a></li>
+    <li><a href="/bwog/predictions/">Predictions (ALL CAPS BETA)</a></li>
+</ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    {% block content %}{% endblock %}
+
+    <p><hr></p>
+
+    <footer class="row">
+        <div class="span6">
+            <p>This is BwogStats</p>
+        </div>
+        <div class="span6" style="text-align:right">
+            <p>
+                &copy; <a href="http://twitter.com/mcguirejpatrick">Patrick McGuire</a> 2012
+                |
+                <a href="http://bwog.com">bwog</a>
+            </p>
+        </div>
+    </footer>
+
+</div> <!-- container -->
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/static/jquery-1.8.0.js"></script>
+<script src="/static/bootstrap/js/bootstrap-transition.js"></script>
+<script src="/static/bootstrap/js/bootstrap-alert.js"></script>
+<script src="/static/bootstrap/js/bootstrap-modal.js"></script>
+<script src="/static/bootstrap/js/bootstrap-dropdown.js"></script>
+<script src="/static/bootstrap/js/bootstrap-scrollspy.js"></script>
+<script src="/static/bootstrap/js/bootstrap-tab.js"></script>
+<script src="/static/bootstrap/js/bootstrap-tooltip.js"></script>
+<script src="/static/bootstrap/js/bootstrap-popover.js"></script>
+<script src="/static/bootstrap/js/bootstrap-button.js"></script>
+<script src="/static/bootstrap/js/bootstrap-collapse.js"></script>
+<script src="/static/bootstrap/js/bootstrap-carousel.js"></script>
+<script src="/static/bootstrap/js/bootstrap-typeahead.js"></script>
+<script src="/static/js/less-1.3.0.min.js"></script>
+
+{% block extra_foot %}{% endblock extra_foot %}
+</body>
+</html>
