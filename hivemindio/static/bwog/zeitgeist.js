@@ -28,6 +28,7 @@ $(document).ready(function() {
 
 function replot() {
     dataFill();
+    max = null;
     var plot = $.jqplot('plot', plotData, {
         title: "Bwog phrase data",
         axes: {
