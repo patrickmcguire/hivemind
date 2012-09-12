@@ -1,0 +1,14 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+bootstrap/__init__.py
+bootstrap/static/.DS_Store
+bootstrap/templates/.DS_Store
+bootstrap/templates/bootstrap/.DS_Store
+bootstrap/templates/bootstrap/base.html
+django_bootstrap_static.egg-info/PKG-INFO
+django_bootstrap_static.egg-info/SOURCES.txt
+django_bootstrap_static.egg-info/dependency_links.txt
+django_bootstrap_static.egg-info/not-zip-safe
+django_bootstrap_static.egg-info/top_level.txt
