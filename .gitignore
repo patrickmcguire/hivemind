@@ -2,3 +2,4 @@
 *.swp
 *.weight*
 *.pid
+*.DS_Store
