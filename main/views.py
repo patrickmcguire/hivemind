@@ -2,6 +2,7 @@ from django.core.cache import cache
 from django.http import HttpResponse
 from django.http import Http404
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 from main.models import BwogArticle
 from main.models import BwogComment
 from django.db import connection
@@ -20,7 +21,7 @@ class GRAM_CLASS:
 
 
 def index(request):
-    return render_to_response('bwog/index.html')
+    return render_to_response('bwog/index.html', context_instance=RequestContext(request))
 
 
 def comment(request, comment_id):
@@ -28,7 +29,7 @@ def comment(request, comment_id):
         bwog_comment = BwogComment.objects.get(bwog_id=comment_id)
     except BwogComment.DoesNotExist:
         raise Http404
-    return render_to_response('bwog/comment.html', {'comment': bwog_comment})
+    return render_to_response('bwog/comment.html', {'comment': bwog_comment}, context_instance=RequestContext(request))
 
 
 def worst_comments(request):
@@ -36,7 +37,7 @@ def worst_comments(request):
         worst_comments = BwogComment.objects.all().order_by('-downvotes')[:20]
     except BwogComment.DoesNotExist:
         raise Http404
-    return render_to_response('bwog/worst.html', {'worst_comments': worst_comments})
+    return render_to_response('bwog/worst.html', {'worst_comments': worst_comments}, context_instance=RequestContext(request))
 
 
 def worst_daily_comments(request):
@@ -45,7 +46,7 @@ def worst_daily_comments(request):
         worst_daily_comments = BwogComment.objects.filter(pub_date__gt=d).order_by('-downvotes')[:20]
     except BwogComment.DoesNotExist:
         raise Http404
-    return render_to_response('bwog/worst.html', {'worst_comments': worst_daily_comments})
+    return render_to_response('bwog/worst.html', {'worst_comments': worst_daily_comments}, context_instance=RequestContext(request))
 
 
 def best_comments(request):
@@ -53,7 +54,7 @@ def best_comments(request):
         best_comments = BwogComment.objects.all().order_by('-upvotes')[:20]
     except BwogComment.DoesNotExist:
         raise Http404
-    return render_to_response('bwog/best.html', {'best_comments': best_comments})
+    return render_to_response('bwog/best.html', {'best_comments': best_comments}, context_instance=RequestContext(request))
 
 
 def best_daily_comments(request):
@@ -62,7 +63,7 @@ def best_daily_comments(request):
         best_daily_comments = BwogComment.objects.filter(pub_date__gt=d).order_by('-upvotes')[:20]
     except BwogComment.DoesNotExist:
         raise Http404
-    return render_to_response('bwog/best.html', {'best_comments': best_daily_comments})
+    return render_to_response('bwog/best.html', {'best_comments': best_daily_comments}, context_instance=RequestContext(request))
 
 
 def article(request, article_id):
@@ -70,7 +71,7 @@ def article(request, article_id):
         bwog_article = BwogArticle.objects.get(id=article_id)
     except BwogArticle.DoesNotExist:
         raise Http404
-    return render_to_response('bwog/article.html', {'article': bwog_article})
+    return render_to_response('bwog/article.html', {'article': bwog_article}, context_instance=RequestContext(request))
 
 
 def trend(request, term):
@@ -95,7 +96,7 @@ def zeitgeist(request):
         if term in params:
             prefilled[term] = params[term]
     form = ZeitgeistForm(initial=prefilled)
-    return render_to_response('bwog/zeitgeist.html', {'form': form})
+    return render_to_response('bwog/zeitgeist.html', {'form': form}, context_instance=RequestContext(request))
 
 
 def predictions(request):
@@ -117,7 +118,7 @@ def predictions(request):
         form = PredictionForm(initial={'comment_text': text})
         print downvotes
         print upvotes
-        return render_to_response('bwog/prediction.html', {'res': True, 'form': form, 'downvotes': downvotes, 'upvotes': upvotes})
+        return render_to_response('bwog/prediction.html', {'res': True, 'form': form, 'downvotes': downvotes, 'upvotes': upvotes}, context_instance=RequestContext(request))
 
 
 def correlation(request):
@@ -164,7 +165,7 @@ def correlation(request):
                   'r': r,
                   'r_squared': r_squared}
         form = CorrelationForm(initial={'term1': term1, 'term2': term2})
-        return render_to_response('bwog/correlation.html', {'res': result, 'form': form})
+        return render_to_response('bwog/correlation.html', {'res': result, 'form': form}, context_instance=RequestContext(request))
 
 
 def article_comments(request, article_id):
@@ -174,7 +175,7 @@ def article_comments(request, article_id):
     except BwogArticle.DoesNotExist:
         raise Http404
     article_comments = {}
-    return render_to_response('bwog/article_comments.html', {'article_comments': article_comments})
+    return render_to_response('bwog/article_comments.html', {'article_comments': article_comments}, context_instance=RequestContext(request))
 
 # private
 
