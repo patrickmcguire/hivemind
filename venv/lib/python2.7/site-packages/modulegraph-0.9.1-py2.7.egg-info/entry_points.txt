@@ -1,0 +1,3 @@
+[console_scripts]
+modulegraph = modulegraph.modulegraph:_cmdline
+
