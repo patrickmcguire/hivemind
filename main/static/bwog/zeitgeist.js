@@ -4,7 +4,7 @@ var keys = [];
 $(document).ready(function() {
     plotData = [];
     keys = [];
-    var terms = []
+    var terms = [];
     
     for (i = 1; i <= 4; i++) {
         var val = $("#id_term" + i).val();
