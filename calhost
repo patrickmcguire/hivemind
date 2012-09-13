@@ -1,0 +1,27 @@
+                                            List of databases
+          Name           |  Owner   | Encoding |   Collate   |    Ctype    |      Access privileges       
+-------------------------+----------+----------+-------------+-------------+------------------------------
+ hivemindio              | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | postgres=CTc/postgres
+ jobs_development        | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ jobs_production         | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ jobs_test               | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres                | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ realstartupjobs         | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/postgres                +
+                         |          |          |             |             | postgres=CTc/postgres       +
+                         |          |          |             |             | realstartupjobs=CTc/postgres
+ realstartupjobs_dev     | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | postgres=CTc/postgres       +
+                         |          |          |             |             | realstartupjobs=CTc/postgres+
+                         |          |          |             |             | =CTc/postgres
+ realstartupjobs_test    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/postgres                +
+                         |          |          |             |             | postgres=CTc/postgres       +
+                         |          |          |             |             | realstartupjobs=CTc/postgres
+ seatgeek                | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ startupjobs_development | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ startupjobs_production  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ startupjobs_test        | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0               | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres                 +
+                         |          |          |             |             | postgres=CTc/postgres
+ template1               | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres                 +
+                         |          |          |             |             | postgres=CTc/postgres
+(14 rows)
+
