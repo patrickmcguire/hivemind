@@ -1,0 +1,9 @@
+#!/home/patrick/Code/hivemind/venv/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'celery==3.0.9','console_scripts','celeryev'
+__requires__ = 'celery==3.0.9'
+import sys
+from pkg_resources import load_entry_point
+
+sys.exit(
+   load_entry_point('celery==3.0.9', 'console_scripts', 'celeryev')()
+)

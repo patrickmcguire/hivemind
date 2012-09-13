@@ -1,0 +1,9 @@
+#!/home/patrick/Code/hivemind/venv/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'modulegraph==0.9.1','console_scripts','modulegraph'
+__requires__ = 'modulegraph==0.9.1'
+import sys
+from pkg_resources import load_entry_point
+
+sys.exit(
+   load_entry_point('modulegraph==0.9.1', 'console_scripts', 'modulegraph')()
+)

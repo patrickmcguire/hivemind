@@ -190,3 +190,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.contrib.messages.context_processors.messages',
 )
+
+# Cachemachine stuff
+CACHE_BACKEND = 'caching.backends.memcached://localhost:11211'
+CACHE_PREFIX = 'weee:'
+CACHE_COUNT_TIMEOUT = 60

@@ -1,0 +1,4 @@
+#!/home/patrick/Code/hivemind/venv/bin/python
+
+from scrapy.cmdline import execute
+execute()
