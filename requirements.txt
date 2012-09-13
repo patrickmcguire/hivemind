@@ -38,9 +38,6 @@ python-dateutil==1.5
 python-memcached==1.48
 redis==2.6.2
 requests==0.13.5
-ros-comm==1.8.15
-roslib==1.8.10
-rx==1.7.2
 urllib3==1.5
 w3lib==1.2
 wsgiref==0.1.2

@@ -1,49 +1,69 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="hero-unit">
+<div class="row">
+    <div class="span8">
+        <div class="row">
+        <div class="hero-unit well">
 
-<p class="ac">
-            Bwog Stat #37
-        </p>
-
-        <!-- Carousel -->   
-        <div id="macbook_carousel">
-            <div id="carousel" class="carousel slide" rel="carousel">
-                <!-- Carousel items -->             
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="hero-unit">
-                        <div class="ac">
-                            <h1>Bwog comments that use the word "frat" or "fraternity" receive 25% more downvotes than comments mentioning sororities</h1><p></p>
-                             <a class="btn btn-large btn-primary" href="#" title=""><b>New  Bwog Stat</b></a>
+    <p class="ac">
+                Bwog Stat #37
             </p>
-                        </div>
 
+            <!-- Carousel -->   
+            <div id="macbook_carousel">
+                <div id="carousel" class="carousel slide" rel="carousel">
+                    <!-- Carousel items -->             
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="ac">
+                                <h1>Bwog comments that use the word "frat" or "fraternity" receive 25% more downvotes than comments mentioning sororities</h1><p></p>
+                                 <a class="btn btn-info" href="#" title=""><b>New  Bwog Stat</b></a>
+                                </p>
+
+                        </div>
+                        </div>
+                     
                     </div>
-                    </div>
+                    <!-- Carousel navigation -->
                  
                 </div>
-                <!-- Carousel navigation -->
-             
-            </div>
+            </div></div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="span8">
+                <div class="span8">
             <h1 class="lead">
-                <b>About Bwog Stats:</b> The work of an alum in in the midst severe bwog-withdrawal, BwogStats compiles the best and worst of bwog comments. </b>
+                <b>About Bwog Stats:</b> The work of an alum in in the midst severe bwog-withdrawal, BwogStats collects every bwog comment and enables them </b>
             </h1>
-        </div>
-        <div class="span4">
-            <p class="ac">
-                <a class="btn btn-large btn-primary" href="/bwog/about" title=""><b>Learn More</b></a>
-            </p>
-        </div>
     </div>
+    </div>
+    <div class="span4 pull-right">
+        <div class="row">
+            <div class="span4">
+                <div class="hero-unit">
+                    <p class="ac">
+                        Browse the most upvoted and downvoted comments on Bwog
+                        <br>
+                        <a class="btn btn-large btn-primary" href="/bwog/comments/" title=""><b>Comment Rankings</b></a><br>
+                            <br>
+                       If a bwog comment mentions word X, how likely is it to mention word Y? Correlations between words in bwog comments.<br>
+                            <a class="btn btn-large btn-primary" href="/bwog/correlation/" title=""><b>Statistics</b></a><br>
+                            <br>
+                        See the relative popularity of phrases over time in Bwog Comments (BETA)
+                            <br>
+                            <a class="btn btn-large btn-primary" href="/bwog/zeitgeist/" title=""><b>Zeitgeist</b></a><br>
 
-    <hr>
+                    <br>
+                        Use historical data to predict how many upvotes/downvotes your comment will receive (Alpha)
+                       <br>
+                            <a class="btn btn-large btn-primary" href="/bwog/predictions/" title=""><b>Vote Predictor</b></a><br>
+
+                    </p>
+
+            </div>
+        </div> 
+    </div>
+</div>
+    <div class="span12">
 
     <div class="row">
         <div class="span4">
@@ -90,13 +110,10 @@
             </ol>
             <p><a class="" href="/bwog/comments/best/">Worst Comments »</a></p>
         </div>
-        <div class="span4">
-            <h2>Statistical <span class="grey">Analysis</span></h2>
-            <p>Explore bwog's data, see relative popularity of words over time in bwog comments.</p>
-            <p><a class="" href="http://wbpreview.com/previews/WB0G66334/index.html#">Correlations »</a></p>
+        </div>
         </div>
     </div>
-    </div>
+</div>
 {% endblock %}
 
  
