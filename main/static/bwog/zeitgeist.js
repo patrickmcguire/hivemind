@@ -20,13 +20,13 @@ $(document).ready(function() {
             success: function(data) {
                 keys.push(v);
                 plotData.push(data);
-                replot();
+                my_replot();
             }
         });
     });
 });
 
-function replot() {
+function my_replot() {
     dataFill();
     max = null;
     var plot = $.jqplot('plot', plotData, {
