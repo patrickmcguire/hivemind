@@ -4,6 +4,7 @@ Ecto-OpenCV==1.0.0
 Ecto-image-pipeline==1.0.0
 Object-recognition-core==1.0.0
 PyRSS2Gen==1.0.0
+PyYAML==3.10
 Scrapy==0.14.4
 South==0.7.6
 Twisted==12.0.0
@@ -38,6 +39,7 @@ lxml==2.3.5
 macholib==1.4.2
 mechanize==0.2.5
 modulegraph==0.9.1
+nltk==2.0.2
 numpy==1.6.1
 object-recognition-capture==1.0.0
 object-recognition-linemod==1.0.0
@@ -50,6 +52,7 @@ pyOpenSSL==0.13
 pymongo==2.2.1
 python-dateutil==1.5
 python-memcached==1.48
+redis==2.6.2
 requests==0.13.5
 ros-comm==1.8.15
 roslib==1.8.10
