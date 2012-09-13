@@ -55,6 +55,7 @@
         {% endfor %}
         {% endif %}
     </div>
+  </div>
 
 
 <!-- Header
@@ -64,6 +65,7 @@
     <!-- Navigation
     ================================================== -->
     <div class="navbar">
+
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -71,8 +73,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="index.html">
-Bwog<b>Stats</b>          </a>
+          <div class="nav pull-left">
+            <a class="brand" href="/bwog/">Bwog<b>Stats</b>          </a>
+          </div>
           <div class="nav-collapse fr">
                         <ul class="nav pull-right">
                            
@@ -109,7 +112,7 @@ Bwog<b>Stats</b>          </a>
       </div><!-- end .navbar-inner -->
     </div><!-- end .navbar -->
 
-
+</header>
 
     <div id="content" role="main" class="container">
     {% block content %}{% endblock %}
@@ -140,7 +143,6 @@ Bwog<b>Stats</b>          </a>
 
 
 
-</div> <!-- container -->
 
 
 <!-- Le javascript

@@ -1,11 +1,62 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div class="hero-unit">
+        <div class="ac">
+            <h1>Wprst Comments - All Time</h1><br />
+            <p>by number of downvotes</p>
+        </div>
+    </div>
+
+
+            <div class="ac">
+
+        <table class="table table-striped table-condensed table-bordered">
+          <thead>
+            <h2>
+            <tr>
+                <th>
+                    <h2 class="ac">Rank</h2>
+                </th>
+                <th>
+                    <h2 class="ac">DownVotes</h2>
+                </th>
+                <th>
+                    <h2 class="ac">Author</h2>
+                </th>
+                <th>
+                    <h2 class="ac">Comment</h2>
+                </th>
+                <th>
+                    <h2 class="ac">On</h2>
+                </th>
+            </tr>
+        </h2>
+          </thead>
+          <tbody>
+
 {% if worst_comments %}
-    <ul>
-    {% for comment in worst_comments %}
-        <li><a href="/bwog/comments/{{ comment.bwog_id }}/">{{ comment.author }}</a> - {{ comment.downvotes }} downvotes on <a href="/bwog/articles/{{ comment.article.id }}/">{{ comment.article.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% endif %}
+            {% for comment in worst_comments %}
+
+   <tr>
+                <td>
+                    <div class="ac">
+                        
+                     </div>
+                </td>
+                <td>
+                    <div class="ac">
+                        {{ comment.downvotes }}
+                     </div>
+                </td>
+                            <td>{{ comment.author }}</a></td>
+
+              <td>{{ comment.body|slice:":150" }}... <a href="/bwog/comments/{{ comment.bwog_id }}/">view full</a> </td>
+              <td><a href="/bwog/articles/{{ comment.article.id }}/">{{ comment.article.title }}</a></td>
+            {% endfor %}
+
+        {% endif %}
+              </tbody>
+        </table>
 {% endblock %}
