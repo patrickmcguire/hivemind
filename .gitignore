@@ -3,3 +3,4 @@
 *.weight*
 *.pid
 *.DS_Store
+venv/*
