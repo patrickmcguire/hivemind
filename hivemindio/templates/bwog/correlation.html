@@ -52,10 +52,11 @@
                 Overall Frequency
             </td>
             <td>
-            {{ res.term1_prob }}
+                {% widthratio res.term1_prob 1 100 %}%
             </td>
             <td>
-            {{ res.term2_prob }}
+            {% widthratio res.term2_prob 1 100 %}%
+
             </td>
             <td>Percentage of posts that contain each term</td>
         </tr>
@@ -64,10 +65,12 @@
                 Frequency given the other
             </td>
             <td>
-            {{ res.term1_given_term2_prob }}
+            {% widthratio res.term1_given_term2_prob 1 100 %}%
+
             </td>
             <td>
-            {{ res.term2_given_term1_prob }}
+              {{  res.term2_given_term1_prob }} ||
+            {% widthratio res.term2_given_term1_prob 1 100 %}%
             </td>
             <td>Percentage of posts containing both terms, given presence of other term</td>
         </tr>
