@@ -1,5 +1,6 @@
 var plotData = [];
 var keys = [];
+var plot;
 
 $(document).ready(function() {
     plotData = [];
@@ -20,16 +21,15 @@ $(document).ready(function() {
             success: function(data) {
                 keys.push(v);
                 plotData.push(data);
-                my_replot();
+                replot();
             }
         });
     });
 });
 
-function my_replot() {
-    dataFill();
-    max = null;
-    var plot = $.jqplot('plot', plotData, {
+function replot() {
+    $('#plot').html('');
+    plot = $.jqplot('plot', plotData, {
         title: "Bwog phrase data",
         axes: {
             xaxis: {
@@ -43,6 +43,15 @@ function my_replot() {
             yaxis: {
                 min: 0
             }
+        },
+        series: zipKeys(),
+        highlighter: {
+            show: true,
+            sizeAdjust: 7.5
+        },
+        legend: { 
+            show: true, 
+            placement: 'outsideGrid'
         }
     });
 }
@@ -80,4 +89,12 @@ function dataFill() {
         newArray.sort(function(a,b) { a[0] - b[0]});
         plotData[i] = newArray;
     });
+}
+
+function zipKeys() {
+    var zipped = []
+    $.each(keys, function(i,v) {
+        zipped.push({label: v});
+    });
+    return zipped;
 }
