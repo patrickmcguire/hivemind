@@ -1,164 +1,216 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="row">
     <div class="span12">
         <div class="hero-unit">
             <div class="ac">
-                <h1>Correlation </h1><br />
-               <p>How much more often do two terms occur together than expected? e.g. Are comments that mention Barnard more likely to mention sexism? </p>
+                <h1>
+                    Correlation
+                </h1>
+                <br />
+                <p>
+                    How much more often do two terms occur together than expected? e.g. Are
+                    comments that mention Barnard more likely to mention sexism?
+                </p>
             </div>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="span6 pull-left">
-        <div class="well"> 
-        <form "action"="/bwog/correlation/", method="get">
-            <legend>Terms</legend>
-            <label>First Term</label>
-            {{ form.term1 }}
-            <span class="help-block">Enter the first word or phrase</span>
-                <label>Second Term</label>
-
+        <div class="well">
+            <form "action"="/bwog/correlation/" , method="get">
+                <legend>
+                    Terms
+                </legend>
+                <label>
+                    First Term
+                </label>
+                {{ form.term1 }}
+                <span class="help-block">
+                    Enter the first word or phrase
+                </span>
+                <label>
+                    Second Term
+                </label>
                 {{ form.term2 }}
-            <span class="help-block">Second word/phrase</span>
-            <div class="form-actions">
-                <button type="submit" value="submit" class="btn btn-large btn-primary">Get Stats!</button>
-            </div>
-
-        </form>
-    </div>
+                <span class="help-block">
+                    Second word/phrase
+                </span>
+                <div class="form-actions">
+                    <button type="submit" value="submit" class="btn btn-large btn-primary">
+                        Get Stats!
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
     {% if res %}
     <div class="span6 pull-right">
         <div class="well">
             <div class="ac">
-                <legend>Results </legend>
-               <p>Comments that mention <b> {{ res.term1 }} </b> are <b> {{ res.ratio }} </b>  more likely to include <b> {{ res.term2 }} </b> than the average bwog comment. The likelihood of this occuring by chance is <b> {{ res.independent_joint_prob }}</b> </p>
+                <legend>
+                    Results
+                </legend>
+                <p>
+                    Comments that mention
+                    <b>
+                        {{ res.term1 }}
+                    </b>
+                    are
+                    <b>
+                        {{ res.ratio }}
+                    </b>
+                    more likely to include
+                    <b>
+                        {{ res.term2 }}
+                    </b>
+                    than the average bwog comment. The likelihood of this occuring by chance
+                    is
+                    <b>
+                        {{ res.independent_joint_prob }}
+                    </b>
+                </p>
             </div>
-    <table class="table table-bordered ">
-        <thead>
-            <tr>
-                <th>Stat</th>
-                <th> {{ res.term1 }} </th>
-                <th> {{ res.term2 }} </th>
-                <th>Explanation</th>
-            </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                Overall Frequency
-            </td>
-            <td>
-            {{ res.term1_prob }}
-            </td>
-            <td>
-            {{ res.term2_prob }}
-            </td>
-            <td>Percentage of posts that contain each term</td>
-        </tr>
-          <tr>
-            <td>
-                Frequency given the other
-            </td>
-            <td>
-            {{ res.term1_given_term2_prob }}
-            </td>
-            <td>
-            {{ res.term2_given_term1_prob }}
-            </td>
-            <td>Percentage of posts containing both terms, given presence of other term</td>
-        </tr>
-             <tr>
-            <td>
-                Variance
-            </td>
-            <td>
-            {{ res.term1_variance }}
-            </td>
-            <td>
-            {{ res.term2_variance }}
-            </td>
-            <td></td>
-        </tr>
-             <tr>
-            <td>
-                Join Probability
-            </td>
-            <td>
-            {{ res.joint_prob }}
-            </td>
-            <td>
-            {{ res.joint_prob }}
-            </td>
-            <td></td>
-        </tr>
-         <tr>
-            <td>
-                IID probability
-            </td>
-            <td>
-            {{ res.independent_joint_prob }}
-            </td>
-            <td>
-            {{ res.independent_joint_prob }}
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                Covariance
-            </td>
-            <td>
-            {{ res.covariance }}
-            </td>
-            <td>
-            {{ res.covariance }}
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                Ratio 
-            </td>
-            <td>
-            {{ res.ratio }}
-            </td>
-            <td>
-            {{ res.ratio }}
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                R 
-            </td>
-            <td>
-            {{ res.r }}
-            </td>
-            <td>
-            {{ res.r }}
-            </td>
-            <td></td>
-        </tr>
-         <tr>
-            <td>
-                R Squared
-            </td>
-            <td>
-            {{ res.r_squared }}
-            </td>
-            <td>
-            {{ res.r_squared }}
-            </td>
-            <td></td>
-        </tr>
-    </tbody>
-        </table>
-       
-{% endif %}
-</div>
-</div>
-{% endblock %}
+            <table class="table table-bordered ">
+                <thead>
+                    <tr>
+                        <th>
+                            Stat
+                        </th>
+                        <th>
+                            {{ res.term1 }}
+                        </th>
+                        <th>
+                            {{ res.term2 }}
+                        </th>
+                        <th>
+                            Explanation
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Overall Frequency
+                        </td>
+                        <td>
+                            {% widthratio res.term1_prob 1 100 %}%
+                        </td>
+                        <td>
+                            {% widthratio res.term2_prob 1 100 %}%
+                        </td>
+                        <td>
+                            Percentage of posts that contain each term
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Frequency given the other
+                        </td>
+                        <td>
+                            {% widthratio res.term1_given_term2_prob 1 100 %}%
+                        </td>
+                        <td>
+                            {% widthratio res.term2_given_term1_prob 1 100 %}%
+                        </td>
+                        <td>
+                            Percentage of posts containing both terms, given presence of other term
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Variance
+                        </td>
+                        <td>
+                            {{ res.term1_variance }}
+                        </td>
+                        <td>
+                            {{ res.term2_variance }}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Join Probability
+                        </td>
+                        <td>
+                            {{ res.joint_prob }}
+                        </td>
+                        <td>
+                            {{ res.joint_prob }}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            IID probability
+                        </td>
+                        <td>
+                            {{ res.independent_joint_prob }}
+                        </td>
+                        <td>
+                            {{ res.independent_joint_prob }}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Covariance
+                        </td>
+                        <td>
+                            {{ res.covariance }}
+                        </td>
+                        <td>
+                            {{ res.covariance }}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Ratio
+                        </td>
+                        <td>
+                            {{ res.ratio }}
+                        </td>
+                        <td>
+                            {{ res.ratio }}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            R
+                        </td>
+                        <td>
+                            {{ res.r }}
+                        </td>
+                        <td>
+                            {{ res.r }}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            R Squared
+                        </td>
+                        <td>
+                            {{ res.r_squared }}
+                        </td>
+                        <td>
+                            {{ res.r_squared }}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}

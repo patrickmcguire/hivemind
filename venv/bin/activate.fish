@@ -29,10 +29,10 @@ function deactivate  -d "Exit virtualenv and return to normal shell environment"
     end
 end
 
-# unset irrelavent variables
+# unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/patrick/Code/hivemind/venv"
+set -gx VIRTUAL_ENV "/Users/nsp2115/work/hivemind/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

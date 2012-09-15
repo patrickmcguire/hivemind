@@ -1,0 +1,377 @@
+/* CUSTOM CSS */
+body {
+    font: 14px "Droid Sans","Helvetica Neue",Helvetica,sans-serif;
+    line-height: 1.3em;
+}
+
+a {
+    color: #3369E8;
+}
+
+a:hover {
+    color: #008DF8;
+}
+
+.custom-fluid-cont {
+    padding: 0;
+}
+
+.custom-navbar {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background-color: white;
+    background-image: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.navbar .custom-brand {
+    color: #222;
+    text-shadow: 1px 1px 1px #eee;
+    font-weight: bold;
+    padding: 10px 0 0 20px;
+}
+.brand-style {
+    font-variant: small-caps;
+}
+.brand-color {
+    color: #79c4f2;
+}
+.bwog-title {
+    color: #79c4f2;
+}
+
+.navbar .nav > li > a {
+    padding: 11px 10px 9px;
+    color: #444;
+    text-shadow: none;
+    border-bottom: 3px solid transparent;
+}
+
+.navbar .nav > li > a:hover, .navbar .nav > li > a.active {
+    color: #3369E8;
+    text-shadow: none;
+    border-bottom: 3px solid #008DF8;
+}
+
+.nav-collapse .nav > li > a:hover, .nav-collapse .dropdown-menu a:hover {
+    background-color: white;
+}
+
+.head-row {
+    min-height: 50px;
+    margin: 0px auto 30px auto;
+    padding-top: 15px;
+    text-shadow: 1px 1px 1px #ccc;
+    overflow: hidden;
+    background: rgba(252, 252, 252, 0.2) url('/static/img/textures1.png') repeat;
+    border-top: 1px solid #E0E0E0;
+    border-bottom: 1px solid #E0E0E0;
+    -webkit-box-shadow: inset 0px 0px 3px rgba(80, 80, 80, 0.1);
+    box-shadow: inset 0px 0px 3px rgba(80, 80, 80, 0.1);
+}
+
+.head-map {
+    padding: 1px 0;
+    width: 100%;
+    height: 300px;
+    border-top: 1px solid #E0E0E0;
+    border-bottom: 1px solid #E0E0E0;
+    -webkit-box-shadow: inset 0px 0px 3px rgba(80, 80, 80, 0.7);
+    box-shadow: inset 0px 0px 3px rgba(80, 80, 80, 0.7);
+    margin: 0px auto 30px auto;
+}
+
+.head-map iframe {
+    z-index: -1;
+}
+
+.head-row small {
+    text-shadow: none;
+}
+
+i.baseline {
+    vertical-align: baseline;
+    color: #3369E8;
+}
+
+h1 a i {
+    vertical-align: 40% !important;
+}
+
+h1 a i:hover {
+    text-decoration: none;
+}
+
+.press {
+    margin: 10px 0;
+    display: block;
+    height: 41px;
+    width: 209px;
+    background-position: 0px 0px;
+}
+
+.press.techcrunch {
+    background: url('/static/img/techcrunch-sprite.png') no-repeat top left;
+}
+
+.press.techcrunch:hover {
+    background-position: 0px -51px;
+}
+
+.press.webbys {
+    background: url('/static/img/webby-sprite.png') no-repeat top left;
+    width: 133px;
+    height: 43px;
+}
+
+.press.webbys:hover {
+    background-position: 0px -53px;
+}
+
+.press.lifehacker {
+    background: url('/static/img/lifehacker-sprite.png') no-repeat top left;
+    width: 159px;
+    height: 45px;
+}
+
+.press.lifehacker:hover {
+    background-position: 0px -55px;
+}
+
+.press.betakit {
+    background: url('/static/img/betakit-sprite.png') no-repeat top left;
+    width: 136px;
+    height: 41px;
+}
+
+.press.betakit:hover {
+    background-position: 0px -51px;
+}
+
+.hero-unit {
+    border: 1px solid #E0E0E0;
+    background: none;
+    padding: 15px 20px 20px 20px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.hero-unit:hover {
+    background-color: #fafafa;
+    border: 1px solid #008DF8;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+    -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+    box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+}
+
+.hero-unit h1 {
+    font-size: 30px;
+    text-shadow: 1px 1px 1px #ccc;
+}
+
+.hero-unit h1 small {
+    text-shadow: none;
+}
+
+.page-header {
+    text-shadow: 1px 1px 1px #ccc;
+}
+
+.spacer-line-top {
+    border-top: 1px solid rgba(221, 221, 221, 0.75);
+    -webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.075);
+    margin-bottom: 15px;
+}
+
+.spacer-line-bottom {
+    border-bottom: 1px solid rgba(221, 221, 221, 0.75);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    margin-top: 10px;
+}
+
+a.thumbnail:hover {
+    border-color: #008DF8;
+}
+
+.thumbnail .caption {
+    padding-bottom: 0px;
+}
+
+input[type="text"]:focus, textarea:focus {
+    border: 1px solid #008DF8;
+    outline: 0;
+    outline: thin dotted 9;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 3px rgba(82, 168, 236, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+textarea {
+    min-height: 100px;
+}
+
+footer {
+    color: #222;
+    margin: 20px 0 0 0;
+    padding: 20px 0 0 0;
+    background-color: #f6f6f6;
+    background: #f6f6f6 url('/static/img/textures1.png') repeat;
+    border-top: 1px solid #E0E0E0;
+    -webkit-box-shadow: inset 0px 0px 3px rgba(80, 80, 80, 0.1);
+    box-shadow: inset 0px 0px 3px rgba(80, 80, 80, 0.1);
+    text-shadow: 0 1px white;
+}
+
+.final-footer {
+    color: #707070;
+    background-color: #383838;
+    margin-top: 25px;
+    padding: 10px 0 0 15px;
+    border: none;
+    text-shadow: 0 1px #000;
+}
+
+.final-footer a {
+    color: #bbb;
+}
+
+.final-footer a:hover {
+    color: white;
+    text-shadow: none;
+}
+
+.footer-ul li {
+    display: inline-block;
+    list-style: none;
+    line-height: 18px;
+    padding: 0 5px;
+}
+
+.pricing-container {
+    max-width: 300px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(150, 150, 150, 0.3);
+    border-top: 1px solid rgba(150, 150, 150, 0.1);
+    border-bottom: 1px solid rgba(150, 150, 150, 0.6);
+    -webkit-box-shadow: 0px 3px 8px rgba(80, 80, 80, 0.3);
+    box-shadow: 0px 3px 8px rgba(80, 80, 80, 0.3);
+    background: #F6F6F6 url('/static/img/textures1.png') repeat;
+    text-align: center;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.pricing-container.standout-pricing {
+    margin-top: 0;
+    height: 425px;
+}
+
+.pricing-container.standout-pricing h1 small {
+    color: #3369E8;
+}
+
+.pricing-header {
+    background: rgba(255,255,255,0.9) url('/static/img/textures1.png') repeat;
+    border-bottom: 1px solid rgba(150, 150, 150, 0.3);
+    text-shadow: 1px 1px 1px #CCC;
+    height: 37px;
+    padding: 15px 0;
+    -webkit-border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.pricing-content {
+    border-bottom: 1px solid rgba(150, 150, 150, 0.3);
+    height: 269px;
+}
+
+.pricing-content p {
+    padding: 17px 0;
+    font-size: 1.2em;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(150, 150, 150, 0.3);
+    text-shadow: 1px 1px 1px #CCC;
+}
+
+.pricing-container.standout-pricing .pricing-content {
+    height: 289px;
+}
+
+.pricing-container.standout-pricing .pricing-content p {
+    font-size: 1.5em;
+    padding: 19px 0;
+}
+
+.pricing-action {
+    background-color: rgba(190, 190, 190, 0.3);
+    height: 28px;
+    padding: 15px 0;
+    -webkit-border-radius: 0px 0px 4px 4px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+.pricing-container.standout-pricing .pricing-action {
+    height: 37px;
+    padding: 15px 0;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+    background-image: none;
+}
+
+@media (max-width: 767px) {
+    body footer .row {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    footer ul {
+        margin-left: 0;
+    }
+    .head-row {
+        padding: 10px 20px;
+    }
+    .press {
+        margin: 0 0 20px 20px;
+    }
+    .thumbnail {
+        margin-bottom: 20px;
+    }
+    .pricing-container {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+    .thumbnail.about {
+        max-width: 270px;
+    }
+    .navbar .custom-brand {
+        padding-left: 0;
+    }
+    .navbar-inner {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+@media (max-width: 1200px) {
+    input {
+        margin-bottom: 10px !important;
+    }
+}
+@media (min-width: 768px) {
+    .top-space {
+        margin-top: 20px;
+    }
+}

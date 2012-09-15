@@ -1,102 +1,63 @@
-{% extends "base.html" %}
-
-{% block content %}
-    <div class="hero-unit">
-
-<p class="ac">
-            Bwog Stat #37
-        </p>
-
-        <!-- Carousel -->   
-        <div id="macbook_carousel">
-            <div id="carousel" class="carousel slide" rel="carousel">
-                <!-- Carousel items -->             
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="hero-unit">
-                        <div class="ac">
-                            <h1>Bwog comments that use the word "frat" or "fraternity" receive 25% more downvotes than comments mentioning sororities</h1><p></p>
-                             <a class="btn btn-large btn-primary" href="#" title=""><b>New  Bwog Stat</b></a>
-            </p>
-                        </div>
-
-                    </div>
-                    </div>
-                 
-                </div>
-                <!-- Carousel navigation -->
-             
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid hidden-phone custom-fluid-cont">
+    <div class="row-fluid">
+        <div id="da-slider" class="da-slider">
+            <div class="da-slide">
+                <h1><span class="brand-style">Bwog<span class="brand-color">Stat</span></span>
+ #37</h1>
+                <p>Bwog comments that use the word "frat" or "fraternity" receive 25% more
+                        downvotes than comments mentioning sororities</p>
+                <a href="#" class="da-link">Read more &rarr;</a>
+                <div class="da-img"><img src="http://0.static.wix.com/media/a34a02_07e7817408aed377be4dd023b4bdd1b5.png_256" alt="image01" /></div>
             </div>
+            <div class="da-slide">
+                <h1>Feature packed</h1>
+                <p>Bwog comments mentioning </p>
+                <a href="#" class="da-link">Read more &rarr;</a>
+                <div class="da-img"><img src="/static/img/2.png" alt="image01" /></div>
+            </div>
+            <div class="da-slide">
+                <h1>This is the third slide</h1>
+                <p>If you got this far, there's a chance you really like our theme. Be sure to check out all the really nice pages we've added for you and don't hesitate in shooting us a question if you need anything cleared. Have fun!</p>
+                <a href="#" class="da-link">Read more &rarr;</a>
+                <div class="da-img"><img src="/static/img/3.png" alt="image01" /></div>
+            </div>
+            <nav class="da-arrows">
+                <span class="da-arrows-prev"></span>
+                <span class="da-arrows-next"></span>
+            </nav>
         </div>
-    </div>
+    </div><!-- /row-fluid -->
+</div><!-- /container-fluid -->
 
-    <div class="row">
-        <div class="span8">
-            <h1 class="lead">
-                <b>About Bwog Stats:</b> The work of an alum in in the midst severe bwog-withdrawal, BwogStats compiles the best and worst of bwog comments. </b>
-            </h1>
+<div class="container">
+    <div class="row ">
+        <div class="page-header span12">
+            <h2>Explore the depths of Bwog comments with BwogStats. Statistical analysis of Bwog's comment corpus  <a href="tour.html"> Get Started</a></h2>
+        </div>
+    </div><!-- /row -->
+
+    <div class="row top-space">
+        <div class="span4">
+            <h3><i class="icon-cogs icon-large baseline" style="font-size:16px"></i>&nbsp; Rankings</h3>
+            <p>Ever wonder what the best bwog comments are? Read the best and worst comments by day, week, or all time. </p>
         </div>
         <div class="span4">
-            <p class="ac">
-                <a class="btn btn-large btn-primary" href="/bwog/about" title=""><b>Learn More</b></a>
-            </p>
-        </div>
-    </div>
-
-    <hr>
-
-    <div class="row">
-        <div class="span4">
-            <h2>Best <span class="grey">Comments </span> </h2>
-            <ol>
-                <li>
-                    744 upvotes on <a href="bwog">Worst dorms</a> by<a href="author">Jamie</a>
-                </li>
-                 <li>
-                    744 upvotes on <a href="bwog">Worst dorms</a> by<a href="author">Jamie</a>
-                </li>
-                 <li>
-                    744 upvotes on <a href="bwog">Worst dorms</a> by<a href="author">Jamie</a>
-                </li>
-                 <li>
-                    744 upvotes on <a href="bwog">Worst dorms</a> by<a href="author">Jamie</a>
-                </li>
-                 <li>
-                    744 upvotes on <a href="bwog">Worst dorms</a> by<a href="author">Jamie</a>
-                </li>
-
-            </ol>
-            <p><a class="" href="/bwog/comments/best/">Best Comments  »</a></p>
+            <h3><i class="icon-fullscreen icon-large baseline" style="font-size:16px"></i>&nbsp; Correlations</h3>
+            <p>                    If a bwog comment mentions word X, how likely is it to mention word Y?
+                    <br>
+                    <a href="/bwog/correlation/" title="">Run Correlations</a>
+</p>
         </div>
         <div class="span4">
-            <h2>Worst <span class="grey">Comments </span> </h2>
-            <ol>
-                <li>
-                    744 upvotes on <a href="bwog">Worst dorms</a> by<a href="author">Jamie</a>
-                </li>
-                 <li>
-                    744 upvotes on <a href="bwog">Worst dorms</a> by<a href="author">Jamie</a>
-                </li>
-                 <li>
-                    744 upvotes on <a href="bwog">Worst dorms</a> by<a href="author">Jamie</a>
-                </li>
-                 <li>
-                    744 upvotes on <a href="bwog">Worst dorms</a> by<a href="author">Jamie</a>
-                </li>
-                 <li>
-                    744 upvotes on <a href="bwog">Worst dorms</a> by<a href="author">Jamie</a>
-                </li>
-                
-            </ol>
-            <p><a class="" href="/bwog/comments/best/">Worst Comments »</a></p>
+            <h3><i class="icon-user icon-large baseline" style="font-size:16px"></i>&nbsp; Trends</h3>
+            <p>  See the relative popularity of phrases over time in Bwog Comments (BETA)
+                    <a class="" href="/bwog/zeitgeist/" title=""><b>Zeitgeist</b></a>
+                </p></p>
         </div>
-        <div class="span4">
-            <h2>Statistical <span class="grey">Analysis</span></h2>
-            <p>Explore bwog's data, see relative popularity of words over time in bwog comments.</p>
-            <p><a class="" href="http://wbpreview.com/previews/WB0G66334/index.html#">Correlations »</a></p>
-        </div>
-    </div>
-    </div>
+    </div><!-- /row -->
+   
+    <br />
+    
+</div><!-- /container -->
 {% endblock %}
-
- 
