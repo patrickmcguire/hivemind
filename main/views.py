@@ -34,36 +34,59 @@ def comment(request, comment_id):
 
 def worst_comments(request):
     try:
-        worst_comments = BwogComment.objects.all().order_by('-downvotes')[:20]
+        worst_comments = BwogComment.objects.all().order_by('-downvotes')[:21]
     except BwogComment.DoesNotExist:
         raise Http404
-    return render_to_response('bwog/worst.html', {'worst_comments': worst_comments}, context_instance=RequestContext(request))
+    worst_comments = get_ranked_hash(worst_comments, lambda comment: comment.downvotes)
+    return render_to_response('bwog/ranked.html', {
+        'description': 'Worst Comments',
+        'timeframe': 'All Time',
+        'rank_unit': 'Downvotes',
+        'ranked_comments': worst_comments}, context_instance=RequestContext(request))
 
 
 def worst_daily_comments(request):
     d = date.today() - timedelta(days=1)
     try:
-        worst_daily_comments = BwogComment.objects.filter(pub_date__gt=d).order_by('-downvotes')[:20]
+        worst_daily_comments = BwogComment.objects.filter(pub_date__gt=d).order_by('-downvotes')[:21]
     except BwogComment.DoesNotExist:
         raise Http404
-    return render_to_response('bwog/worst.html', {'worst_comments': worst_daily_comments}, context_instance=RequestContext(request))
+    worst_daily_comments = get_ranked_hash(worst_comments, lambda comment: comment.downvotes)
+    return render_to_response('bwog/ranked.html', {
+        'description': 'Worst Comments',
+        'timeframe': 'Today',
+        'rank_unit': 'Downvotes',
+        'ranked_comments': worst_daily_comments
+    })
 
 
 def best_comments(request):
     try:
-        best_comments = BwogComment.objects.all().order_by('-upvotes')[:20]
+        best_comments = BwogComment.objects.all().order_by('-upvotes')[:21]
     except BwogComment.DoesNotExist:
         raise Http404
-    return render_to_response('bwog/best.html', {'best_comments': best_comments}, context_instance=RequestContext(request))
+    best_comments = get_ranked_hash(best_comments, lambda comment: comment.upvotes)
+    return render_to_response('bwog/ranked.html', {
+        'description': 'Best Comments',
+        'timeframe': 'All Time',
+        'rank_unit': 'Upvotes',
+        'ranked_comments': best_comments
+    })
 
 
 def best_daily_comments(request):
     d = date.today() - timedelta(days=1)
     try:
-        best_daily_comments = BwogComment.objects.filter(pub_date__gt=d).order_by('-upvotes')[:20]
+        best_daily_comments = BwogComment.objects.filter(pub_date__gt=d).order_by('-upvotes')[:21]
     except BwogComment.DoesNotExist:
         raise Http404
-    return render_to_response('bwog/best.html', {'best_comments': best_daily_comments}, context_instance=RequestContext(request))
+    best_daily_comments = get_ranked_hash(best_comments, lambda comment: comment.upvotes)
+    return render_to_response('bwog/ranked.html', {
+        'description': 'Best Comments',
+        'timeframe': 'Today',
+        'rank_unit': 'Upvotes',
+        'ranked_comments': best_daily_comments
+    })
 
 
 def article(request, article_id):
@@ -253,3 +276,17 @@ def gram_weight(gram, gram_class):  # only supports up to trigrams at the moment
     else:
         weight = float(weight)
     return weight
+
+
+def get_ranked_hash(ranked, val_function):
+    ranked_comments = [
+        {'rank': i + 1,
+            'ranked_value': val_function(ranked[i]),
+            'author': ranked[i].author,
+            'bwog_id': ranked[i].bwog_id,
+            'body': ranked[i].body,
+            'article_id': ranked[i].article_id,
+            'article': ranked[i].article}
+        for i in range(0, len(ranked) - 1)
+    ]
+    return ranked_comments

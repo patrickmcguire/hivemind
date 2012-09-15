@@ -2,7 +2,7 @@
 <div class="hero-unit">
     <div class="ac">
         <h1>
-            Worst Comments - All Time
+            {{ description }} - {{ timeframe }}
         </h1>
         <br />
         <p>
@@ -22,7 +22,7 @@
                     </th>
                     <th>
                         <h2 class="ac">
-                            DownVotes
+                            {{ rank_unit }}
                         </h2>
                     </th>
                     <th>
@@ -44,15 +44,16 @@
             </h2>
         </thead>
         <tbody>
-            {% if worst_comments %} {% for comment in worst_comments %}
+            {% if ranked_comments %} {% for comment in ranked_comments %}
             <tr>
                 <td>
                     <div class="ac">
+                        {{ comment.rank }}
                     </div>
                 </td>
                 <td>
                     <div class="ac">
-                        {{ comment.downvotes }}
+                        {{ comment.ranked_value }}
                     </div>
                 </td>
                 <td>
@@ -60,7 +61,7 @@
                     </a>
                 </td>
                 <td>
-                    {{ comment.body|slice:":150" }}...
+                    {{ comment.body|truncatechars:150|linebreaks }}
                     <a href="/bwog/comments/{{ comment.bwog_id }}/">view full</a>
                 </td>
                 <td>
