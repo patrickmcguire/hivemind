@@ -14,13 +14,14 @@
             </div>
     </div>
 </div>
-<div class="row">
-    <div class="span4 pull-left">
-        <div class="well">
+<div class="row-fluid">
+    <div class="span4">
             <form "action"="/bwog/correlation/" , method="get">
+            <div class="ac">
                 <legend>
                     Terms
                 </legend>
+            </div>
                 <label>
                     First Term
                 </label>
@@ -35,21 +36,23 @@
                 <span class="help-block">
                     Second word/phrase
                 </span>
-                <div class="form-actions">
+                <div class="form-actions" style="background-color: transparent; border:none;">
                     <button type="submit" value="submit" class="btn btn-large btn-primary">
                         Get Stats!
                     </button>
-                </div>
+                        </div>
+
             </form>
-        </div>
     </div>
     {% if res %}
-    <div class="span6 pull-right">
-        <div class="well">
-            <div class="ac">
+            <div class="span4">
+                <div class="ac">
                 <legend>
-                    Results
+            
+                    Description
+                </span>
                 </legend>
+            </div>
                 <p>
                     Comments that mention
                     <b>{{ res.term1 }}</b>
@@ -63,7 +66,13 @@
                     </b>
                 </p>
             </div>
-            <table class="table table-bordered ">
+    <div class="span4">
+        <div class="ac">
+                <legend>
+                    The Numbers
+                </legend>
+            </div>
+            <table class="table table-bordered table-condensed">
                 <thead>
                     <tr>
                         <th>
@@ -74,9 +83,6 @@
                         </th>
                         <th>
                             {{ res.term2 }}
-                        </th>
-                        <th>
-                            Explanation
                         </th>
                     </tr>
                 </thead>
@@ -91,9 +97,6 @@
                         <td>
                             {{ res.term2_prob_pretty }}%
                         </td>
-                        <td>
-                            Percentage of posts that contain each term
-                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -104,9 +107,6 @@
                         </td>
                         <td>
                             {{ res.term2_given_term1_prob }} %
-                        </td>
-                        <td>
-                            Percentage of posts containing both terms, given presence of other term
                         </td>
                     </tr>
                     <tr>
@@ -119,8 +119,6 @@
                         <td>
                             {{ res.term2_variance }}
                         </td>
-                        <td>
-                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -132,8 +130,7 @@
                         <td>
                             {{ res.joint_prob }}
                         </td>
-                        <td>
-                        </td>
+                      
                     </tr>
                     <tr>
                         <td>
@@ -145,8 +142,7 @@
                         <td>
                             {{ res.independent_joint_prob }}
                         </td>
-                        <td>
-                        </td>
+                        
                     </tr>
                     <tr>
                         <td>
@@ -158,8 +154,7 @@
                         <td>
                             {{ res.covariance }}
                         </td>
-                        <td>
-                        </td>
+                        
                     </tr>
                     <tr>
                         <td>
@@ -171,8 +166,7 @@
                         <td>
                             {{ res.ratio }}
                         </td>
-                        <td>
-                        </td>
+                        
                     </tr>
                     <tr>
                         <td>
@@ -184,8 +178,7 @@
                         <td>
                             {{ res.r }}
                         </td>
-                        <td>
-                        </td>
+                        
                     </tr>
                     <tr>
                         <td>
@@ -197,8 +190,7 @@
                         <td>
                             {{ res.r_squared }}
                         </td>
-                        <td>
-                        </td>
+                     
                     </tr>
                 </tbody>
             </table>
