@@ -133,7 +133,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
-  background-image: "/static/img/background.png";
+  color: #333333;
+  background-image: "s/img/header.png";
   background-repeat: repeat-x;
   background-repeat: repeat-y;
 }
