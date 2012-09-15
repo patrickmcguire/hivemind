@@ -172,19 +172,33 @@ def correlation(request):
 
         r = covariance / (term1_variance * term2_variance)
         r_squared = r * r
+        
+        term1_prob_pretty = round((float(term1_prob) * 100), 2)
+        term2_prob_pretty = round((float(term2_prob) * 100), 2)
+        term1_variance_pretty = round((float(term1_variance) * 100), 2)
+        term2_variance_pretty = round((float(term2_variance) * 100), 2)        
+        both_prob_pretty = round((float(both_prob) * 100), 4)
+        term1_given_term2_prob_pretty = round((float(term1_given_term2_prob) * 100), 2)
+        term2_given_term1_prob_pretty = round((float(term2_given_term1_prob) * 100), 2)
+        independent_prob_pretty = round((float(independent_prob) * 100), 3)
+        ratio_pretty = round((float(both_prob / independent_prob)), 1)
+        r_squared_pretty = round((float(r_squared) * 100), 3)
+        covariance_pretty = round((float((both_prob - independent_prob)) * 100), 3)
 
         result = {'term1': term1,
                   'term2': term2,
-                  'term1_prob': term1_prob,
-                  'term2_prob': term2_prob,
-                  'term1_variance': term1_variance,
-                  'term2_variance': term2_variance,
-                  'term1_given_term2_prob': term1_given_term2_prob,
-                  'term2_given_term1_prob': term2_given_term1_prob,
-                  'joint_prob': both_prob,
-                  'independent_joint_prob': independent_prob,
-                  'covariance': covariance,
-                  'ratio': both_prob / independent_prob,
+                  'term1_prob': term1_prob_pretty,
+                  'term2_prob': term2_prob_pretty,
+                  'term1_variance': term1_variance_pretty,
+                  'term2_variance': term2_variance_pretty,
+                  'term1_given_term2_prob': term1_given_term2_prob_pretty,
+                  'term2_given_term1_prob': term2_given_term1_prob_pretty,
+                  'term1_prob_pretty': term1_prob_pretty,
+                  'term2_prob_pretty': term2_prob_pretty,
+                  'joint_prob': both_prob_pretty,
+                  'independent_joint_prob': independent_prob_pretty,
+                  'covariance': covariance_pretty,
+                  'ratio': ratio_pretty,
                   'r': r,
                   'r_squared': r_squared}
         form = CorrelationForm(initial={'term1': term1, 'term2': term2})

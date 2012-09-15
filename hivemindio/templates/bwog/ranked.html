@@ -1,44 +1,35 @@
 {% extends "base.html" %} {% block content %}
-<div class="hero-unit">
-    <div class="ac">
-        <h1>
-            {{ description }} - {{ timeframe }}
-        </h1>
+<div class="container">
+    <div class="row ">
+        <div class="page-header span12">
+        <h1><span class="brand-color">Rankings
+        </span></h1>
+         <h2>   {{ description }} - {{ timeframe }}
+        </h2>
         <br />
         <p>
-            by number of downvotes
+           By number of up/down votes
         </p>
     </div>
-</div>
-<div class="ac">
+<div class="row">
     <table class="table table-striped table-condensed table-bordered">
         <thead>
             <h2>
                 <tr>
                     <th>
-                        <h2 class="ac">
-                            Rank
-                        </h2>
+                        Rank
                     </th>
                     <th>
-                        <h2 class="ac">
-                            {{ rank_unit }}
-                        </h2>
+                        {{ rank_unit }}
                     </th>
                     <th>
-                        <h2 class="ac">
-                            Author
-                        </h2>
+                        Author
                     </th>
                     <th>
-                        <h2 class="ac">
-                            Comment
-                        </h2>
+                        Comment
                     </th>
                     <th>
-                        <h2 class="ac">
-                            On
-                        </h2>
+                        On
                     </th>
                 </tr>
             </h2>
@@ -48,12 +39,12 @@
             <tr>
                 <td>
                     <div class="ac">
-                        {{ comment.rank }}
+                        {{ comment.rank }} 
                     </div>
                 </td>
                 <td>
                     <div class="ac">
-                        {{ comment.ranked_value }}
+                        {{ comment.ranked_value }} <i class="brand-color icon-arrow-up baseline"></i>
                     </div>
                 </td>
                 <td>
@@ -61,7 +52,7 @@
                     </a>
                 </td>
                 <td>
-                    {{ comment.body|truncatechars:150|linebreaks }}
+                    {{ comment.body|truncatechars:150|linebreaks }} 
                     <a href="/bwog/comments/{{ comment.bwog_id }}/">view full</a>
                 </td>
                 <td>
@@ -70,4 +61,6 @@
                 {% endfor %} {% endif %}
         </tbody>
     </table>
-    {% endblock %}
+</div>
+</div>
+{% endblock %}

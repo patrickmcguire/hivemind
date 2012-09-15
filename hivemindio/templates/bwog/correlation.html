@@ -1,10 +1,10 @@
 {% extends "base.html" %} {% block content %}
+<div class="container">
 <div class="row">
     <div class="span12">
-        <div class="hero-unit">
             <div class="ac">
                 <h1>
-                    Correlation
+                    Correlations
                 </h1>
                 <br />
                 <p>
@@ -12,11 +12,10 @@
                     comments that mention Barnard more likely to mention sexism?
                 </p>
             </div>
-        </div>
     </div>
 </div>
 <div class="row">
-    <div class="span6 pull-left">
+    <div class="span4 pull-left">
         <div class="well">
             <form "action"="/bwog/correlation/" , method="get">
                 <legend>
@@ -53,17 +52,10 @@
                 </legend>
                 <p>
                     Comments that mention
-                    <b>
-                        {{ res.term1 }}
-                    </b>
-                    are
-                    <b>
-                        {{ res.ratio }}
-                    </b>
+                    <b>{{ res.term1 }}</b>
+                    are <b>{{ res.ratio }}x</b>
                     more likely to include
-                    <b>
-                        {{ res.term2 }}
-                    </b>
+                    <b>{{ res.term2 }}</b>
                     than the average bwog comment. The likelihood of this occuring by chance
                     is
                     <b>
@@ -94,10 +86,10 @@
                             Overall Frequency
                         </td>
                         <td>
-                            {% widthratio res.term1_prob 1 100 %}%
+                            {{ res.term1_prob_pretty }}%
                         </td>
                         <td>
-                            {% widthratio res.term2_prob 1 100 %}%
+                            {{ res.term2_prob_pretty }}%
                         </td>
                         <td>
                             Percentage of posts that contain each term
@@ -108,10 +100,10 @@
                             Frequency given the other
                         </td>
                         <td>
-                            {% widthratio res.term1_given_term2_prob 1 100 %}%
+                            {{  res.term1_given_term2_prob  }} %
                         </td>
                         <td>
-                            {% widthratio res.term2_given_term1_prob 1 100 %}%
+                            {{ res.term2_given_term1_prob }} %
                         </td>
                         <td>
                             Percentage of posts containing both terms, given presence of other term
@@ -213,4 +205,6 @@
             {% endif %}
         </div>
     </div>
+</div>
+</div>
     {% endblock %}

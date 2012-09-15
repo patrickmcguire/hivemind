@@ -57,6 +57,16 @@
     text-shadow: 1px 1px 1px #ccc;
     z-index: 10;
 }
+.da-slide  h2 {
+    font-size: 3.5em;
+    width: 50%;
+    top: 70px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-shadow: 1px 1px 1px #ccc;
+    z-index: 10;
+}
+
 .da-slide p{
     width: 45%;
     top: 120px;

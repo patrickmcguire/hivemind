@@ -3,13 +3,21 @@ body {
     font: 14px "Droid Sans","Helvetica Neue",Helvetica,sans-serif;
     line-height: 1.3em;
 }
-
+.ac {
+    text-align: center;
+}
+.al {
+    text-align: left;
+}
+.ar {
+    text-align: right;
+}
 a {
     color: #3369E8;
 }
 
 a:hover {
-    color: #008DF8;
+    color: #79c4f2;
 }
 
 .custom-fluid-cont {
