@@ -4,3 +4,6 @@
 *.pid
 *.DS_Store
 venv/*
+include/*
+init/*
+lib/*
