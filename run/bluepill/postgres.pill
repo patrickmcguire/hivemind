@@ -1,13 +1,14 @@
-Bluepill.application("hivemindio") do |app|
+Bluepill.application("postgres") do |app|
   app.process("postgres") do |process|
     daemonize = '/usr/local/sbin/daemonize'
     pid_file = '/persist/hivemind/run/postgres.pid'
-    process.start_command = "#{daemonize} -p #{pid_file} /usr/lib/postgresql/9.1/bin/postgres -D /persist/postgres"
+    process.start_command = "sudo -u ubuntu #{daemonize} -p #{pid_file} /usr/lib/postgresql/9.1/bin/postgres -D /persist/postgres"
     process.working_dir = "/persist/hivemind/run"
     process.stdout = process.stderr = "/persist/hivemind/run/postgres.log"
 
     process.pid_file = pid_file
     process.daemonize = false
+		process.stop_grace_time = 120.seconds
     process.stop_signals = [:quit, 30.seconds, :term, 5.seconds, :kill]
   end
 end
