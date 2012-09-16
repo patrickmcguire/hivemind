@@ -27,6 +27,7 @@ urlpatterns = patterns(
     url(r'^bwog/trend/(?P<term>[A-Za-z0-9"\'-* ]+)/$', 'main.views.trend'),
     url(r'^bwog/zeitgeist/$', 'main.views.zeitgeist'),
     url(r'^bwog/correlation/$', 'main.views.correlation'),
+    url(r'^bwog/versus/$', 'main.views.versus'),
     url(r'^bwog/predictions/$', 'main.views.predictions'),
 (r'^test', 'django.views.generic.simple.direct_to_template', {'template': 'bwog/index2.html'})
 )

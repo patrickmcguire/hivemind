@@ -6,6 +6,10 @@
  <title>
            BwogStats - {% block title %}{% endblock %}
         </title>    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+<script src="/static/jquery-1.8.0.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Statistical analysis of Columbia's Bwog comments">
         <meta name="author" content="Patrick McGuire">
@@ -17,6 +21,7 @@
     <link href="/static/css/custom.css" rel="stylesheet">
     <link href="/static/css/font-awesome.css" rel="stylesheet">
     <script type="text/javascript" src="/static/js/modernizr.custom.28468.js"></script><style type="text/css"></style>
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'
         rel='stylesheet' type='text/css'>
       
@@ -166,8 +171,6 @@
         <!-- Le javascript==================================================-
         ->
 <!-- Placed at the end of the document so the pages load faster -->
-        <script src="/static/jquery-1.8.0.js">
-        </script>
         <script src="/static/bootstrap/js/bootstrap-transition.js">
         </script>
         <script src="/static/bootstrap/js/bootstrap-alert.js">
@@ -201,13 +204,65 @@
         </script>
         <script src="/static/jqplot/plugins/jqplot.canvasTextRenderer.js">
         </script>
+        <script type="text/javascript" src="/static/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script type="text/javascript" src="/static/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/static/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+
 <script src="/static/bwog/zeitgeist.js">
         </script>
                 </script><script src="/static/js/jquery.cslider.js"></script>
 
         <!-- <script src="/static/js/less-1.3.0.min.js"></script> -->
         <script src="/static/js/functions.min.js"></script>
+    <script>
+    $(document).ready(function(){
+    var s1 = [200, 600, 700, 1000];
+    var s2 = [460, -210, 690, 820];
+    var s3 = [-260, -440, 320, 200];
+    // Can specify a custom tick Array.
+    // Ticks should match up one for each y value (category) in the series.
+    var ticks = ['May', 'June', 'July', 'August'];
+     
+    var plot1 = $.jqplot('chart1', [s1, s2, s3], {
+        // The "seriesDefaults" option is an options object that will
+        // be applied to all series in the chart.
+        seriesDefaults:{
+            renderer:$.jqplot.BarRenderer,
+            rendererOptions: {fillToZero: true}
+        },
+        // Custom labels for the series are specified with the "label"
+        // option on the series option.  Here a series option object
+        // is specified for each series.
+        series:[
+            {label:'Hotel'},
+            {label:'Event Regristration'},
+            {label:'Airfare'}
+        ],
+        // Show the legend and put it outside the grid, but inside the
+        // plot container, shrinking the grid to accomodate the legend.
+        // A value of "outside" would not shrink the grid and allow
+        // the legend to overflow the container.
+        legend: {
+            show: false,
+            placement: 'outsideGrid'
+        },
+        axes: {
+            // Use a category axis on the x axis and use our custom ticks.
+            xaxis: {
+                renderer: $.jqplot.CategoryAxisRenderer,
+                ticks: ticks
+            },
+            // Pad the y axis just a little so bars can get close to, but
+            // not touch, the grid boundaries.  1.2 is the default padding.
+            yaxis: {
+                pad: 1.05,
+                tickOptions: {formatString: '$%d'}
+            }
+        }
+    });
+});</script>
         <script type="text/javascript">
+
 $('#da-slider').cslider({
     current     : 0,
     bgincrement : 50, // parallax
