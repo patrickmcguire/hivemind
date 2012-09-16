@@ -187,6 +187,9 @@ def correlation(request):
 
         result = {'term1': term1,
                   'term2': term2,
+                  'term1_count': term1_count,
+                  'term2_count': term2_count,
+                  'both_count': both_count,             
                   'term1_prob': term1_prob_pretty,
                   'term2_prob': term2_prob_pretty,
                   'term1_variance': term1_variance_pretty,
