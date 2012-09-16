@@ -15,7 +15,7 @@
             $("#wijbarchart").wijbarchart({
                 axis: {
                     y: {
-                        text: "Total Hardware"
+                        text: "Percentage of posts"
                     },
                     x: {
                         text: ""
@@ -251,6 +251,18 @@ height: 300px; background: transparent; border: 0px; ">
                         </td>
                         <td>
                             {{ res.r_squared }}
+                        </td>
+                     
+                    </tr>
+                       <tr>
+                        <td>
+                            Average score
+                        </td>
+                        <td>
+                            {{ res.term1_average_score }}(<i class="icon-arrow-up baseline"></i>&nbsp;{{ res.term1_average_upvotes }} /<i class="icon-arrow-down baseline"></i>&nbsp;{{ res.term1_average_downvotes }})
+                        </td>
+                        <td>
+                            {{ res.term2_average_score }}(<i class="icon-arrow-up baseline"></i>&nbsp;{{ res.term2_average_upvotes }} /<i class="icon-arrow-down baseline"></i>&nbsp;{{ res.term2_average_downvotes }})
                         </td>
                      
                     </tr>

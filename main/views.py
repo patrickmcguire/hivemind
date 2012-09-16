@@ -153,10 +153,20 @@ def correlation(request):
         term1 = params['term1']
         term2 = params['term2']
         comment_count = cache_count_select(connection, ["SELECT COUNT(*) FROM main_bwogcomment"])
+        term1_upvotes = cache_count_select(connection, ["SELECT SUM(upvotes) FROM main_bwogcomment WHERE body ILIKE %s", ['%' + term1 + '%']])
+        term1_downvotes = cache_count_select(connection, ["SELECT SUM(downvotes) FROM main_bwogcomment WHERE body ILIKE %s", ['%' + term1 + '%']])
+        term2_upvotes = cache_count_select(connection, ["SELECT SUM(upvotes) FROM main_bwogcomment WHERE body ILIKE %s", ['%' + term2 + '%']])
+        term2_downvotes = cache_count_select(connection, ["SELECT SUM(downvotes) FROM main_bwogcomment WHERE body ILIKE %s", ['%' + term2 + '%']])
+
         term1_count = cache_count_select(connection, ["SELECT COUNT(*) FROM main_bwogcomment WHERE body ILIKE %s", ['%' + term1 + '%']])
         term2_count = cache_count_select(connection, ["SELECT COUNT(*) FROM main_bwogcomment WHERE body ILIKE %s", ['%' + term2 + '%']])
         both_count = cache_count_select(connection, ["SELECT COUNT(*) FROM main_bwogcomment WHERE body ILIKE %s AND body ILIKE %s", ['%' + term1 + '%', '%' + term2 + '%']])
         cache.set('comment_count', 1, 1)
+        term1_average_upvotes = float(term1_upvotes) / float(term1_count)
+        term1_average_downvotes = float(term1_downvotes) / float(term1_downvotes)
+        term2_average_upvotes = float(term2_upvotes) / float(term2_count)
+        term2_average_downvotes = float(term2_downvotes) / float(term2_downvotes)
+
         term1_prob = float(term1_count) / float(comment_count)
         term2_prob = float(term2_count) / float(comment_count)
 
@@ -194,6 +204,12 @@ def correlation(request):
                   'term2_prob': term2_prob_pretty,
                   'term1_variance': term1_variance_pretty,
                   'term2_variance': term2_variance_pretty,
+                  'term1_average_upvotes': round((term1_average_upvotes),2),
+                  'term2_average_upvotes': round((term2_average_upvotes),2),
+                  'term1_average_score': round((term1_average_upvotes - term1_average_downvotes), 2),
+                  'term2_average_score': round((term2_average_upvotes - term2_average_downvotes), 2),
+                  'term1_average_downvotes': round((term1_average_downvotes), 2),
+                  'term2_average_downvotes': round((term2_average_downvotes), 2),
                   'term1_given_term2_prob': term1_given_term2_prob_pretty,
                   'term2_given_term1_prob': term2_given_term1_prob_pretty,
                   'term1_prob_pretty': term1_prob_pretty,
@@ -203,7 +219,9 @@ def correlation(request):
                   'covariance': covariance_pretty,
                   'ratio': ratio_pretty,
                   'r': r,
-                  'r_squared': r_squared}
+                  'term1_upvotes': term1_upvotes,
+                  'term2_upvotes': term2_upvotes,
+                  'r_squared': round((r_squared),2)}
         form = CorrelationForm(initial={'term1': term1, 'term2': term2})
         return render_to_response('bwog/correlation.html', {'res': result, 'form': form}, context_instance=RequestContext(request))
 
