@@ -1,4 +1,4 @@
-Bluepill.application("hivemindio") do |app|
+Bluepill.application("redis") do |app|
   app.process("redis") do |process|
     daemonize = '/usr/local/sbin/daemonize'
     pid_file = '/persist/hivemind/run/redis.pid'
@@ -8,6 +8,7 @@ Bluepill.application("hivemindio") do |app|
 
     process.pid_file = pid_file
     process.daemonize = false
+		process.stop_grace_time = 120.seconds
     process.stop_signals = [:quit, 30.seconds, :term, 5.seconds, :kill]
   end
 end
