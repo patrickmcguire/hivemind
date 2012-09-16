@@ -30,7 +30,7 @@ $(document).ready(function() {
 function replot() {
     $('#plot').html('');
     plot = $.jqplot('plot', plotData, {
-        title: "Bwog phrase data",n
+        title: "Bwog phrase data",
         axes: {
             xaxis: {
                 renderer: $.jqplot.DateAxisRenderer,
@@ -54,11 +54,6 @@ function replot() {
             placement: 'outsideGrid'
         }
     });
-}
-
-function replot() {
-    $('#plot').html('');
-    plot =
 }
 
 // find out where some have data and others don't, put zeros in

@@ -56,11 +56,6 @@ function replot() {
     });
 }
 
-function replot() {
-    $('#plot').html('');
-    plot =
-}
-
 // find out where some have data and others don't, put zeros in
 function dataFill() {
     var hashes = [];
