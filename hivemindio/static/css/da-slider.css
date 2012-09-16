@@ -105,7 +105,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: #3369E8;
+    background: #619DC2;
     margin: 3px;
     cursor: pointer;
     box-shadow:
@@ -140,7 +140,7 @@
     width: 30px;
     border-radius: 50%;
     background: #fff;
-    border:3px solid #3369E8;
+    border:3px solid #619DC2;
     cursor: pointer;
     z-index: 97;
     opacity: 0;

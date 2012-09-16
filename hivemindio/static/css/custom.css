@@ -64,7 +64,7 @@ a:hover {
 .navbar .nav > li > a:hover, .navbar .nav > li > a.active {
     color: #619DC2;
     text-shadow: none;
-    border-bottom: 3px solid #008DF8;
+    border-bottom: 3px solid #619DC2;
 }
 
 .nav-collapse .nav > li > a:hover, .nav-collapse .dropdown-menu a:hover {
