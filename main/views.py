@@ -244,9 +244,9 @@ def versus(request):
         both_count = cache_count_select(connection, ["SELECT COUNT(*) FROM main_bwogcomment WHERE body ILIKE %s AND body ILIKE %s", ['%' + term1 + '%', '%' + term2 + '%']])
         cache.set('comment_count', 1, 1)
         term1_average_upvotes = float(term1_upvotes) / float(term1_count)
-        term1_average_downvotes = float(term1_downvotes) / float(term1_downvotes)
+        term1_average_downvotes = float(term1_downvotes) / float(term1_count)
         term2_average_upvotes = float(term2_upvotes) / float(term2_count)
-        term2_average_downvotes = float(term2_downvotes) / float(term2_downvotes)
+        term2_average_downvotes = float(term2_downvotes) / float(term2_count)
 
         term1_prob = float(term1_count) / float(comment_count)
         term2_prob = float(term2_count) / float(comment_count)
