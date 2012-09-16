@@ -36,8 +36,8 @@ function replot() {
                 renderer: $.jqplot.DateAxisRenderer,
                 tickRenderer: $.jqplot.CanvasAxisTickRenderer,
                 tickOptions: {
-                    formatString: '%m %D',
-                    angle: '90'
+                    formatString: '%b %y',
+                    angle: '45'
                 }
             },
             yaxis: {
@@ -54,6 +54,11 @@ function replot() {
             placement: 'outsideGrid'
         }
     });
+}
+
+function replot() {
+    $('#plot').html('');
+    plot =
 }
 
 // find out where some have data and others don't, put zeros in
