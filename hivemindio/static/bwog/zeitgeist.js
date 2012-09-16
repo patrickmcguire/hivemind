@@ -30,7 +30,7 @@ $(document).ready(function() {
 function replot() {
     $('#plot').html('');
     plot = $.jqplot('plot', plotData, {
-        title: "Bwog phrase data",
+        title: "Bwog phrase data",n
         axes: {
             xaxis: {
                 renderer: $.jqplot.DateAxisRenderer,
