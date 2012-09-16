@@ -30,6 +30,6 @@ urlpatterns = patterns(
     url(r'^bwog/versus/$', 'main.views.versus'),
 
     url(r'^bwog/predictions/$', 'main.views.predictions'),
-(r'^google09e6491b8ce4f523.html', 'django.views.generic.simple.direct_to_template', {'template': 'bwog/google09e6491b8ce4f523.html'})
+    url(r'^google09e6491b8ce4f523.html', 'django.views.generic.simple.direct_to_template', {'template': 'bwog/google09e6491b8ce4f523.html'})
 )
 
