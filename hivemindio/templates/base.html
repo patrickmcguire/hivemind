@@ -1,303 +1,256 @@
 <!DOCTYPE html>
 <html lang="en" {% block extra_html %}{% endblock extra_html %}>
-    
-    <head>
-        <meta charset="utf-8">
- <title>
-           BwogStats - {% block title %}{% endblock %}
-        </title>    
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
-<script src="/static/jquery-1.8.0.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Statistical analysis of Columbia's Bwog comments">
-        <meta name="author" content="Patrick McGuire">
+	<head>
+		<meta charset="utf-8">
+		<title>
+			BwogStats - {% block title %}{% endblock %}
+		</title>    
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+		<script src="/static/jquery-1.8.0.js"></script>
 
-    <!-- styles -->
-    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/static/css/da-slider.css" rel="stylesheet">
-    <link href="/static/css/custom.css" rel="stylesheet">
-    <link href="/static/css/font-awesome.css" rel="stylesheet">
-    <script type="text/javascript" src="/static/js/modernizr.custom.28468.js"></script><style type="text/css"></style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Statistical analysis of Columbia's Bwog comments">
+		<meta name="author" content="Patrick McGuire">
 
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'
-        rel='stylesheet' type='text/css'>
-      
-        <link href="/static/jqplot/jquery.jqplot.css" %} rel="stylesheet" type="text/css">
-       
-        {% block extra_head %}{% endblock extra_head %}
-        <script type="text/javascript">
-          var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-34773654-1']);
-  _gaq.push(['_trackPageview']);
+		<!-- styles -->
+		<link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="/static/css/da-slider.css" rel="stylesheet">
+		<link href="/static/css/custom.css" rel="stylesheet">
+		<link href="/static/css/font-awesome.css" rel="stylesheet">
+		<script type="text/javascript" src="/static/js/modernizr.custom.28468.js"></script><style type="text/css"></style>
 
-  (function() {
-      var ga = document.createElement('script');
-      ga.type = 'text/javascript';
-      ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(ga, s);
-  })();
-        </script>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'
+		rel='stylesheet' type='text/css'>
+
+		<link href="/static/jqplot/jquery.jqplot.css" %} rel="stylesheet" type="text/css">
+
+		{% block extra_head %}{% endblock extra_head %}
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-34773654-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			 var ga = document.createElement('script');
+			 ga.type = 'text/javascript';
+			 ga.async = true;
+			 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			 var s = document.getElementsByTagName('script')[0];
+			 s.parentNode.insertBefore(ga, s);
+			 })();
+</script>
     </head>
-    
+
     <body {% block extra_body %}{% endblock extra_body %}>
-        {% block nav %}{% endblock nav %}
-        <div class="container">
-            <div class="row">
-                {% if messages %} {% for message in messages %}
-                <div class="alert alert-success">
-                    <a class="close" data-dismiss="alert">×</a>
-                    <h4 class="alert-heading">
-                        {{ message.tags }}
-                    </h4>
-                    <p>
-                        {{ message }}
-                    </p>
-                </div>
-                {% endfor %} {% endif %}
-            </div>
-        </div>
-        <!-- Header==================================================- ->
-  <header id="header">
+	    {% block nav %}{% endblock nav %}
+	    <div class="container">
+		    <div class="row">
+			    {% if messages %} {% for message in messages %}
+			    <div class="alert alert-success">
+				    <a class="close" data-dismiss="alert">×</a>
+				    <h4 class="alert-heading">
+					    {{ message.tags }}
+				    </h4>
+				    <p>
+				    {{ message }}
+				    </p>
+			    </div>
+			    {% endfor %} {% endif %}
+		    </div>
+	    </div>
+	    <!-- Header==================================================- ->
+	    <header id="header">
 
-    <!-- Navigation
-    ================================================== -->
-       <div class="navbar">
-    <div class="navbar-inner custom-navbar">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </a>
-            <a class="brand custom-brand" href="/bwog/">
-                <!-- image brand -->
-                    <!-- <img src="img/logo.png" alt="Super slogan"> -->
-                <!-- text brand -->
-                <span class="brand-style"><span class="brand-color">Bwog</span>Stats</span>
-            </a>
-            <div class="nav-collapse in" style="height:auto;">
-                <ul class="nav pull-right">
-                    <li><a class="active" href="/bwog/">Home</a></li>
-                    <li><a href="/bwog/comments/best">Charts</a></li>
-                    <li><a href="/bwog/correlation">Correlations</a></li>
-                    <li><a href="/bwog/zeitgeist">Trends</a></li>
-                    <li><a href="/bwog/predictions">Predictions</a></li>
-                    <li><a href="/bwog/contact">Contact</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div><!-- /container -->
-    </div>
-</div>
-        <!-- end .navbar -->
-        </header>
-            {% block content %}{% endblock %}
-        <!-- Page Footer -->
-        <footer>
-       <div class="container">
-    <div class="row">
-     <div class="container">
-    <div class="row">
-        <div class="span4">
-            <h4>Most recent <span class="brand-style"><span class="brand-color">Bwog</span>Stat:</span></h4><br>
-            <p>Comments that include the word '<b>finance</b>' are <b>8.4x</b> more likely to include '<b>tool</b>' than the average bwog comment. The likelihood of this occuring by chance is <b>1%</b><br>
-        <a href="http://10.0.1.10:8000/bwog/correlation/?term1=finance&term2=tool">Read more →</a></p>
-        </div>
-        <div class="span2">
-            <h4>Quick Links</h4><br>
-            <div class="row">
-                <div class="span1">
-                    <ul class="unstyled">
-                        <li><a href="http://bwogstats.com">Home</a></li>
-                        <li><a href="/bwog/rankings">Rankings</a></li>
-                        <li><a href="/bwog/correlation">Correlations</a></li>
-                    </ul>
-                </div>
-                <div class="span1">
-                    <ul class="unstyled">
-                        <li><a href="/bwog/trends/">Trends</a></li>
-                        <li><a href="/bwog/bwogstats">Bwogstats</a></li>
-                        <li><a href="/bwog/">Bwog</a></li>
-                    </ul>
-                </div>
-               
-            </div><!-- /row -->
-        </div>
-        <div class="span3">
-            <h4>Talk about us!</h4><br>
-            <ul class=>
-                <li><a href="http://twitter.com/bwogstats">@bwogstats</a></li>
-                <li><a href="http://twitter.com/bwogstats">Facebook</a></li>
-                <li><a href="http://bwog.com/submit-a-tip/">Tip Bwog</a></li>
+	    <!-- Navigation
+	    ================================================== -->
+	    <div class="navbar">
+		    <div class="navbar-inner custom-navbar">
+			    <div class="container">
+				    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					    <span class="icon-bar"></span>
+					    <span class="icon-bar"></span>
+					    <span class="icon-bar"></span>
+				    </a>
+				    <a class="brand custom-brand" href="/bwog/">
+					    <!-- image brand -->
+					    <!-- <img src="img/logo.png" alt="Super slogan"> -->
+					    <!-- text brand -->
+					    <span class="brand-style"><span class="brand-color">Bwog</span>Stats</span>
+				    </a>
+				    <div class="nav-collapse in" style="height:auto;">
+					    <ul class="nav pull-right">
+						    <li><a class="active" href="/bwog/">Home</a></li>
+						    <li><a href="/bwog/comments/best">Charts</a></li>
+						    <li><a href="/bwog/correlation">Correlations</a></li>
+						    <li><a href="/bwog/zeitgeist">Trends</a></li>
+						    <li><a href="/bwog/predictions">Predictions</a></li>
+						    <li><a href="/bwog/contact">Contact</a></li>
+					    </ul>
+				    </div><!--/.nav-collapse -->
+			    </div><!-- /container -->
+		    </div>
+	    </div>
+	    <!-- end .navbar -->
+	    </header>
+	    {% block content %}{% endblock %}
+	    <!-- Page Footer -->
+	    <footer>
+	    <div class="container">
+		    <div class="row">
+			    <div class="container">
+				    <div class="row">
+					    <div class="span4">
+						    <h4>Most recent <span class="brand-style"><span class="brand-color">Bwog</span>Stat:</span></h4><br>
+						    <p>Comments that include the word '<b>finance</b>' are <b>8.4x</b> more likely to include '<b>tool</b>' than the average bwog comment. The likelihood of this occuring by chance is <b>1%</b><br>
+						    <a href="http://10.0.1.10:8000/bwog/correlation/?term1=finance&term2=tool">Read more →</a></p>
+					    </div>
+					    <div class="span2">
+						    <h4>Quick Links</h4><br>
+						    <div class="row">
+							    <div class="span1">
+								    <ul class="unstyled">
+									    <li><a href="http://bwogstats.com">Home</a></li>
+									    <li><a href="/bwog/rankings">Rankings</a></li>
+									    <li><a href="/bwog/correlation">Correlations</a></li>
+								    </ul>
+							    </div>
+							    <div class="span1">
+								    <ul class="unstyled">
+									    <li><a href="/bwog/trends/">Trends</a></li>
+									    <li><a href="/bwog/bwogstats">Bwogstats</a></li>
+									    <li><a href="/bwog/">Bwog</a></li>
+								    </ul>
+							    </div>
 
-            </ul>
-            <address>
-            </address>
-        </div>
-        <div class="span3">
-            <h4><span class="brand-style"><span class="brand-color">Bwog</span>Stats</span> in your inbox</h4><br>
-            <p>Two stats a week, no spam. We Promise.</p>
-            <form id="form" class="form-inline" novalidate="novalidate">
-                <input type="text" value="" name="email" class="input-medium email" id="email" placeholder="Your email address" data-original-title="">
-                <input type="submit" value="Subscribe" name="Get Stats" class="btn btn-primary">
-            </form>
-        </div>
-    </div><!-- /row -->
-</div><!-- /container -->
-    </div><!-- /row -->
-</div><!-- /container -->
+						    </div><!-- /row -->
+					    </div>
+					    <div class="span3">
+						    <h4>Talk about us!</h4><br>
+						    <ul class=>
+							    <li><a href="http://twitter.com/bwogstats">@bwogstats</a></li>
+							    <li><a href="http://twitter.com/bwogstats">Facebook</a></li>
+							    <li><a href="http://bwog.com/submit-a-tip/">Tip Bwog</a></li>
 
-<div class="final-footer">
-    <div class="container">
-        <div class="row">
-            <div class="span4">
-                <p>© <a href="http://bwogstats.com">BwogStats</a> 2012, don't be a dick license.</p>
-            </div>
-            <div class="span8">
-                <ul class="footer-ul pull-right">
-                    <li class="inline"><a href="http://twitter.com/mcguirejpatrick">Patrick McGuire</a></li>
-                    <li class="inline"><a href="http://noahpryor.com">Noah Pryor</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-</footer>
-        </footer>
-        <!-- Le javascript==================================================-
-        ->
-<!-- Placed at the end of the document so the pages load faster -->
-        <script src="/static/bootstrap/js/bootstrap-transition.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-alert.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-modal.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-dropdown.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-scrollspy.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-tab.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-tooltip.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-popover.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-button.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-collapse.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-carousel.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-typeahead.js">
-        </script>
+						    </ul>
+						    <address>
+						    </address>
+					    </div>
+					    <div class="span3">
+						    <h4><span class="brand-style"><span class="brand-color">Bwog</span>Stats</span> in your inbox</h4><br>
+						    <p>Two stats a week, no spam. We Promise.</p>
+						    <form id="form" class="form-inline" novalidate="novalidate">
+							    <input type="text" value="" name="email" class="input-medium email" id="email" placeholder="Your email address" data-original-title="">
+							    <input type="submit" value="Subscribe" name="Get Stats" class="btn btn-primary">
+						    </form>
+					    </div>
+				    </div><!-- /row -->
+			    </div><!-- /container -->
+		    </div><!-- /row -->
+	    </div><!-- /container -->
 
-        <script src="/static/jqplot/jquery.jqplot.js">
-        </script>
-        <script src="/static/jqplot/plugins/jqplot.dateAxisRenderer.js">
-        </script>
-        <script src="/static/jqplot/plugins/jqplot.canvasAxisTickRenderer.js">
-        </script>
-        <script src="/static/jqplot/plugins/jqplot.canvasTextRenderer.js">
-        </script>
-        <script type="text/javascript" src="/static/jqplot/plugins/jqplot.barRenderer.min.js"></script>
-<script type="text/javascript" src="/static/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
-<script type="text/javascript" src="/static/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+	    <div class="final-footer">
+		    <div class="container">
+			    <div class="row">
+				    <div class="span4">
+					    <p>© <a href="http://bwogstats.com">BwogStats</a> 2012, don't be a dick license.</p>
+				    </div>
+				    <div class="span8">
+					    <ul class="footer-ul pull-right">
+						    <li class="inline"><a href="http://twitter.com/mcguirejpatrick">Patrick McGuire</a></li>
+						    <li class="inline"><a href="http://noahpryor.com">Noah Pryor</a></li>
+					    </ul>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+	    </footer>
+	    </footer>
+	    <!-- Le javascript==================================================-
+	    ->
+	    <!-- Placed at the end of the document so the pages load faster -->
+	    <script src="/static/bootstrap/js/bootstrap-transition.js">
+	    </script>
+	    <script src="/static/bootstrap/js/bootstrap-alert.js">
+	    </script>
+	    <script src="/static/bootstrap/js/bootstrap-modal.js">
+	    </script>
+	    <script src="/static/bootstrap/js/bootstrap-dropdown.js">
+	    </script>
+	    <script src="/static/bootstrap/js/bootstrap-scrollspy.js">
+	    </script>
+	    <script src="/static/bootstrap/js/bootstrap-tab.js">
+	    </script>
+	    <script src="/static/bootstrap/js/bootstrap-tooltip.js">
+	    </script>
+	    <script src="/static/bootstrap/js/bootstrap-popover.js">
+	    </script>
+	    <script src="/static/bootstrap/js/bootstrap-button.js">
+	    </script>
+	    <script src="/static/bootstrap/js/bootstrap-collapse.js">
+	    </script>
+	    <script src="/static/bootstrap/js/bootstrap-carousel.js">
+	    </script>
+	    <script src="/static/bootstrap/js/bootstrap-typeahead.js">
+	    </script>
 
-<script src="/static/bwog/zeitgeist.js">
-        </script>
-                </script><script src="/static/js/jquery.cslider.js"></script>
+	    <script src="/static/jqplot/jquery.jqplot.js">
+	    </script>
+	    <script src="/static/jqplot/plugins/jqplot.dateAxisRenderer.js">
+	    </script>
+	    <script src="/static/jqplot/plugins/jqplot.canvasAxisTickRenderer.js">
+	    </script>
+	    <script src="/static/jqplot/plugins/jqplot.canvasTextRenderer.js">
+	    </script>
+	    <script type="text/javascript" src="/static/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+	    <script type="text/javascript" src="/static/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+	    <script type="text/javascript" src="/static/jqplot/plugins/jqplot.pointLabels.min.js"></script>
 
-        <!-- <script src="/static/js/less-1.3.0.min.js"></script> -->
-        <script src="/static/js/functions.min.js"></script>
-    <script>
-    $(document).ready(function(){
-    var s1 = [200, 600, 700, 1000];
-    var s2 = [460, -210, 690, 820];
-    var s3 = [-260, -440, 320, 200];
-    // Can specify a custom tick Array.
-    // Ticks should match up one for each y value (category) in the series.
-    var ticks = ['May', 'June', 'July', 'August'];
-     
-    var plot1 = $.jqplot('chart1', [s1, s2, s3], {
-        // The "seriesDefaults" option is an options object that will
-        // be applied to all series in the chart.
-        seriesDefaults:{
-            renderer:$.jqplot.BarRenderer,
-            rendererOptions: {fillToZero: true}
-        },
-        // Custom labels for the series are specified with the "label"
-        // option on the series option.  Here a series option object
-        // is specified for each series.
-        series:[
-            {label:'Hotel'},
-            {label:'Event Regristration'},
-            {label:'Airfare'}
-        ],
-        // Show the legend and put it outside the grid, but inside the
-        // plot container, shrinking the grid to accomodate the legend.
-        // A value of "outside" would not shrink the grid and allow
-        // the legend to overflow the container.
-        legend: {
-            show: false,
-            placement: 'outsideGrid'
-        },
-        axes: {
-            // Use a category axis on the x axis and use our custom ticks.
-            xaxis: {
-                renderer: $.jqplot.CategoryAxisRenderer,
-                ticks: ticks
-            },
-            // Pad the y axis just a little so bars can get close to, but
-            // not touch, the grid boundaries.  1.2 is the default padding.
-            yaxis: {
-                pad: 1.05,
-                tickOptions: {formatString: '$%d'}
-            }
-        }
-    });
-});</script>
-        <script type="text/javascript">
+	    <script src="/static/bwog/zeitgeist.js">
+	    </script>
+    	<script src="/static/js/jquery.cslider.js"></script>
 
-$('#da-slider').cslider({
-    current     : 0,
-    bgincrement : 50, // parallax
-    autoplay    : false,
-    interval    : 5000
+    <!-- <script src="/static/js/less-1.3.0.min.js"></script> -->
+    <script src="/static/js/functions.min.js"></script>
+	<script type="text/javascript">
+
+		    $('#da-slider').cslider({
+current     : 0,
+bgincrement : 50, // parallax
+autoplay    : false,
+interval    : 5000
 });
 $(document).ready(function(){
-    $("#form").validate({
-        rules: {
-            email: "required",
-        },
-        highlight: function(element, errClass) {
-            $("#email").tooltip('show');
-        },
-        unhighlight: function(element, errClass) {
-            $("#email").tooltip('hide');
-        },
-        errorPlacement: function(err, element) {
-            err.hide();
-        },
-    });
-    $("#email").tooltip({
-        placement: 'bottom',
-        trigger: 'manual',
-        title: 'Please insert a valid email address!',
-    });
+		$("#form").validate({
+rules: {
+email: "required",
+},
+highlight: function(element, errClass) {
+$("#email").tooltip('show');
+},
+unhighlight: function(element, errClass) {
+$("#email").tooltip('hide');
+},
+errorPlacement: function(err, element) {
+err.hide();
+},
 });
-</script>
+		$("#email").tooltip({
+placement: 'bottom',
+trigger: 'manual',
+title: 'Please insert a valid email address!',
+});
+		});
+	</script>
 
 
 
 
-        <script src="/static/js/jquery.isotope.min.js"></script>
+	<script src="/static/js/jquery.isotope.min.js"></script>
 
-         { % block extra_foot %
-} { % endblock extra_foot % }  
-'</body>'
+	{ % block extra_foot %
+	} { % endblock extra_foot % }  
+	</body>
 </html >

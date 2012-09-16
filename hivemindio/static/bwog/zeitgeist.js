@@ -30,14 +30,14 @@ $(document).ready(function() {
 function replot() {
     $('#plot').html('');
     plot = $.jqplot('plot', plotData, {
-        title: "Bwog phrase data",n
+        title: "Bwog phrase data",
         axes: {
             xaxis: {
                 renderer: $.jqplot.DateAxisRenderer,
                 tickRenderer: $.jqplot.CanvasAxisTickRenderer,
                 tickOptions: {
-                    formatString: '%m %D',
-                    angle: '90'
+                    formatString: '%b %y',
+                    angle: '45'
                 }
             },
             yaxis: {

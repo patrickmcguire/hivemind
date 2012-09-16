@@ -157,7 +157,7 @@ def correlation(request):
         term1_downvotes = cache_count_select(connection, ["SELECT SUM(downvotes) FROM main_bwogcomment WHERE body ILIKE %s", ['%' + term1 + '%']])
         term2_upvotes = cache_count_select(connection, ["SELECT SUM(upvotes) FROM main_bwogcomment WHERE body ILIKE %s", ['%' + term2 + '%']])
         term2_downvotes = cache_count_select(connection, ["SELECT SUM(downvotes) FROM main_bwogcomment WHERE body ILIKE %s", ['%' + term2 + '%']])
-        term1_worst_body = cache_count_select(connection,["SELECT id FROM main_bwogcomment WHERE downvotes = (SELECT max(downvotes) from main_bwogcomment where body ILIKE %s)", ['%' + term1 + '%']])
+        term1_worst_body = cache_count_select(connection, ["SELECT id FROM main_bwogcomment WHERE downvotes = (SELECT max(downvotes) from main_bwogcomment where body ILIKE %s)", ['%' + term1 + '%']])
         term1_count = cache_count_select(connection, ["SELECT COUNT(*) FROM main_bwogcomment WHERE body ILIKE %s", ['%' + term1 + '%']])
         term2_count = cache_count_select(connection, ["SELECT COUNT(*) FROM main_bwogcomment WHERE body ILIKE %s", ['%' + term2 + '%']])
         both_count = cache_count_select(connection, ["SELECT COUNT(*) FROM main_bwogcomment WHERE body ILIKE %s AND body ILIKE %s", ['%' + term1 + '%', '%' + term2 + '%']])
@@ -182,11 +182,11 @@ def correlation(request):
 
         r = covariance / (term1_variance * term2_variance)
         r_squared = r * r
-        
+
         term1_prob_pretty = round((float(term1_prob) * 100), 2)
         term2_prob_pretty = round((float(term2_prob) * 100), 2)
         term1_variance_pretty = round((float(term1_variance) * 100), 2)
-        term2_variance_pretty = round((float(term2_variance) * 100), 2)        
+        term2_variance_pretty = round((float(term2_variance) * 100), 2)
         both_prob_pretty = round((float(both_prob) * 100), 4)
         term1_given_term2_prob_pretty = round((float(term1_given_term2_prob) * 100), 2)
         term2_given_term1_prob_pretty = round((float(term2_given_term1_prob) * 100), 2)
@@ -199,13 +199,13 @@ def correlation(request):
                   'term2': term2,
                   'term1_count': term1_count,
                   'term2_count': term2_count,
-                  'both_count': both_count,             
+                  'both_count': both_count,
                   'term1_prob': term1_prob_pretty,
                   'term2_prob': term2_prob_pretty,
                   'term1_variance': term1_variance_pretty,
                   'term2_variance': term2_variance_pretty,
-                  'term1_average_upvotes': round((term1_average_upvotes),2),
-                  'term2_average_upvotes': round((term2_average_upvotes),2),
+                  'term1_average_upvotes': round((term1_average_upvotes), 2),
+                  'term2_average_upvotes': round((term2_average_upvotes), 2),
                   'term1_average_score': round((term1_average_upvotes - term1_average_downvotes), 2),
                   'term2_average_score': round((term2_average_upvotes - term2_average_downvotes), 2),
                   'term1_average_downvotes': round((term1_average_downvotes), 2),
@@ -218,13 +218,15 @@ def correlation(request):
                   'independent_joint_prob': independent_prob_pretty,
                   'covariance': covariance_pretty,
                   'ratio': ratio_pretty,
-                  'r': r, 
+                  'r': r,
                   'term1_upvotes': term1_upvotes,
                   'term2_upvotes': term2_upvotes,
                   'term1_worst_body': term1_worst_body,
-                  'r_squared': round((r_squared),2)}
+                  'r_squared': round((r_squared), 2)}
         form = CorrelationForm(initial={'term1': term1, 'term2': term2})
         return render_to_response('bwog/correlation.html', {'res': result, 'form': form}, context_instance=RequestContext(request))
+
+
 def versus(request):
     params = request.GET
     if not ('term1' in params and 'term2' in params):
@@ -263,11 +265,11 @@ def versus(request):
 
         r = covariance / (term1_variance * term2_variance)
         r_squared = r * r
-        
+
         term1_prob_pretty = round((float(term1_prob) * 100), 2)
         term2_prob_pretty = round((float(term2_prob) * 100), 2)
         term1_variance_pretty = round((float(term1_variance) * 100), 2)
-        term2_variance_pretty = round((float(term2_variance) * 100), 2)        
+        term2_variance_pretty = round((float(term2_variance) * 100), 2)
         both_prob_pretty = round((float(both_prob) * 100), 4)
         term1_given_term2_prob_pretty = round((float(term1_given_term2_prob) * 100), 2)
         term2_given_term1_prob_pretty = round((float(term2_given_term1_prob) * 100), 2)
@@ -280,11 +282,11 @@ def versus(request):
                   'term2': term2,
                   'term1_count': term1_count,
                   'term2_count': term2_count,
-                  'both_count': both_count,             
+                  'both_count': both_count,
                   'term1_prob': term1_prob_pretty,
                   'term2_prob': term2_prob_pretty,
-                  'term1_average_upvotes': round((term1_average_upvotes),2),
-                  'term2_average_upvotes': round((term2_average_upvotes),2),
+                  'term1_average_upvotes': round((term1_average_upvotes), 2),
+                  'term2_average_upvotes': round((term2_average_upvotes), 2),
                   'term1_average_score': round((term1_average_upvotes - term1_average_downvotes), 2),
                   'term2_average_score': round((term2_average_upvotes - term2_average_downvotes), 2),
                   'term1_average_downvotes': round((term1_average_downvotes), 2),
@@ -297,11 +299,11 @@ def versus(request):
                   'independent_joint_prob': independent_prob_pretty,
                   'covariance': covariance_pretty,
                   'ratio': ratio_pretty,
-                  'r': r, 
+                  'r': r,
                   'term1_upvotes': term1_upvotes,
                   'term2_upvotes': term2_upvotes,
                   'term1_worst_body': term1_worst_body,
-                  'r_squared': round((r_squared),2)}
+                  'r_squared': round(r_squared, 2)}
         form = CorrelationForm(initial={'term1': term1, 'term2': term2})
         return render_to_response('bwog/versus.html', {'res': result, 'form': form}, context_instance=RequestContext(request))
 

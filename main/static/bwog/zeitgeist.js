@@ -36,8 +36,8 @@ function replot() {
                 renderer: $.jqplot.DateAxisRenderer,
                 tickRenderer: $.jqplot.CanvasAxisTickRenderer,
                 tickOptions: {
-                    formatString: '%m %D',
-                    angle: '90'
+                    formatString: '%b %y',
+                    angle: '45'
                 }
             },
             yaxis: {
