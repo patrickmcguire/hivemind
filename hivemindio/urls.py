@@ -17,7 +17,6 @@ urlpatterns = patterns(
     '',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^bwog/$', 'main.views.index'),
-    url(r'^bwog/comments/$', 'main.views.all_comments'),
     url(r'^bwog/comments/(?P<comment_id>\d+)/$', 'main.views.comment'),
     url(r'^bwog/comments/worst/$', 'main.views.worst_comments'),
     url(r'^bwog/comments/best/$', 'main.views.best_comments'),

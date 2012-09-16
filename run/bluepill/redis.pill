@@ -1,0 +1,13 @@
+Bluepill.application("hivemindio") do |app|
+  app.process("redis") do |process|
+    daemonize = '/usr/local/sbin/daemonize'
+    pid_file = '/persist/hivemind/run/redis.pid'
+    process.start_command = "#{daemonize} -p #{pid_file} /usr/bin/redis-server"
+    process.working_dir = "/persist/hivemind/run"
+    process.stdout = process.stderr = "/persist/hivemind/run/redis.log"
+
+    process.pid_file = pid_file
+    process.daemonize = false
+    process.stop_signals = [:quit, 30.seconds, :term, 5.seconds, :kill]
+  end
+end
