@@ -39,6 +39,7 @@ python-memcached==1.48
 pytz==2012d
 redis==2.6.2
 requests==0.13.5
+scipy==0.10.1
 urllib3==1.5
 w3lib==1.2
 wsgiref==0.1.2
