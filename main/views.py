@@ -99,7 +99,7 @@ def article(request, article_id):
 
 def trend(request, term):
     cursor = connection.cursor()
-    cursor.execute("SELECT EXTRACT(month from pub_date) as month, EXTRACT(year from pub_date) as year, COUNT(*) FROM main_bwogcomment WHERE  body ILIKE %s GROUP BY month, year ORDER BY year, month", ['%' + term + '%'])
+    cursor.execute("SELECT EXTRACT(month from pub_date) as month, EXTRACT(year from pub_date) as year, COUNT(*) FROM main_bwogcomment WHERE body ILIKE %s GROUP BY month, year ORDER BY year, month", ['%' + term + '%'])
     desc = cursor.description
     t1 = [
         dict(zip([col[0] for col in desc], row))
