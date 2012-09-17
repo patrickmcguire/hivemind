@@ -10,6 +10,36 @@
     <link href="http://cdn.wijmo.com/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css" title="rocket-jqueryui" />
 <!--Wijmo Widgets CSS-->
     <link href="http://cdn.wijmo.com/jquery.wijmo-complete.all.2.0.0.min.css" rel="stylesheet" type="text/css" />
+<meta property="og:title" content="Facebook Open Graph META Tags"/>
+<meta property="og:url" content="http://bwogstats.name/facebook-meta-tags"/>
+<link rel="canonical" href="http://bwogstats.com/stats/" />
+<meta property="og:title" content="BwogStats: {{ res.term1 }} vs {{ res.term2 }} in Bwog's comments"/>
+ <div id='fb-root'></div>
+    <script src='http://connect.facebook.net/en_US/all.js'></script>
+    <script> 
+      FB.init({appId: "280434288737227", status: true, cookie: true});
+
+      function postToFeed() {
+
+        // calling the API ...
+        var obj = {
+          method: 'feed',
+        //  link: 'https://developers.facebook.com/docs/reference/dialogs/',
+          picture: 'http://bwogstats.com/static/img/icon-large.jpg',
+          name: '{{res.term1}} vs {{res.term2}} in Bwog Comments',
+          caption: 'Average # of votes for each comments',
+          description: 'Discover your own crazy trands with BwogStats.com'
+        };
+
+        function callback(response) {
+          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+        }
+
+        FB.ui(obj, callback);
+      }
+    
+    </script>
+<a onclick='postToFeed(); return false;'>share</a>
   <script id="scriptInit" type="text/javascript">
         $(document).ready(function () {
             $("#wijbarchart").wijbarchart({
