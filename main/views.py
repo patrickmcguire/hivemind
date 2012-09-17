@@ -178,6 +178,7 @@ def correlation(request):
         term1_given_term2_prob = both_prob / term2_prob
         term2_given_term1_prob = both_prob / term1_prob
         independent_prob = term1_prob * term2_prob
+        expected_both_count = round((independent_prob * comment_count), 1)
         covariance = (both_prob - independent_prob)
 
         r = covariance / (term1_variance * term2_variance)
@@ -214,6 +215,7 @@ def correlation(request):
                   'term2_given_term1_prob': term2_given_term1_prob_pretty,
                   'term1_prob_pretty': term1_prob_pretty,
                   'term2_prob_pretty': term2_prob_pretty,
+                  'expected_both_count': expected_both_count,
                   'joint_prob': both_prob_pretty,
                   'independent_joint_prob': independent_prob_pretty,
                   'covariance': covariance_pretty,

@@ -43,20 +43,20 @@
 			</form>
 		</div>
 	</div>
-	<!-- Scores -->
+
+	   <!-- Scores -->
     <div class="row top-space">
         <div class="span12">
         <legend>
             <div class="ac">
                 <h1>
-                    Results
+                    Results - {{ res.term1 }} vs. {{ res.term2 }}
                 </h1>
             </div>
         </legend>
         </div>
     </div>
-
-	<div class="row">
+<div class="row">
 		<div class="span12">
 			<div class="ac">
 				<legend>
@@ -95,49 +95,35 @@
 							Metric
 						</th>
 						<th>
-							term1
+							{{ res.term1 }}
 						</th>
 						<th>
-							term2
+                            {{ res.term2 }}
 						</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr class='num_comments'>
 						<td># Comments</td>
-						<td>17</td>
-						<td>18</td>
+						<td>{{ res.term1_count }}</td>
+						<td>{{ res.term2_count }}</td>
 					</tr>
 					<tr class='average_upvotes'>
 						<td>Average Upvotes</td>
-						<td>15.4</td>
-						<td>13.2</td>
+						<td>{{ res.term1_average_upvotes }}</td>
+						<td>{{ res.term1_average_upvotes }}</td>
 					</tr>
 					<tr class='average_downvotes'>
 						<td>Average downvotes</td>
-						<td>13.4</td>
-						<td>13.2</td>
+						<td>{{ res.term1_average_downvotes }}</td>
+						<td>{{ res.term2_average_downvotes }}</td>
 					</tr>
 					<tr class='average_score'>
 						<td>Average Score</td>
-						<td>13.4</td>
-						<td>13.2</td>
+						<td> {{ res.term1_average_score }} </td>
+						<td> {{ res.term2_average_downvotes }} </td>
 					</tr>
-					<tr class='worst_comment'>
-						<td>Worst Comment</td>
-						<td><a href="term1.worstcomment">view</a></td>
-						<td><a href="term2.worstcomment">view</a></td>
-					</tr>
-					<tr class='best_comment'>
-						<td>Best Comment</td>
-						<td><a href="term1.bestcomment">view</a></td>
-						<td><a href="term2.bestcomment">view</a></td>
-					</tr>
-					<tr>
-						<td>Most voted comment</td>
-						<td> <a href="term1.bestcomment">view</a></td>
-						<td> <a href="term2.bestcomment">view</a></td>
-					</tr>
+				
 				</tbody>
 			</table>
 		</div>
@@ -150,7 +136,6 @@
 	</div>
 	<!-- /scores -->
 	<!-- correlations -->
-	<!-- Scores -->
 	<div class="row top-space">
 		<div class="span12">
 			<div class="ac">
@@ -214,6 +199,8 @@
 				</tbody>
 			</table>
 		</div>
+    </div>
+    <div class="row">
 		<div class="span6">
 			<h3>
 				<div class="ac"> Graph </div>

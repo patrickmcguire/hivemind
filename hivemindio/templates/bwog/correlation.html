@@ -1,307 +1,452 @@
 {% extends "base.html" %} {% block content %}
 <div class="container">
     <!--jQuery References-->
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.17/jquery-ui.min.js" type="text/javascript"></script>
-  <!--Wijmo Widgets JavaScript-->
-    <script src="http://cdn.wijmo.com/jquery.wijmo-open.all.2.0.0.min.js" type="text/javascript"></script>
-    <script src="http://cdn.wijmo.com/jquery.wijmo-complete.all.2.0.0.min.js" type="text/javascript"></script>
- <!--Theme-->
-    <link href="http://cdn.wijmo.com/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css" title="rocket-jqueryui" />
-<!--Wijmo Widgets CSS-->
-    <link href="http://cdn.wijmo.com/jquery.wijmo-complete.all.2.0.0.min.css" rel="stylesheet" type="text/css" />
-<meta property="og:title" content="Facebook Open Graph META Tags"/>
-<meta property="og:url" content="http://bwogstats.name/facebook-meta-tags"/>
-<link rel="canonical" href="http://bwogstats.com/stats/" />
-<meta property="og:title" content="BwogStats: {{ res.term1 }} vs {{ res.term2 }} in Bwog's comments"/>
- <div id='fb-root'></div>
-    <script src='http://connect.facebook.net/en_US/all.js'></script>
-    <script> 
-      FB.init({appId: "280434288737227", status: true, cookie: true});
-
-      function postToFeed() {
-
-        // calling the API ...
-        var obj = {
-          method: 'feed',
-        //  link: 'https://developers.facebook.com/docs/reference/dialogs/',
-          picture: 'http://bwogstats.com/static/img/icon-large.jpg',
-          name: '{{res.term1}} vs {{res.term2}} in Bwog Comments',
-          caption: 'Average # of votes for each comments',
-          description: 'BwogStat #47: Bwog comments with {{ res.term1 }} are {{ res.ratio }}x more likely to include  {{ res.term2 }}.'
-        };
-
-        function callback(response) {
-          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
-        }
-
-        FB.ui(obj, callback);
-      }
-    
+        
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.1.min.js"
+    type="text/javascript">
     </script>
-<a onclick='postToFeed(); return false;'>share</a>
-  <script id="scriptInit" type="text/javascript">
-        $(document).ready(function () {
-            $("#wijbarchart").wijbarchart({
+        
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.17/jquery-ui.min.js"
+    type="text/javascript">
+    </script>
+      
+    <!--Wijmo Widgets JavaScript-->
+        
+    <script src="http://cdn.wijmo.com/jquery.wijmo-open.all.2.0.0.min.js"
+    type="text/javascript">
+    </script>
+        
+    <script src="http://cdn.wijmo.com/jquery.wijmo-complete.all.2.0.0.min.js"
+    type="text/javascript">
+    </script>
+     
+    <!--Theme-->
+        
+    <link href="http://cdn.wijmo.com/themes/rocket/jquery-wijmo.css" rel="stylesheet"
+    type="text/css" title="rocket-jqueryui" />
+    <!--Wijmo Widgets CSS-->
+        
+    <link href="http://cdn.wijmo.com/jquery.wijmo-complete.all.2.0.0.min.css"
+    rel="stylesheet" type="text/css" />
+    <meta property="og:title" content="Facebook Open Graph META Tags" />
+    <meta property="og:url" content="http://bwogstats.name/facebook-meta-tags"
+    />
+    <link rel="canonical" href="http://bwogstats.com/stats/" />
+    <meta property="og:title" content="BwogStats: {{ res.term1 }} vs {{ res.term2 }} in Bwog's comments"
+    />
+    <div id='fb-root'>
+    </div>
+    <script src='http://connect.facebook.net/en_US/all.js'>
+    </script>
+    <script>
+     FB.init({
+     appId: "280434288737227",
+     status: true,
+     cookie: true
+ });
+
+ function postToFeed() {
+
+     // calling the API ...
+     var obj = {
+         method: 'feed',
+         //  link: 'https://developers.facebook.com/docs/reference/dialogs/',
+         picture: 'http://bwogstats.com/static/img/icon-large.jpg',
+         name: '{{res.term1}} vs {{res.term2}} in Bwog Comments',
+         caption: 'Average # of votes for each comments',
+         description: 'BwogStat #47: Bwog comments with {{ res.term1 }} are {{ res.ratio }}x more likely to include  {{ res.term2 }}.'
+     };
+
+     function callback(response) {
+         document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+     }
+
+     FB.ui(obj, callback);
+ }
+    </script>
+    <script id="scriptInit" type="text/javascript">
+            $(document).ready(function() {
+            $("#votechart").wijbarchart({
                 axis: {
                     y: {
-                        text: "Percentage of posts"
+                        text: "Average Votes"
                     },
                     x: {
                         text: ""
                     }
                 },
-    
+
                 hint: {
-                    content: function () {
+                    content: function() {
                         return this.data.label + '\n ' + this.y + '';
                     }
                 },
- 
+
                 header: {
-                    text: "Expected frequency vs Actual Frequency"
+                    text: "Upvotes & Downvotes"
                 },
- 
+
                 seriesList: [{
-                    label: "Expected",
+                    label: "{{ res.term1 }}'",
                     legendEntry: true,
-                    data: { x: ['Frequency'], y: [ {{ res.independent_joint_prob }}] }
-                },
-                {
-                    label: "Actual",
+                    data: {
+                        x: ['upvotes', 'downvotes', 'score'],
+                        y: [{{res.term1_average_upvotes}}, {{ res.term1_average_downvotes }}, {{ res.term1_average_score }}]
+                    }
+                }, {
+                    label: "{{ res.term2 }}",
                     legendEntry: true,
-                    data: { x: [''], y: [{{ res.joint_prob }}] }
+                    data: {
+                        x: ['upvotes', 'downvotes', 'score'],
+                        y: [
+                            {{ res.term2_average_upvotes }},
+                            {{ res.term2_average_downvotes }},
+                            {{ res.term2_average_score }} ]
+                    }
                 }
+
                 ],
                 horizontal: false,
                 seriesStyles: [{
-                    fill: "#27719D", stroke: "#fff", opacity: 1
-                },
-                {
-                    fill: "#259F61", stroke: "#fff", opacity: 1
-                }
-                ],
- 
-                seriesHoverStyles: [{ "stroke-width": "1.5", opacity: 1
+                    fill: "#27719D",
+                    stroke: "#fff",
+                    opacity: 0.5
+                }, {
+                    fill: "#259F61",
+                    stroke: "#fff",
+                    opacity: 1
+                }],
+
+                seriesHoverStyles: [{
+                    "stroke-width": "1.5",
+                    opacity: 1
                 }]
             });
-        });    
+            $("#correlationchart").wijbarchart({
+                axis: {
+                    y: {
+                        text: "# Comments"
+                    },
+                    x: {
+                        text: ""
+                    }
+                },
+
+                hint: {
+                    content: function() {
+                        return this.data.label + '\n ' + this.y + '';
+                    }
+                },
+
+                header: {
+                    text: "Times used together"
+                },
+
+                seriesList: [{
+                    label: "Expected",
+                    legendEntry: true,
+                    data: {
+                        x: [''],
+                        y: [{{ res.expected_both_count }}]
+                    }
+                }, {
+                    label: "Actual",
+                    legendEntry: true,
+                    data: {
+                        x: [''],
+                        y: [ {{ res.both_count }} ]
+                    }
+                }
+
+                ],
+                horizontal: true,
+                seriesStyles: [{
+                    fill: "#000",
+                    stroke: "#fff",
+                    opacity: 0.75
+                }, {
+                    fill: "#79C4F2",
+                    stroke: "#fff",
+                    opacity: 1
+                }],
+
+                seriesHoverStyles: [{
+                    "stroke-width": "1.5",
+                    opacity: 1
+                }]
+            });
+        });
     </script>
-<div class="row">
-    <div class="span12">
-            <div class="ac">
-                <h1>
-                    Correlations
-                </h1>
-                <br />
-                <p>
-                    How much more often do two terms occur together than expected? e.g. Are
-                    comments that mention Barnard more likely to mention sexism?
+    <style type="text/css">
+        .term1 { color: #27719D; font-style: bold; } .term2 { color: #259F61;
+        font-style: bold; }
+    </style>
+    <div class="container">
+        <div class="row ">
+            <div class="page-header span12">
+                <p id='msg'>
                 </p>
-            </div>
-    </div>
-</div>
-<div class="row-fluid">
-    <div class="span4">
-            <form "action"="/bwog/correlation/" , method="get">
-            <div class="ac">
-                <legend>
-                    Terms
-                </legend>
-            </div>
-                <label>
-                    First Term
-                </label>
-                {{ form.term1 }}
-                <span class="help-block">
-                    Enter the first word or phrase
-                </span>
-                <label>
-                    Second Term
-                </label>
-                {{ form.term2 }}
-                <span class="help-block">
-                    Second word/phrase
-                </span>
-                <div class="form-actions" style="background-color: transparent; border:none;">
-                    <button type="submit" value="submit" class="btn btn-large btn-primary">
-                        Get Stats!
-                    </button>
-                        </div>
-
-            </form>
-    </div>
-    {% if res %}
-            <div class="span4">
                 <div class="ac">
-                <legend>
-            
-                    Description
-                </span>
-                </legend>
+                    <h1>
+                        Compare Terms
+                    </h1>
+                </div>
             </div>
-                <p>
-                    Comments that include the word
-                    '<b>{{ res.term1 }}</b>'
-                    are <b>{{ res.ratio }}x</b>
-                    more likely to include
-                    '<b>{{ res.term2 }}</b>'
-                    than the average bwog comment. The likelihood of this occuring by chance
-                    is
-                    <b>
-                        {{ res.independent_joint_prob }}
-                    </b>
-                </p>
-                <p>
-                    <div id="wijbarchart" class="ui-widget ui-widget-content ui-corner-all" style="width: 370px;
-height: 300px; background: transparent; border: 0px; ">
-</div>
+        </div>
+        <div class="row">
+            <div class="span4">
+            </div>
+            <div class="span4">
+                <form "action"="/bwog/correlation/" , method="get" class="form-inline">
+                    <div class="control-group">
+                        <label class="control-label" for="inputTerm1">
+                            <h4>
+                                <div class="ac">
+                                    First Term
+                            </h4>
+                        </label>
+                        <div class="controls">
+                            {{ form.term1 }}
+                        </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="inputTerm2">
+                                <h4>
+                                    Second Term
+                                </h4>
+                            </label>
+                            <div class="controls">
+                                {{ form.term2 }}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <button type="submit" class="btn btn-primary btn-large">
+                                    <i class="icon-white icon-filter">
+                                    </i>
+                                    Analyze Terms
+                                    </a>
+                            </div>
+                        </div>
+                </form>
+                </div>
+            </div>
+            {% if res %}
+            <!-- Scores -->
+            <div class="row top-space">
+                <div class="span12">
+                    <legend>
+                        <div class="ac">
+                            <h1>
+                                Results {{ res.term1 }} vs. {{ res.term2 }}
+                            </h1>
+                        </div>
+                    </legend>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <div class="ac">
+                        <legend>
+                            <h2>
+                                <i class="icon-arrow-up icon-large baseline" style="font-size:16px">
+                                </i>
+                                <i class="icon-arrow-down icon-large baseline" style="font-size:16px">
+                                </i>
+                                &nbsp;Score
+                            </h2>
+                        </legend>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">
+                </div>
+                <div class="span8">
+                    <div class="ac">
+                        <h3>
+                            There are {{ res.term1_count }} comments containing {{ res.term1 }} and
+                            {{ res.term2_count }} comments containing {{ res.term2 }}. Comments with
+                            {{ res.term1 }} have on average 15.4 upvotes and 13.2 downvotes, while
+                            comments with {{ res.term2_count }} average 3.7 upvotes and 3.4 downvotes.
+                        </h3>
+                        <p class="pull-right">
+                            <a href="tweet">Tweet</a>
+                            or
+                            <a onclick='postToFeed(); return false;'>share</a>
+                            this
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6">
+                    <h3>
+                        <div class="ac">
+                            Details
+                        </div>
+                    </h3>
+                    <table class="table" id='versus-table'>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Metric
+                                </th>
+                                <th>
+                                    {{ res.term1 }}
+                                </th>
+                                <th>
+                                    {{ res.term2 }}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class='num_comments'>
+                                <td>
+                                    # Comments
+                                </td>
+                                <td>
+                                    {{ res.term1_count }}
+                                </td>
+                                <td>
+                                    {{ res.term2_count }}
+                                </td>
+                            </tr>
+                            <tr class='average_upvotes'>
+                                <td>
+                                    Average Upvotes
+                                </td>
+                                <td>
+                                    {{ res.term1_average_upvotes }}
+                                </td>
+                                <td>
+                                    {{ res.term1_average_upvotes }}
+                                </td>
+                            </tr>
+                            <tr class='average_downvotes'>
+                                <td>
+                                    Average downvotes
+                                </td>
+                                <td>
+                                    {{ res.term1_average_downvotes }}
+                                </td>
+                                <td>
+                                    {{ res.term2_average_downvotes }}
+                                </td>
+                            </tr>
+                            <tr class='average_score'>
+                                <td>
+                                    Average Score
+                                </td>
+                                <td>
+                                    {{ res.term1_average_score }}
+                                </td>
+                                <td>
+                                    {{ res.term2_average_downvotes }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span6">
+                    <div id="votechart" class="ui-widget ui-widget-content ui-corner-all"
+                    style="width: 550px; height: 270px; background: transparent; border: 0px; ">
+                    </div>
+                </div>
+            </div>
+          
+            <!-- /scores -->
+            <!-- correlations -->
+            <div class="row">
+                <div class="span12">
+                    <div class="ac">
+                        <legend>
+                            <h2>
+                                <i class="icon-magnet icon-large baseline" style="font-size:16px">
+                                </i>
+                                &nbsp;Correlations
+                            </h2>
+                        </legend>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">
+                </div>
+                <div class="span8">
+                    <div class="ac">
+                        <h3>
+                            Bwog comments that include "{{ res.term1 }}" are
+                            <b>
+                                {{ res.ratio }}x
+                            </b>
+                            more likely to also include the phrase "{{ res.term2 }}".
+                        </h3>
+                        <p class="pull-right">
+                            <a href="tweet">Tweet</a>
+                            or
+                            <a href="fb">share</a>
+                            this
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+        <div class="span6">
+            <h3>
+                <div class="ac"> Details </div>
+            </h3>
+                    <table class="table">
+                        <tr>
+                        <td>Expected occurrences together</td>
+                        <td>{{ res.expected_both_count }}</td>
+                    </tr>
+                        <tr><td>Expected Probability </td>
+                            <td> {{ res.independent_joint_prob }}% </td>
+                    </tr>
+                    <tr>
+                        <td>Actual occurences together</td>
+                        <td>{{ res.both_count }}</td>
+                    </tr>
+                    <tr><td>Actual Probability </td>
+                        <td> {{ res.joint_prob }}% </td>
+                    </tr>
 
-            </div>
-    <div class="span4">
-        <div class="ac">
-                <legend>
-                    The Numbers
-                </legend>
-            </div>
-            <table class="table table-bordered table-condensed">
-                <thead>
                     <tr>
-                        <th>
-                            Stat
-                        </th>
-                        <th>
-                            {{ res.term1 }}
-                        </th>
-                        <th>
-                            {{ res.term2 }}
-                        </th>
+                        <td>Ratio</td>
+                        <td>{{ res.ratio }}<td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            Overall Frequency
-                        </td>
-                        <td>
-                            {{ res.term1_prob_pretty }}%
-                        </td>
-                        <td>
-                            {{ res.term2_prob_pretty }}%
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Frequency given the other
-                        </td>
-                        <td>
-                            {{  res.term1_given_term2_prob  }} %
-                        </td>
-                        <td>
-                            {{ res.term2_given_term1_prob }} %
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Variance
-                        </td>
-                        <td>
-                            {{ res.term1_variance }}
-                        </td>
-                        <td>
-                            {{ res.term2_variance }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Join Probability
-                        </td>
-                        <td>
-                            {{ res.joint_prob }}
-                        </td>
-                        <td>
-                            {{ res.joint_prob }}
-                        </td>
-                      
-                    </tr>
-                    <tr>
-                        <td>
-                            IID probability
-                        </td>
-                        <td>
-                            {{ res.independent_joint_prob }}
-                        </td>
-                        <td>
-                            {{ res.independent_joint_prob }}
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            Covariance
-                        </td>
-                        <td>
-                            {{ res.covariance }}
-                        </td>
-                        <td>
-                            {{ res.covariance }}
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            Ratio
-                        </td>
-                        <td>
-                            {{ res.ratio }}
-                        </td>
-                        <td>
-                            {{ res.ratio }}
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            R
-                        </td>
-                        <td>
-                            {{ res.r }}
-                        </td>
-                        <td>
-                            {{ res.r }}
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            R Squared
-                        </td>
-                        <td>
-                            {{ res.r_squared }}
-                        </td>
-                        <td>
-                            {{ res.r_squared }}
-                        </td>
-                     
-                    </tr>
-                       <tr>
-                        <td>
-                            Average score
-                        </td>
-                        <td>
-                            {{ res.term1_average_score }}(<i class="icon-arrow-up baseline"></i>&nbsp;{{ res.term1_average_upvotes }} /<i class="icon-arrow-down baseline"></i>&nbsp;{{ res.term1_average_downvotes }})
-                        </td>
-                        <td>
-                            {{ res.term2_average_score }}(<i class="icon-arrow-up baseline"></i>&nbsp;{{ res.term2_average_upvotes }} /<i class="icon-arrow-down baseline"></i>&nbsp;{{ res.term2_average_downvotes }})
-                        </td>
-                     
-                    </tr>
+
                 </tbody>
             </table>
-           {{ term1_worst_body }} 
-            {% endif %}
+        </div>
+        <div class="span6">
+            <h3>
+                <div class="ac"> Graph </div>
+            </h3>
+            <div id="correlationchart" class="ui-widget ui-widget-content ui-corner-all" style="width: 550px; height: 270px; background: transparent; border: 0px; ">
+            </div>        
         </div>
     </div>
-</div>
-</div>
-    {% endblock %}
+    <div class="row">
+             <div class="span12">
+                <div class="ac">
+                <legend>
+                            <h2>
+                                <i class="icon-signal icon-large baseline" style="font-size:16px">
+                                </i>
+                                &nbsp;Trends
+                </h2>
+                </legend>
+            </div>
+             </div>
+        <div class="span12">
+         
+            <div id="plot">
+            </div>
+        </div>
+    </div>
+
+            {% endif %}
+        </div></div>
+{% endblock %}
