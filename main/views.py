@@ -223,8 +223,11 @@ def correlation(request):
                   'term2_upvotes': term2_upvotes,
                   'term1_worst_body': term1_worst_body,
                   'r_squared': round((r_squared), 2)}
-        form = CorrelationForm(initial={'term1': term1, 'term2': term2})
-        return render_to_response('bwog/correlation.html', {'res': result, 'form': form}, context_instance=RequestContext(request))
+        if 'text/json' == request.META.get('content_type'):
+            return HttpResponse(simplejson.dumps(result, mimetype='application.json'))
+        else:
+            form = CorrelationForm(initial={'term1': term1, 'term2': term2})
+            return render_to_response('bwog/correlation.html', {'res': result, 'form': form}, context_instance=RequestContext(request))
 
 
 def versus(request):
