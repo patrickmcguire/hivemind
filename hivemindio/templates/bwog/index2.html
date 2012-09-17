@@ -1,7 +1,39 @@
 {% extends "base.html" %} {% block content %}
+
+<meta property="og:title" content="Facebook Open Graph META Tags"/>
+<meta property="og:url" content="http://bwogstats.name/facebook-meta-tags"/>
+<link rel="canonical" href="http://bwogstats.com/stats/" />
+<meta property="og:title" content="BwogStats: {{ res.term1 }} vs {{ res.term2 }} in Bwog's comments"/>
+ <div id='fb-root'></div>
+    <script src='http://connect.facebook.net/en_US/all.js'></script>
+    <script> 
+      FB.init({appId: "280434288737227", status: true, cookie: true});
+
+      function postToFeed() {
+
+        // calling the API ...
+        var obj = {
+          method: 'feed',
+        //  link: 'https://developers.facebook.com/docs/reference/dialogs/',
+          picture: 'http://bwogstats.com/static/img/icon-large.jpg',
+          name: '{{res.term1}} vs {{res.term2}} in Bwog Comments',
+          caption: 'Average # of votes for each comments',
+          description: 'Discover your own crazy trands with BwogStats.com'
+        };
+
+        function callback(response) {
+          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+        }
+
+        FB.ui(obj, callback);
+      }
+    
+    </script>
 <div class="container">
 	<div class="row ">
 		<div class="page-header span12">
+                                <p id='msg'></p>
+
 			<div class="ac">
 				<h1>
 					Compare Terms
@@ -14,40 +46,51 @@
 		<div class="span4">
 		</div>
 		<div class="span4">
-			<form class="form-horizontal">
+			<form class="form-inline">
 				<div class="control-group">
 					<label class="control-label" for="inputTerm1">
-						First Term
+						<h4><div class="ac"> First Term</h4>
 					</label>
 					<div class="controls">
-						<input type="text" id="inputTerm1" placeholder="e.g. hate">
+						<input type="text" id="inputTerm1" placeholder="e.g. ranking">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="inputTerm2">
-						Second Term
+						<h4>Second Term</h4>
 					</label>
 					<div class="controls">
-						<input type="password" id="inputTerm2" placeholder="e.g. lie">
+						<input type="text" id="inputTerm2" placeholder="e.g. barnard">
 					</div>
 				</div>
 				<div class="control-group">
 					<div class="controls">
-						<button id='versus-submit' class="btn btn-large btn-primary" onclick="return false;">
-							Get Results!
-						</button>
+						<button type="submit" class="btn btn-primary btn-large"><i class="icon-white icon-filter"></i> Analyze Terms</a>
+
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 	<!-- Scores -->
-	<div class="row top-space">
+    <div class="row top-space">
+        <div class="span12">
+        <legend>
+            <div class="ac">
+                <h1>
+                    Results
+                </h1>
+            </div>
+        </legend>
+        </div>
+    </div>
+
+	<div class="row">
 		<div class="span12">
 			<div class="ac">
 				<legend>
 					<h2>
-						<i class="icon-magnet icon-large baseline" style="font-size:16px">
+						<i class="icon-arrow-up icon-large baseline" style="font-size:16px"></i><i class="icon-arrow-down icon-large baseline" style="font-size:16px">
 						</i>
 						&nbsp;Score
 					</h2>
@@ -63,9 +106,9 @@
 				<h3>
 					There are $$ comments containing "term1" and ## comments containing "term2".
 					Comments with term 1 have on average 15.4 upvotes and 13.2 downvotes, while
-					comments with term 2 average 3.7 upvotes and 3.4 downvotes.
+					comments with term 2 average 3.7 upvotes and 3.4 downvotes.    
 				</h3>
-				<p class="pull-right"><a href="tweet">Tweet</a> or <a href="fb">share</a> this</p>
+				<p class="pull-right"><a href="tweet">Tweet</a> or <a onclick='postToFeed(); return false;'>share</a> this</p>
 			</div>
 		</div>
 	</div>
@@ -168,55 +211,34 @@
 			<h3>
 				<div class="ac"> Details </div>
 			</h3>
-			<table class="table">
-				<thead>
+                    <table class="table">
+                        <tr>
+                        <td>Expected occurences together</td>
+                        <td>15.4</td>
+                    </tr>
+                    <tr>
+                        <td>Actual occurences together</td>
+                        <td>13.4</td>
+                    </tr>
 					<tr>
-						<th>
-							Metric
-						</th>
-						<th>
-							term1
-						</th>
-						<th>
-							term2
-						</th>
+						<td>Ratio</td>
+						<td>13.4<td>
 					</tr>
-				</thead>
-				<tbody>
+                    <tr>
+                        <td>P value</td>
+                            <td>.01<td>
+                    </tr>
 					<tr>
-						<td># Comments</td>
-						<td>17</td>
-						<td>18</td>
-					</tr>
-					<tr>
-						<td>Average Upvotes</td>
-						<td>15.4</td>
-						<td>13.2</td>
-					</tr>
-					<tr>
-						<td>Average downvotes</td>
-						<td>13.4</td>
-						<td>13.2</td>
-					</tr>
-					<tr>
-						<td>Average Score</td>
-						<td>13.4</td>
-						<td>13.2</td>
-					</tr>
-					<tr>
-						<td>Worst Comment</td>
+						<td>Best comment with both</td>
 						<td><a href="term1.worstcomment">view</a></td>
-						<td><a href="term2.worstcomment">view</a></td>
 					</tr>
 					<tr>
-						<td>Best Comment</td>
+						<td>Worst comment with both</td>
 						<td><a href="term1.bestcomment">view</a></td>
-						<td><a href="term2.bestcomment">view</a></td>
 					</tr>
 					<tr>
-						<td>Most voted comment</td>
+						<td>Most votes with both</td>
 						<td><a href="term1.bestcomment">view</a></td>
-						<td><a href="term2.bestcomment">view</a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -230,6 +252,37 @@
 			</div>
 		</div>
 	</div>
+            <div class="span12">
+            <div class="ac">
+                <legend>
+
+                    <h2>
+                        <i class="icon-signal icon-large baseline" style="font-size:16px">
+                        </i>
+                        &nbsp;Trends
+                    </h2>             
+                </legend>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+        <div class="span12">
+            <h3>
+                <div class="ac"> # of appearances per month </div>
+            </h3><div class="ac">
+
+        </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="span12">
+            <div class="ac">
+                <img src="http://ianlangmore.com/wordpress/wp-content/uploads/2011/09/timeseries_wide_01.png" width="100%" height="400px" alt="bargraph"></img>
+                <p class="pull-right"><a href="tweet">Tweet</a> or <a href="fb">share</a> this</p>
+            </div>
+        </div>
 </div>
 <!-- /container -->
 <script scr='/static/js/mustache.js/mustache.js' type='text/javscript'></script>
