@@ -24,6 +24,9 @@
         </div>
     </div>
     <div class="span9 pull-right">
+		<div>
+			<input id="toimage" class="btn btn-primary" type="submit" name="Get Stats" value="To Image">
+		</div>
         <div class="ac">
             <legend>
                 Graph
@@ -33,4 +36,9 @@
         </div>
     </div>
 </div>
+<script>
+	$('#toimage').click(function() {
+		newImage('#toimage');
+	})
+</script>
 {% endblock %}
