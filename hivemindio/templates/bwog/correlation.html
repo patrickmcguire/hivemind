@@ -28,10 +28,7 @@
           picture: 'http://bwogstats.com/static/img/icon-large.jpg',
           name: '{{res.term1}} vs {{res.term2}} in Bwog Comments',
           caption: 'Average # of votes for each comments',
-          description: "BwogStat #47: Bwog comments that contain '{{ res.term1 }}' are
-                    are {{ res.ratio }}x
-                    more likely to include
-                    '{{ res.term2 }}'."
+          description: 'BwogStat #47: Bwog comments with {{ res.term1 }} are {{ res.ratio }}x more likely to include  {{ res.term2 }}.'
         };
 
         function callback(response) {
@@ -42,6 +39,7 @@
       }
     
     </script>
+<a onclick='postToFeed(); return false;'>share</a>
   <script id="scriptInit" type="text/javascript">
         $(document).ready(function () {
             $("#wijbarchart").wijbarchart({
@@ -135,8 +133,6 @@
     </div>
     {% if res %}
             <div class="span4">
-                <a onclick='postToFeed(); return false;'>share</a>
-
                 <div class="ac">
                 <legend>
             
