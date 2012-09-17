@@ -33,7 +33,7 @@
                 </div>
                 <div class="control-group">
                     <div class="controls">
-                        <button type="submit" class="btn btn-large btn-primary">
+                        <button type="submit" id='versus-submit' class="btn btn-large btn-primary">
                             Get Results!
                         </button>
                     </div>
@@ -74,50 +74,53 @@
             <h3>
                <div class="ac"> Details </div>
             </h3>
-            <table class="table">
+            <table class="table" id='versus-table'>
                 <thead>
-                    <th>Metric
-                    </th>
-                    <th>
-                        term1
-                    </th>
-                    <th>
-                        term2
-                    </th>
+					<tr>
+						<th>
+							Metric
+						</th>
+						<th>
+							term1
+						</th>
+						<th>
+							term2
+						</th>
                     </tr>
                     <thead>
                         <tbody>
-                            <tr>
+                            <tr class='num_comments'>
                                 <td># Comments</td>
                                 <td>17</td>
                                 <td>18</td>
                             </tr>
-                            <tr>
+                            <tr class='average_upvotes'>
                                 <td>Average Upvotes</td>
                                 <td>15.4</td>
                                 <td>13.2</td>
                             </tr>
-                            <tr>
+							<tr class='average_downvotes'>
                                 <td>Average downvotes</td>
                                 <td>13.4</td>
                                 <td>13.2</td>
                             </tr>
-                            <tr>
+                            <tr class='average_score'>
                                 <td>Average Score</td>
                                 <td>13.4</td>
                                 <td>13.2</td>
                             </tr>
-                            <tr>
+                            <tr class='worst_comment'>
                                <td>Worst Comment</td>
                                 <td><a href="term1.worstcomment">view</td>
-                                <td> <a href="term2.worstcomment">view</td>
+                                <td><a href="term2.worstcomment">view</td>
                             </tr>
-                            <tr>
+                            <tr class='best_comment'>
                                 <td>Best Comment</td>
                                 <td> <a href="term1.bestcomment">view</td>
                                 <td> <a href="term2.bestcomment">view</td>
                             </tr>
-                            <td>Most voted comment</td>
+							<tr>
+								<td>Most voted comment</td>
                                 <td> <a href="term1.bestcomment">view</td>
                                 <td> <a href="term2.bestcomment">view</td>
                             </tr>
@@ -224,4 +227,7 @@
     </div>
 </div>
 <!-- /container -->
+<script src='/static/bwog/versus.js' type='text/javascript'></script>
+<script src='/static/bwog/correlation.js' type='text/javascript'></script>
+
 {% endblock %}

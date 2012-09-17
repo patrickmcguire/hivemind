@@ -108,7 +108,7 @@ def trend(request, term):
     formatted = []
     for d in t1:
         formatted.append((int(date(int(d['year']), int(d['month']), 1).strftime("%s")) * 1000, d['count']))
-    return HttpResponse(simplejson.dumps(formatted), mimetype="application.json")
+    return HttpResponse(simplejson.dumps(formatted), mimetype="application/json")
 
 
 def zeitgeist(request):
@@ -223,8 +223,8 @@ def correlation(request):
                   'term2_upvotes': term2_upvotes,
                   'term1_worst_body': term1_worst_body,
                   'r_squared': round((r_squared), 2)}
-        if 'text/json' == request.META.get('content_type'):
-            return HttpResponse(simplejson.dumps(result, mimetype='application.json'))
+        if 'application/json' == request.META.get('accepts'):
+            return HttpResponse(simplejson.dumps(result, mimetype='application/json'))
         else:
             form = CorrelationForm(initial={'term1': term1, 'term2': term2})
             return render_to_response('bwog/correlation.html', {'res': result, 'form': form}, context_instance=RequestContext(request))
