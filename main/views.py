@@ -223,7 +223,8 @@ def correlation(request):
                   'term2_upvotes': term2_upvotes,
                   'term1_worst_body': term1_worst_body,
                   'r_squared': round((r_squared), 2)}
-        if 'application/json' == request.META.get('accepts'):
+        print request.META
+        if 'application/json' == request.META.get('contentType'):
             return HttpResponse(simplejson.dumps(result, mimetype='application/json'))
         else:
             form = CorrelationForm(initial={'term1': term1, 'term2': term2})

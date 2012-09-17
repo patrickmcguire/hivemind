@@ -1,81 +1,81 @@
 {% extends "base.html" %} {% block content %}
 <div class="container">
-    <div class="row ">
-        <div class="page-header span12">
-            <div class="ac">
-                <h1>
-                    Compare Terms
-                </h1>
-            </div>
-        </div>
-    </div>
-    <!-- /row -->
-    <div class="row">
-        <div class="span4">
-        </div>
-        <div class="span4">
-            <form class="form-horizontal">
-                <div class="control-group">
-                    <label class="control-label" for="inputTerm1">
-                        First Term
-                    </label>
-                    <div class="controls">
-                        <input type="text" id="inputTerm1" placeholder="e.g. hate">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="inputTerm2">
-                        Second Term
-                    </label>
-                    <div class="controls">
-                        <input type="password" id="inputTerm2" placeholder="e.g. lie">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <button type="submit" id='versus-submit' class="btn btn-large btn-primary">
-                            Get Results!
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Scores -->
-    <div class="row top-space">
-        <div class="span12">
-            <div class="ac">
-                <legend>
-                    <h2>
-                        <i class="icon-magnet icon-large baseline" style="font-size:16px">
-                        </i>
-                        &nbsp;Score
-                    </h2>
-                </legend>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span2">
-        </div>
-        <div class="span8">
-            <div class="ac">
-                <h3>
-                    There are $$ comments containing "term1" and ## comments containing "term2".
-                    Comments with term 1 have on average 15.4 upvotes and 13.2 downvotes, while
-                    comments with term 2 average 3.7 upvotes and 3.4 downvotes.
-                </h3>
-                <p class="pull-right"><a href="tweet">Tweet</a> or <a href="fb">share</a> this</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span6">
-            <h3>
-               <div class="ac"> Details </div>
-            </h3>
-            <table class="table" id='versus-table'>
-                <thead>
+	<div class="row ">
+		<div class="page-header span12">
+			<div class="ac">
+				<h1>
+					Compare Terms
+				</h1>
+			</div>
+		</div>
+	</div>
+	<!-- /row -->
+	<div class="row">
+		<div class="span4">
+		</div>
+		<div class="span4">
+			<form class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label" for="inputTerm1">
+						First Term
+					</label>
+					<div class="controls">
+						<input type="text" id="inputTerm1" placeholder="e.g. hate">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="inputTerm2">
+						Second Term
+					</label>
+					<div class="controls">
+						<input type="password" id="inputTerm2" placeholder="e.g. lie">
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<button id='versus-submit' class="btn btn-large btn-primary" onclick="return false;">
+							Get Results!
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- Scores -->
+	<div class="row top-space">
+		<div class="span12">
+			<div class="ac">
+				<legend>
+					<h2>
+						<i class="icon-magnet icon-large baseline" style="font-size:16px">
+						</i>
+						&nbsp;Score
+					</h2>
+				</legend>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span2">
+		</div>
+		<div class="span8">
+			<div class="ac">
+				<h3>
+					There are $$ comments containing "term1" and ## comments containing "term2".
+					Comments with term 1 have on average 15.4 upvotes and 13.2 downvotes, while
+					comments with term 2 average 3.7 upvotes and 3.4 downvotes.
+				</h3>
+				<p class="pull-right"><a href="tweet">Tweet</a> or <a href="fb">share</a> this</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6">
+			<h3>
+				<div class="ac"> Details </div>
+			</h3>
+			<table class="table" id='versus-table'>
+				<thead>
 					<tr>
 						<th>
 							Metric
@@ -86,148 +86,154 @@
 						<th>
 							term2
 						</th>
-                    </tr>
-                    <thead>
-                        <tbody>
-                            <tr class='num_comments'>
-                                <td># Comments</td>
-                                <td>17</td>
-                                <td>18</td>
-                            </tr>
-                            <tr class='average_upvotes'>
-                                <td>Average Upvotes</td>
-                                <td>15.4</td>
-                                <td>13.2</td>
-                            </tr>
-							<tr class='average_downvotes'>
-                                <td>Average downvotes</td>
-                                <td>13.4</td>
-                                <td>13.2</td>
-                            </tr>
-                            <tr class='average_score'>
-                                <td>Average Score</td>
-                                <td>13.4</td>
-                                <td>13.2</td>
-                            </tr>
-                            <tr class='worst_comment'>
-                               <td>Worst Comment</td>
-                                <td><a href="term1.worstcomment">view</td>
-                                <td><a href="term2.worstcomment">view</td>
-                            </tr>
-                            <tr class='best_comment'>
-                                <td>Best Comment</td>
-                                <td> <a href="term1.bestcomment">view</td>
-                                <td> <a href="term2.bestcomment">view</td>
-                            </tr>
-							<tr>
-								<td>Most voted comment</td>
-                                <td> <a href="term1.bestcomment">view</td>
-                                <td> <a href="term2.bestcomment">view</td>
-                            </tr>
-                    </table>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class='num_comments'>
+						<td># Comments</td>
+						<td>17</td>
+						<td>18</td>
+					</tr>
+					<tr class='average_upvotes'>
+						<td>Average Upvotes</td>
+						<td>15.4</td>
+						<td>13.2</td>
+					</tr>
+					<tr class='average_downvotes'>
+						<td>Average downvotes</td>
+						<td>13.4</td>
+						<td>13.2</td>
+					</tr>
+					<tr class='average_score'>
+						<td>Average Score</td>
+						<td>13.4</td>
+						<td>13.2</td>
+					</tr>
+					<tr class='worst_comment'>
+						<td>Worst Comment</td>
+						<td><a href="term1.worstcomment">view</a></td>
+						<td><a href="term2.worstcomment">view</a></td>
+					</tr>
+					<tr class='best_comment'>
+						<td>Best Comment</td>
+						<td><a href="term1.bestcomment">view</a></td>
+						<td><a href="term2.bestcomment">view</a></td>
+					</tr>
+					<tr>
+						<td>Most voted comment</td>
+						<td> <a href="term1.bestcomment">view</a></td>
+						<td> <a href="term2.bestcomment">view</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span6">
+			<h3>
+				<div class="ac"> Graph </div>
+			</h3>
+			<div id="scoregraph" class="muted" style="width:550px; height:350px;"><img src="http://mste.illinois.edu/courses/ci330ms/youtsey/Bar2.gif" alt="bargraph"></img></div>
+		</div>
+	</div>
+	<!-- /scores -->
+	<!-- correlations -->
+	<!-- Scores -->
+	<div class="row top-space">
+		<div class="span12">
+			<div class="ac">
+				<legend>
 
-        </div>
-        <div class="span6">
-            <h3>
-               <div class="ac"> Graph </div>
-            </h3>
-            <div id="scoregraph" class="muted" style="width:550px; height:350px;"><img src="http://mste.illinois.edu/courses/ci330ms/youtsey/Bar2.gif" alt="bargraph"></img></div>
-        </div>
-    </div>
-    <!-- /scores -->
-    <!-- correlations -->
-     <!-- Scores -->
-    <div class="row top-space">
-        <div class="span12">
-            <div class="ac">
-                <legend>
-                    
-<h2>
-                        <i class="icon-magnet icon-large baseline" style="font-size:16px">
-                        </i>
-                        &nbsp;Correlations
-                    </h2>             
-                </legend>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span2">
-        </div>
-        <div class="span8">
-            <div class="ac">
-                <h3>
-                                        Bwog comments that include "term1" are <b>"ratio"x</b> more likely to also include the phrase "term2". The likelihood of this result occuring by chance is.
-                </h3>
-                <p class="pull-right"><a href="tweet">Tweet</a> or <a href="fb">share</a> this</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span6">
-            <h3>
-               <div class="ac"> Details </div>
-            </h3>
-            <table class="table">
-                <thead>
-                    <th>Metric
-                    </th>
-                    <th>
-                        term1
-                    </th>
-                    <th>
-                        term2
-                    </th>
-                    </tr>
-                    <thead>
-                        <tbody>
-                            <tr>
-                                <td># Comments</td>
-                                <td>17</td>
-                                <td>18</td>
-                            </tr>
-                            <tr>
-                                <td>Average Upvotes</td>
-                                <td>15.4</td>
-                                <td>13.2</td>
-                            </tr>
-                            <tr>
-                                <td>Average downvotes</td>
-                                <td>13.4</td>
-                                <td>13.2</td>
-                            </tr>
-                            <tr>
-                                <td>Average Score</td>
-                                <td>13.4</td>
-                                <td>13.2</td>
-                            </tr>
-                            <tr>
-                               <td>Worst Comment</td>
-                                <td><a href="term1.worstcomment">view</td>
-                                <td> <a href="term2.worstcomment">view</td>
-                            </tr>
-                            <tr>
-                                <td>Best Comment</td>
-                                <td> <a href="term1.bestcomment">view</td>
-                                <td> <a href="term2.bestcomment">view</td>
-                            </tr>
-                            <td>Most voted comment</td>
-                                <td> <a href="term1.bestcomment">view</td>
-                                <td> <a href="term2.bestcomment">view</td>
-                            </tr>
-                    </table>
-
-        </div>
-        <div class="span6">
-            <h3>
-               <div class="ac"> Graph </div>
-            </h3>
-            <div id="scoregraph" class="muted" style="width:550px; height:350px;"><img src="http://mste.illinois.edu/courses/ci330ms/youtsey/Bar2.gif" alt="bargraph"></img></div>
-        </div>
-    </div>
+					<h2>
+						<i class="icon-magnet icon-large baseline" style="font-size:16px">
+						</i>
+						&nbsp;Correlations
+					</h2>             
+				</legend>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span2">
+		</div>
+		<div class="span8">
+			<div class="ac">
+				<h3>
+					Bwog comments that include "term1" are <b>"ratio"x</b> more likely to also include the phrase "term2". The likelihood of this result occuring by chance is.
+				</h3>
+				<p class="pull-right"><a href="tweet">Tweet</a> or <a href="fb">share</a> this</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6">
+			<h3>
+				<div class="ac"> Details </div>
+			</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							Metric
+						</th>
+						<th>
+							term1
+						</th>
+						<th>
+							term2
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td># Comments</td>
+						<td>17</td>
+						<td>18</td>
+					</tr>
+					<tr>
+						<td>Average Upvotes</td>
+						<td>15.4</td>
+						<td>13.2</td>
+					</tr>
+					<tr>
+						<td>Average downvotes</td>
+						<td>13.4</td>
+						<td>13.2</td>
+					</tr>
+					<tr>
+						<td>Average Score</td>
+						<td>13.4</td>
+						<td>13.2</td>
+					</tr>
+					<tr>
+						<td>Worst Comment</td>
+						<td><a href="term1.worstcomment">view</a></td>
+						<td><a href="term2.worstcomment">view</a></td>
+					</tr>
+					<tr>
+						<td>Best Comment</td>
+						<td><a href="term1.bestcomment">view</a></td>
+						<td><a href="term2.bestcomment">view</a></td>
+					</tr>
+					<tr>
+						<td>Most voted comment</td>
+						<td><a href="term1.bestcomment">view</a></td>
+						<td><a href="term2.bestcomment">view</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span6">
+			<h3>
+				<div class="ac"> Graph </div>
+			</h3>
+			<div id="scoregraph" class="muted" style="width:550px; height:350px;">
+				<img src="http://mste.illinois.edu/courses/ci330ms/youtsey/Bar2.gif" alt="bargraph"></img>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- /container -->
+<script scr='/static/js/mustache.js/mustache.js' type='text/javscript'></script>
 <script src='/static/bwog/versus.js' type='text/javascript'></script>
-<script src='/static/bwog/correlation.js' type='text/javascript'></script>
+<!-- <script src='/static/bwog/correlation.js' type='text/javascript'></script> -->
 
 {% endblock %}
