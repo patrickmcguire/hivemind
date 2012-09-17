@@ -1,256 +1,228 @@
-<!DOCTYPE html>
-<!-- saved from url=(0050)http://wbpreview.com/previews/WB0693350/index.html -->
-<html lang="en" class=" js cssanimations csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta charset="utf-8">
- <title>
-           BwogStats - {% block title %}{% endblock %}
-        </title>    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Statistical analysis of Columbia's Bwog comments">
-        <meta name="author" content="Patrick McGuire">
-
-    <!-- styles -->
-    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/static/css/da-slider.css" rel="stylesheet">
-    <link href="/static/css/custom.css" rel="stylesheet">
-    <link href="/static/css/font-awesome.css" rel="stylesheet">
-    <script type="text/javascript" src="/static/js/modernizr.custom.28468.js"></script><style type="text/css"></style>
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-        <!-- Google Web Font-->
-    <link href="css" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!-- fav icons -->
-</head>
-
-<body>
-
-<div class="navbar">
-    <div class="navbar-inner custom-navbar">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </a>
-            <a class="brand custom-brand" href="./Business Theme_files/Business Theme.html">
-                <!-- image brand -->
-                    <!-- <img src="img/logo.png" alt="Super slogan"> -->
-                <!-- text brand -->
-                <span class="brand-style">Bwog<span class="brand-color">Stats</span></span>
-            </a>
-            <div class="nav-collapse in" style="height:auto;">
-                <ul class="nav pull-right">
-                    <li><a class="active" href="/bwog/">Home</a></li>
-                    <li><a href="/bwog/comments/best">Charts</a></li>
-                    <li><a href="/bwog/correlations">Correlations</a></li>
-                    <li><a href="/bwog/zeitgeist">Trends</a></li>
-                    <li><a href="/bwog/predictions">Predictions</a></li>
-                    <li><a href="/bwog/contact">Contact</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div><!-- /container -->
-    </div>
-</div><!-- /navbar --><div class="container-fluid hidden-phone custom-fluid-cont">
-    <div class="row-fluid">
-        <div id="da-slider" class="da-slider">
-            <div class="da-slide">
-                <h1><span class="brand-style">Bwog<span class="brand-color">Stat</span></span>
- #37</h1>
-                <p>Bwog comments that use the word "frat" or "fraternity" receive 25% more
-                        downvotes than comments mentioning sororities</p>
-                <a href="#" class="da-link">Read more &rarr;</a>
-                <div class="da-img"><img src="http://0.static.wix.com/media/a34a02_07e7817408aed377be4dd023b4bdd1b5.png_256" alt="image01" /></div>
-            </div>
-            <div class="da-slide">
-                <h1>Feature packed</h1>
-                <p>Bwog comments mentioning </p>
-                <a href="#" class="da-link">Read more &rarr;</a>
-                <div class="da-img"><img src="/static/img/2.png" alt="image01" /></div>
-            </div>
-            <div class="da-slide">
-                <h1>This is the third slide</h1>
-                <p>If you got this far, there's a chance you really like our theme. Be sure to check out all the really nice pages we've added for you and don't hesitate in shooting us a question if you need anything cleared. Have fun!</p>
-                <a href="#" class="da-link">Read more &rarr;</a>
-                <div class="da-img"><img src="/static/img/3.png" alt="image01" /></div>
-            </div>
-            <nav class="da-arrows">
-                <span class="da-arrows-prev"></span>
-                <span class="da-arrows-next"></span>
-            </nav>
-        </div>
-    </div><!-- /row-fluid -->
-</div><!-- /container-fluid -->
-
+{% extends "base.html" %} {% block content %}
 <div class="container">
     <div class="row ">
         <div class="page-header span12">
-            <h2>Explore the depths of Bwog comments with BwogStats. Statistical analysis of Bwog's comment corpus  <a href="tour.html"> Get Started</a></h2>
-        </div>
-    </div><!-- /row -->
-
-    <div class="row top-space">
-        <div class="span4">
-            <h3><i class="icon-cogs icon-large baseline" style="font-size:16px"></i>&nbsp; Rankings</h3>
-            <p>Ever wonder what the best bwog comments are? Read the best and worst comments by day, week, or all time. </p>
-        </div>
-        <div class="span4">
-            <h3><i class="icon-fullscreen icon-large baseline" style="font-size:16px"></i>&nbsp; Correlations</h3>
-            <p>                    If a bwog comment mentions word X, how likely is it to mention word Y?
-                    <br>
-                    <a href="/bwog/correlation/" title="">Run Correlations</a>
-</p>
-        </div>
-        <div class="span4">
-            <h3><i class="icon-user icon-large baseline" style="font-size:16px"></i>&nbsp; Trends</h3>
-            <p>  See the relative popularity of phrases over time in Bwog Comments (BETA)
-                    <a class="" href="/bwog/zeitgeist/" title=""><b>Zeitgeist</b></a>
-                </p></p>
-        </div>
-    </div><!-- /row -->
-   
-    <br />
-    
-</div><!-- /container -->
-
-
-
-<footer>
-<div class="container">
-    <div class="row">
-     <div class="container">
-    <div class="row">
-        <div class="span3">
-            <h4>Most recent bwog fact</h4><br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit nisl ac metus porta placerat... <a href="http://wbpreview.com/previews/WB0693350/index.html#">Read more →</a></p>
-        </div>
-        <div class="span3">
-            <h4>Quick Links</h4><br>
-            <div class="row">
-                <div class="span1">
-                    <ul class="unstyled">
-                        <li><a href="./Business Theme_files/Business Theme.html">Home</a></li>
-                        <li><a href="http://wbpreview.com/previews/WB0693350/tour.html">Tour</a></li>
-                        <li><a href="http://wbpreview.com/previews/WB0693350/index.html#">Help Desk</a></li>
-                    </ul>
-                </div>
-                <div class="span1">
-                    <ul class="unstyled">
-                        <li><a href="http://wbpreview.com/previews/WB0693350/plans.html">Plans</a></li>
-                        <li><a href="http://wbpreview.com/previews/WB0693350/blog.html">Blog</a></li>
-                        <li><a href="http://wbpreview.com/previews/WB0693350/index.html#">Privacy</a></li>
-                    </ul>
-                </div>
-                <div class="span1">
-                    <ul class="unstyled">
-                        <li><a href="http://wbpreview.com/previews/WB0693350/about.html">About</a></li>
-                        <li><a href="http://wbpreview.com/previews/WB0693350/contact.html">Contact</a></li>
-                        <li><a href="http://wbpreview.com/previews/WB0693350/index.html#">Terms</a></li>
-                    </ul>
-                </div>
-            </div><!-- /row -->
-        </div>
-        <div class="span3">
-            <h4>Contact</h4><br>
-            <address>
-            </address>
-        </div>
-        <div class="span3">
-            <h4>Newsletter</h4><br>
-            <p>Subscribe to our newsletter!</p>
-            <form id="form" class="form-inline" novalidate="novalidate">
-                <input type="text" value="" name="email" class="input-medium email" id="email" placeholder="Your email address" data-original-title="">
-                <input type="submit" value="Subscribe" name="subscribe" class="btn btn-primary">
-            </form>
-        </div>
-    </div><!-- /row -->
-</div><!-- /container -->
-    </div><!-- /row -->
-</div><!-- /container -->
-
-<div class="final-footer">
-    <div class="container">
-        <div class="row">
-            <div class="span4">
-                <p>© <a href="http://bwogstats..com">BwogStats</a> 2012, don't be a dick license.</p>
-            </div>
-            <div class="span8">
-                <ul class="footer-ul pull-right">
-                    <li class="inline"><a href="http://twitter.com/mcguirejpatrick">Patrick McGuire</a></li>
-                    <li class="inline"><a href="http://noahpryor.com">Noah Pryor</a></li>
-                </ul>
+            <div class="ac">
+                <h1>
+                    Compare Terms
+                </h1>
             </div>
         </div>
     </div>
+    <!-- /row -->
+    <div class="row">
+        <div class="span4">
+        </div>
+        <div class="span4">
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="inputTerm1">
+                        First Term
+                    </label>
+                    <div class="controls">
+                        <input type="text" id="inputTerm1" placeholder="e.g. hate">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputTerm2">
+                        Second Term
+                    </label>
+                    <div class="controls">
+                        <input type="password" id="inputTerm2" placeholder="e.g. lie">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn btn-large btn-primary">
+                            Get Results!
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Scores -->
+    <div class="row top-space">
+        <div class="span12">
+            <div class="ac">
+                <legend>
+                    <h2>
+                        <i class="icon-magnet icon-large baseline" style="font-size:16px">
+                        </i>
+                        &nbsp;Correlations
+                    </h2>
+                </legend>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span2">
+        </div>
+        <div class="span8">
+            <div class="ac">
+                <h3>
+                    Bwog comments that include "term1" are <b>"ratio"x</b> more likely to also include the phrase "term2". The likelihood of this result occuring by chance is. 
+                </h3>
+                <p class="pull-right"><a href="tweet">Tweet</a> or <a href="fb">share</a> this</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <h3>
+               <div class="ac"> Details </div>
+            </h3>
+            <table class="table">
+                <thead>
+                    <th>Metric
+                    </th>
+                    <th>
+                        term1
+                    </th>
+                    <th>
+                        term2
+                    </th>
+                    </tr>
+                    <thead>
+                        <tbody>
+                            <tr>
+                                <td># Comments</td>
+                                <td>17</td>
+                                <td>18</td>
+                            </tr>
+                            <tr>
+                                <td>Average Upvotes</td>
+                                <td>15.4</td>
+                                <td>13.2</td>
+                            </tr>
+                            <tr>
+                                <td>Average downvotes</td>
+                                <td>13.4</td>
+                                <td>13.2</td>
+                            </tr>
+                            <tr>
+                                <td>Average Score</td>
+                                <td>13.4</td>
+                                <td>13.2</td>
+                            </tr>
+                            <tr>
+                               <td>Worst Comment</td>
+                                <td><a href="term1.worstcomment">view</td>
+                                <td> <a href="term2.worstcomment">view</td>
+                            </tr>
+                            <tr>
+                                <td>Best Comment</td>
+                                <td> <a href="term1.bestcomment">view</td>
+                                <td> <a href="term2.bestcomment">view</td>
+                            </tr>
+                            <td>Most voted comment</td>
+                                <td> <a href="term1.bestcomment">view</td>
+                                <td> <a href="term2.bestcomment">view</td>
+                            </tr>
+                    </table>
+
+        </div>
+        <div class="span6">
+            <h3>
+               <div class="ac"> Graph </div>
+            </h3>
+            <div id="scoregraph" class="muted" style="width:550px; height:350px;"><img src="http://mste.illinois.edu/courses/ci330ms/youtsey/Bar2.gif" alt="bargraph"></img></div>
+        </div>
+    </div>
+    <!-- /scores -->
+    <!-- correlations -->
+     <!-- Scores -->
+    <div class="row top-space">
+        <div class="span12">
+            <div class="ac">
+                <legend>
+                    <h2>
+                        <i class="icon-arrow-up icon-large baseline" style="font-size:16px">
+                        </i>
+                        <i class="icon-arrow-down icon-large baseline" style="font-size:16px">
+                        </i>
+                        &nbsp;Score
+                    </h2>
+                </legend>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span2">
+        </div>
+        <div class="span8">
+            <div class="ac">
+                <h3>
+                    There are $$ comments containing "term1" and ## comments containing "term2".
+                    Comments with term 1 have on average 15.4 upvotes and 13.2 downvotes, while
+                    comments with term 2 average 3.7 upvotes and 3.4 downvotes.
+                </h3>
+                <p class="pull-right"><a href="tweet">Tweet</a> or <a href="fb">share</a> this</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <h3>
+               <div class="ac"> Details </div>
+            </h3>
+            <table class="table">
+                <thead>
+                    <th>Metric
+                    </th>
+                    <th>
+                        term1
+                    </th>
+                    <th>
+                        term2
+                    </th>
+                    </tr>
+                    <thead>
+                        <tbody>
+                            <tr>
+                                <td># Comments</td>
+                                <td>17</td>
+                                <td>18</td>
+                            </tr>
+                            <tr>
+                                <td>Average Upvotes</td>
+                                <td>15.4</td>
+                                <td>13.2</td>
+                            </tr>
+                            <tr>
+                                <td>Average downvotes</td>
+                                <td>13.4</td>
+                                <td>13.2</td>
+                            </tr>
+                            <tr>
+                                <td>Average Score</td>
+                                <td>13.4</td>
+                                <td>13.2</td>
+                            </tr>
+                            <tr>
+                               <td>Worst Comment</td>
+                                <td><a href="term1.worstcomment">view</td>
+                                <td> <a href="term2.worstcomment">view</td>
+                            </tr>
+                            <tr>
+                                <td>Best Comment</td>
+                                <td> <a href="term1.bestcomment">view</td>
+                                <td> <a href="term2.bestcomment">view</td>
+                            </tr>
+                            <td>Most voted comment</td>
+                                <td> <a href="term1.bestcomment">view</td>
+                                <td> <a href="term2.bestcomment">view</td>
+                            </tr>
+                    </table>
+
+        </div>
+        <div class="span6">
+            <h3>
+               <div class="ac"> Graph </div>
+            </h3>
+            <div id="scoregraph" class="muted" style="width:550px; height:350px;"><img src="http://mste.illinois.edu/courses/ci330ms/youtsey/Bar2.gif" alt="bargraph"></img></div>
+        </div>
+    </div>
 </div>
-</footer>
-
-<!-- Placed at the end of the document so the pages load faster -->
- <script src="/static/jquery-1.8.0.js">
-
-        </script>
-        <script type="text/javascript" src="/static/js/jquery.validate.js"></script>
-
-        <script src="/static/bootstrap/js/bootstrap-transition.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-alert.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-modal.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-dropdown.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-scrollspy.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-tab.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-tooltip.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-popover.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-button.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-collapse.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-carousel.js">
-        </script>
-        <script src="/static/bootstrap/js/bootstrap-typeahead.js">
-        </script><script src="/static/js/jquery.cslider.js"></script>
-<script type="text/javascript">
-$('#da-slider').cslider({
-    current     : 0,
-    bgincrement : 50, // parallax
-    autoplay    : false,
-    interval    : 5000
-});
-$(document).ready(function(){
-    $("#form").validate({
-        rules: {
-            email: "required",
-        },
-        highlight: function(element, errClass) {
-            $("#email").tooltip('show');
-        },
-        unhighlight: function(element, errClass) {
-            $("#email").tooltip('hide');
-        },
-        errorPlacement: function(err, element) {
-            err.hide();
-        },
-    });
-    $("#email").tooltip({
-        placement: 'bottom',
-        trigger: 'manual',
-        title: 'Please insert a valid email address!',
-    });
-});
-</script>
-
-
-
+<!-- /container -->
+{% endblock %}
