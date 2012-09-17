@@ -42,7 +42,7 @@ function jqplotToImg(objId) {
     $("#" + objId + " *").children(".jqplot-table-legend-swatch").each(function() {
         var offset = $(this).offset();
         var context = newCanvas.getContext("2d");
-        context.setFillColor($(this).css('background-color'));
+        context.fillStyle = ($(this).css('background-color'));
         context.fillRect(offset.left - baseOffset.left, offset.top - baseOffset.top, 15, 15);
     });
 
@@ -57,7 +57,7 @@ function jqplotToImg(objId) {
 }
 
 function newImage(objId) {
-    newCanvas = jqplotToImage(objId);
+    newCanvas = jqplotToImg(objId);
     window.open(newCanvas.toDataURL(), "directories=no");
 }
 
