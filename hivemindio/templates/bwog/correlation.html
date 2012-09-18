@@ -32,8 +32,7 @@
     <meta property="og:url" content="http://bwogstats.name/facebook-meta-tags"
     />
     <link rel="canonical" href="http://bwogstats.com/stats/" />
-    <meta property="og:title" content="BwogStats:<span class="term1"> {{ res.term1 }}</span> vs<span class="term2">{{ res.term2 }}</span> in Bwog's comments"
-    />
+    <meta property="og:title" content="BwogStats:{{ res.term1 }} vs{{ res.term2 }}in Bwog's comments" />
     <div id='fb-root'>
     </div>
     <script src='http://connect.facebook.net/en_US/all.js'>
@@ -52,9 +51,9 @@
          method: 'feed',
          //  link: 'https://developers.facebook.com/docs/reference/dialogs/',
          picture: 'http://bwogstats.com/static/img/icon-large.jpg',
-         name: '{{res.term1}} vs {{res.term2}} in Bwog Comments',
+         name: ' {{ res.term1 }} vs {{ res.term2 }}',
          caption: 'Average # of votes for each comments',
-	 description: 'BwogStat #47: Bwog comments with<span class="term1"> {{ res.term1 }}</span> are {{ res.ratio }}x {% if res.term1 > res.term2  %}more{% endif %}{% if res.term1 < res.term2 %}less{% endif %} likely to include <span class="term2"> {{ res.term2 }}</span>.'
+	 description: 'BwogStat #47: Bwog comments with{{ res.term1 }} are {{ res.ratio }}x {% if res.term1 > res.term2  %}more{% endif %}{% if res.term1 < res.term2 %}less{% endif %} likely to include {{ res.term2 }}.'
      };
 
      function callback(response) {
@@ -178,16 +177,9 @@
             });
         });
     </script>
-    <style type="text/css">
-        .term1 { color: #27719D; font-style: strong; font-size: 1.2em; } .term2 { color: #259F61; font-size: 1.1em;
-            .bigtable { font-size: 2em; }
-        font-style: bold; }
-    </style>
     <div class="container">
         <div class="row ">
             <div class="page-header span12">
-                <p id='msg'>
-                </p>
                 <div class="ac">
                     <h1>
                         Compare Terms
@@ -196,9 +188,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="span4">
+            <div class="span2">
             </div>
-            <div class="span4">
+            <div class="span3">
+                <legend> <div class="ac"><h2> Enter two Terms</h2></div></legend>
+
                 <form "action"="/bwog/correlation/" , method="get" class="form-inline">
                     <div class="control-group">
                         <label class="control-label" for="inputTerm1">
@@ -231,7 +225,22 @@
                             </div>
                         </div>
                 </form>
-                </div>
+            </div>
+                        <div class="span2">
+            </div>
+
+             <div class="span4">
+               <legend> <div class="ac"><h2> How it works</h2></div></legend>
+               <ol>
+                <h4><li>Enter two words or phrases </h4></li>
+                <h4><li>We analyze every bwog that contains either phrase</h4></li>
+                <h4><li>The results show up below (this can take awhile, we're trying to make it faster)</h4></li>
+                </ol>
+                <br>
+                Find something cool? <a href="http://twitter.com/bwogstats">tweet</a> it to us or post it on our <a href="http://facebook.com/bwogstats">facebook</a> page. 
+            </div>
+
+
             </div>
             {% if res %}
             <!-- Scores -->
