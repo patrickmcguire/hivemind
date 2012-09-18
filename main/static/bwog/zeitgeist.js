@@ -92,9 +92,16 @@ function dataFill() {
 }
 
 function zipKeys() {
-    var zipped = []
-    $.each(keys, function(i,v) {
-        zipped.push({label: v});
-    });
+    var zipped = [];
+    if (2 === keys.length) {
+        zipped = [
+            {label: keys[0], color: '#27719D'},
+            {label: keys[1], color: '#259F61'},
+        ];
+    } else {
+        $.each(keys, function(i,v) {
+            zipped.push({label: v});
+        });
+    }
     return zipped;
 }
