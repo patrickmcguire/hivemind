@@ -1,66 +1,82 @@
 {% extends "base.html" %} {% block content %}
 <div class="container">
-    <div class="row ">
+    <div class="row">
         <div class="page-header span12">
-        <h1><span class="brand-color">Rankings
-        </span></h1>
-         <h2>   {{ description }} - {{ timeframe }}
-        </h2>
-        <br />
-        <p>
-           By number of up/down votes
-        </p>
-    </div>
-<div class="row">
-    <table class="table table-striped table-condensed table-bordered">
-        <thead>
-            <h2>
-                <tr>
-                    <th>
-                        Rank
-                    </th>
-                    <th>
-                        {{ rank_unit }}
-                    </th>
-                    <th>
-                        Author
-                    </th>
-                    <th>
-                        Comment
-                    </th>
-                    <th>
-                        On
-                    </th>
-                </tr>
+            <div class="ac">
+            <h1><i class="icon-arrow-up icon-large baseline" style="font-size:16px"> </i>
+                <i class="icon-arrow-down icon-large baseline" style="font-size:16px"></i>
+                <span class="">Rankings</span>
+            </h1>
+            <br>
+             <h2> {{ description }} - {{ timeframe }}
             </h2>
-        </thead>
-        <tbody>
-            {% if ranked_comments %} {% for comment in ranked_comments %}
-            <tr>
-                <td>
-                    <div class="ac">
-                        {{ comment.rank }} 
-                    </div>
-                </td>
-                <td>
-                    <div class="ac">
-                        {{ comment.ranked_value }} <i class="brand-color icon-arrow-up baseline"></i>
-                    </div>
-                </td>
-                <td>
-                    {{ comment.author }}
-                    </a>
-                </td>
-                <td>
-                    {{ comment.body|truncatechars:150|linebreaks }} 
-                    <a href="/bwog/comments/{{ comment.bwog_id }}/">view full</a>
-                </td>
-                <td>
-                    <a href="/bwog/articles/{{ comment.article.id }}/">{{ comment.article.title }}</a>
-                </td>
-                {% endfor %} {% endif %}
-        </tbody>
-    </table>
-</div>
+            <br />
+            <p>
+               By number of up/down votes
+               <br>
+               All time: <a href="/bwog/comments/best/">Best</a> | <a href="/bwog/comments/worst/">Worst</a> 
+               <br>
+               Daily:  <a href="/bwog/comments/daily_best/">Best</a> | <a href="/bwog/comments/daily_worst/">Worst</a> 
+      
+            </p>
+        </div>
+            
+        </div>
+</DIV>
+    <div class="row">
+        <div clas="span6">
+            <table class="table table-striped table-condensed table-bordered">
+                <thead>
+                    <h2>
+                        <tr>
+                            <th>
+                                Rank
+                            </th>
+                            <th>
+                                {{ rank_unit }}
+                            </th>
+                            <th>
+                                Author
+                            </th>
+                            <th>
+                                Comment
+                            </th>
+                            <th>
+                                On
+                            </th>
+                        </tr>
+                    </h2>
+                </thead>
+                <tbody>
+                    {% if ranked_comments %} {% for comment in ranked_comments %}
+                    <tr>
+                        <td>
+                            <div class="ac">
+                                {{ comment.rank }} 
+                            </div>
+                        </td>
+                        <td>
+                            <div class="ac">
+                                {{ comment.ranked_value }} <i class="brand-color icon-arrow-up baseline"></i>
+                            </div>
+                        </td>
+                        <td>
+                            {{ comment.author }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ comment.body|truncatechars:150|linebreaks }} 
+                            <a href="/bwog/comments/{{ comment.bwog_id }}/">view full</a>
+                        </td>
+                        <td>
+                            <a href="/bwog/articles/{{ comment.article.id }}/">{{ comment.article.title }}</a>
+                        </td>
+                    </TR>
+                        {% endfor %} {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </DIV>
+
 </div>
 {% endblock %}
