@@ -102,7 +102,7 @@ series.  That would look like:
 
 > optionsObj = {
 >    axes:{yaxis:{min:5, max:230}},
->    series:[{},{color:"#33ff66"}]
+>    series:[{},e]
 > }
 
 Note that series options are an array in order of the series data you

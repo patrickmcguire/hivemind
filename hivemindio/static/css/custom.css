@@ -1,4 +1,8 @@
 /* CUSTOM CSS */
+        .term1 { color: #27719D; font-style: strong; font-size: 1.2em; } .term2 { color: #259F61; font-size: 1.1em;
+            .bigtable { font-size: 2em; }
+        font-style: bold; }
+
 body {
     font: 14px "Droid Sans","Helvetica Neue",Helvetica,sans-serif;
     line-height: 1.3em;

@@ -1,5 +1,8 @@
-{% extends "base.html" %} {% block content %}
-<div class="container">
+{% extends "base.html" %} 
+
+{% block extra_head %}
+    {% endblock %}
+{% block content %}
     <!--jQuery References-->
         
     <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.1.min.js"
@@ -32,8 +35,7 @@
     <meta property="og:url" content="http://bwogstats.name/facebook-meta-tags"
     />
     <link rel="canonical" href="http://bwogstats.com/stats/" />
-    <meta property="og:title" content="BwogStats: {{ res.term1 }} vs {{ res.term2 }} in Bwog's comments"
-    />
+    <meta property="og:title" content="BwogStats:{{ res.term1 }} vs{{ res.term2 }}in Bwog's comments" />
     <div id='fb-root'>
     </div>
     <script src='http://connect.facebook.net/en_US/all.js'>
@@ -52,9 +54,9 @@
          method: 'feed',
          //  link: 'https://developers.facebook.com/docs/reference/dialogs/',
          picture: 'http://bwogstats.com/static/img/icon-large.jpg',
-         name: '{{res.term1}} vs {{res.term2}} in Bwog Comments',
+         name: ' {{ res.term1 }} vs {{ res.term2 }}',
          caption: 'Average # of votes for each comments',
-	 description: 'BwogStat #47: Bwog comments with {{ res.term1 }} are {{ res.ratio }}x {% if res.term1 > res.term2  %}more{% endif %}{% if res.term1 < res.term2 %}less{% endif %} likely to include  {{ res.term2 }}.'
+	 description: 'BwogStat #47: Bwog comments with{{ res.term1 }} are {{ res.ratio }}x {% if res.term1 > res.term2  %}more{% endif %}{% if res.term1 < res.term2 %}less{% endif %} likely to include {{ res.term2 }}.'
      };
 
      function callback(response) {
@@ -69,7 +71,8 @@
             $("#votechart").wijbarchart({
                 axis: {
                     y: {
-                        text: "Average Votes"
+                        text: "Average Votes",
+                        origin: 0
                     },
                     x: {
                         text: ""
@@ -125,11 +128,11 @@
             $("#correlationchart").wijbarchart({
                 axis: {
                     y: {
-                        text: "# Comments"
+                        text: "# Comments",
+                        origin: 0
                     },
                     x: {
-                        text: ""
-                    }
+                        text: "Expected",                    }
                 },
 
                 hint: {
@@ -146,7 +149,7 @@
                     label: "Expected",
                     legendEntry: true,
                     data: {
-                        x: [''],
+                        x: ['C'],
                         y: [{{ res.expected_both_count }}]
                     }
                 }, {
@@ -177,15 +180,9 @@
             });
         });
     </script>
-    <style type="text/css">
-        .term1 { color: #27719D; font-style: bold; } .term2 { color: #259F61;
-        font-style: bold; }
-    </style>
     <div class="container">
         <div class="row ">
             <div class="page-header span12">
-                <p id='msg'>
-                </p>
                 <div class="ac">
                     <h1>
                         Compare Terms
@@ -194,9 +191,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="span4">
+            <div class="span2">
             </div>
-            <div class="span4">
+            <div class="span3">
+                <legend> <div class="ac"><h2> Enter two Terms</h2></div></legend>
+
                 <form "action"="/bwog/correlation/" , method="get" class="form-inline">
                     <div class="control-group">
                         <label class="control-label" for="inputTerm1">
@@ -229,7 +228,22 @@
                             </div>
                         </div>
                 </form>
-                </div>
+            </div>
+                        <div class="span2">
+            </div>
+
+             <div class="span4">
+               <legend> <div class="ac"><h2> How it works</h2></div></legend>
+               <ol>
+                <h4><li>Enter two words or phrases </h4></li>
+                <h4><li>We analyze every bwog comment that contains either phrase</h4></li>
+                <h4><li>The results show up below (this can take awhile, we're trying to make it faster)</h4></li>
+                </ol>
+                <br>
+                Find something cool? <a href="http://twitter.com/bwogstats">tweet</a> it to us or post it on our <a href="http://facebook.com/bwogstats">facebook</a> page. 
+            </div>
+
+
             </div>
             {% if res %}
             <!-- Scores -->
@@ -238,12 +252,45 @@
                     <legend>
                         <div class="ac">
                             <h1>
-                                Results {{ res.term1 }} vs. {{ res.term2 }}
+                                Results: <span class="term1"> {{ res.term1 }}</span> vs.<span class="term2"> {{ res.term2 }}</span>
                             </h1>
                         </div>
                     </legend>
                 </div>
             </div>
+            <div class="row">
+            <div class="ac">
+                <h3>      
+                            There are {{ res.term1_count }} comments containing<span class="term1"> {{ res.term1 }}</span> and
+                            {{ res.term2_count }} comments containing<span class="term2"> {{ res.term2 }}</span>.</h3></div>
+                <div class="span4">
+                </div>
+                <div class="span4">                
+                     <table class="table table-condensed table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Term</th>
+                                    <th># Comments</th>
+                                </tr>
+
+                                </thead>
+                                <tbody> <span class="term1"> 
+                                    <tr class="term1">
+                                        <td><h3><b> {{ res.term1 }} </b></h3></td>
+                                        <td><h3><b> {{ res.term1_count }} </b></h3></td>
+                                    </tr>
+                                </span>
+                                    <tr class="term2">
+                                        <td> <h3><b> {{ res.term2 }} </b> </h3></td>
+
+                                        <td><h3><b> {{ res.term2_count }} </b></h3></td>
+                                    </tr>
+                                </tbody>
+                            </table></div>
+                            <div class="span4">
+                            </div>
+                            <legend>
+                            </legend>
             <div class="row">
                 <div class="span12">
                     <div class="ac">
@@ -265,10 +312,10 @@
                 <div class="span8">
                     <div class="ac">
                         <h3>
-                            There are {{ res.term1_count }} comments containing {{ res.term1 }} and
-                            {{ res.term2_count }} comments containing {{ res.term2 }}. Comments with
-                            {{ res.term1 }} have on average {{ res.term1_average_upvotes }} upvotes and {{ term2_average_downvotes }} downvotes, while
-                            comments with {{ res.term2 }} average {{ res.term2_average_upvotes }} upvotes and {{ res.term2_average_downvotes }} downvotes.
+                            There are {{ res.term1_count }} comments containing<span class="term1"> {{ res.term1 }}</span> and
+                            {{ res.term2_count }} comments containing<span class="term2"> {{ res.term2 }}</span>. Comments with
+                           <span class="term1"> {{ res.term1 }}</span> have on average {{ res.term1_average_upvotes }} upvotes and {{ res.term1_average_downvotes }} downvotes, while
+                            comments with <span class="term2">{{ res.term2 }}</span> average {{ res.term2_average_upvotes }} upvotes and {{ res.term2_average_downvotes }} downvotes.
                         </h3>
                         <p class="pull-right">
                             <a href="tweet">Tweet</a>
@@ -293,10 +340,10 @@
                                     Metric
                                 </th>
                                 <th>
-                                    {{ res.term1 }}
+                                   <span class="term1"> {{ res.term1 }}</span>
                                 </th>
                                 <th>
-                                    {{ res.term2 }}
+                                   <span class="term2"> {{ res.term2 }}</span>
                                 </th>
                             </tr>
                         </thead>
@@ -376,11 +423,11 @@
                 <div class="span8">
                     <div class="ac">
                         <h3>
-                            Bwog comments that include "{{ res.term1 }}" are
+                            Bwog comments that include <span class="term1">{{ res.term1 }}</span> are
                             <b>
                                 {{ res.ratio }}x
                             </b>
-			    {% if res.ratio > 1 %}more{% endif %}{% if res.ratio < 1 %}less{% endif %} likely to also include the phrase "{{ res.term2 }}".
+			    {% if res.ratio > 1 %}more{% endif %}{% if res.ratio < 1 %}less{% endif %} likely to also include the phrase <span class="term2">{{ res.term2 }}</span>.
                         </h3>
                         <p class="pull-right">
                             <a href="tweet">Tweet</a>
@@ -411,12 +458,10 @@
                     <tr><td>Actual Probability </td>
                         <td> {{ res.joint_prob }}% </td>
                     </tr>
-
                     <tr>
                         <td>Ratio</td>
                         <td>{{ res.ratio }}<td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
@@ -429,7 +474,7 @@
         </div>
     </div>
     <div class="row">
-             <div class="span12">
+            <div class="span12">
                 <div class="ac">
                 <legend>
                             <h2>
@@ -438,8 +483,27 @@
                                 &nbsp;Trends
                 </h2>
                 </legend>
+                </div>
             </div>
-             </div>
+    </div>
+     <div class="row">
+                <div class="span2">
+                </div>
+                <div class="span8">
+                    <div class="ac">
+                        <h3>
+                            Popularity of <span class="term1">{{ res.term1 }}</span> and <span class="term2">{{ res.term2 }}</span> over time. 
+                        </h3>
+                        <p class="pull-right">
+                            <a href="tweet">Tweet</a>
+                            or
+                            <a href="fb">share</a>
+                            this
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         <div class="span12">
          
             <div id="plot">
@@ -448,5 +512,5 @@
     </div>
 
             {% endif %}
-        </div></div>
+        </div>
 {% endblock %}
