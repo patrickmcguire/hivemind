@@ -54,7 +54,7 @@
          picture: 'http://bwogstats.com/static/img/icon-large.jpg',
          name: '{{res.term1}} vs {{res.term2}} in Bwog Comments',
          caption: 'Average # of votes for each comments',
-         description: 'BwogStat #47: Bwog comments with {{ res.term1 }} are {{ res.ratio }}x more likely to include  {{ res.term2 }}.'
+	 description: 'BwogStat #47: Bwog comments with {{ res.term1 }} are {{ res.ratio }}x {% if res.term1 > res.term2  %}more{% endif %}{% if res.term1 < res.term2 %}less{% endif %} likely to include  {{ res.term2 }}.'
      };
 
      function callback(response) {
@@ -223,7 +223,7 @@
                             <div class="controls">
                                 <button type="submit" class="btn btn-primary btn-large">
                                     <i class="icon-white icon-filter">
-                                    </i>
+                                   </i>
                                     Analyze Terms
                                     </a>
                             </div>
@@ -267,8 +267,8 @@
                         <h3>
                             There are {{ res.term1_count }} comments containing {{ res.term1 }} and
                             {{ res.term2_count }} comments containing {{ res.term2 }}. Comments with
-                            {{ res.term1 }} have on average 15.4 upvotes and 13.2 downvotes, while
-                            comments with {{ res.term2 }} average 3.7 upvotes and 3.4 downvotes.
+                            {{ res.term1 }} have on average {{ res.term1_average_upvotes }} upvotes and {{ term2_average_downvotes }} downvotes, while
+                            comments with {{ res.term2 }} average {{ res.term2_average_upvotes }} upvotes and {{ res.term2_average_downvotes }} downvotes.
                         </h3>
                         <p class="pull-right">
                             <a href="tweet">Tweet</a>
@@ -320,12 +320,12 @@
                                     {{ res.term1_average_upvotes }}
                                 </td>
                                 <td>
-                                    {{ res.term1_average_upvotes }}
+                                    {{ res.term2_average_upvotes }}
                                 </td>
                             </tr>
                             <tr class='average_downvotes'>
                                 <td>
-                                    Average downvotes
+                                    Average Downvotes
                                 </td>
                                 <td>
                                     {{ res.term1_average_downvotes }}
@@ -380,7 +380,7 @@
                             <b>
                                 {{ res.ratio }}x
                             </b>
-                            more likely to also include the phrase "{{ res.term2 }}".
+			    {% if res.ratio > 1 %}more{% endif %}{% if res.ratio < 1 %}less{% endif %} likely to also include the phrase "{{ res.term2 }}".
                         </h3>
                         <p class="pull-right">
                             <a href="tweet">Tweet</a>
