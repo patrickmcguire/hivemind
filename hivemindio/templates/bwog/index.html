@@ -1,37 +1,68 @@
-{% block content %}
-<!DOCTYPE html>
+{% extends "base.html" %} {% block content %}
+<div class="container-fluid hidden-phone custom-fluid-cont">
+    <div class="row-fluid">
+        <div id="da-slider" class="da-slider">
+            <div class="da-slide">
+                <h1><span class="brand-style"><span class="brand-color">Bwog</span>Stat</span></span>
 
-<html lang="en">
+ #37</h1>
+                <p>Bwog comments that use the word "frat" or "fraternity" receive 25% more
+                        downvotes than comments mentioning sororities</p>
+                <a href="/bwog/correlation/" class="da-link">More BwogStats &rarr;</a>
+                <div class="da-img"><img src="http://0.static.wix.com/media/a34a02_07e7817408aed377be4dd023b4bdd1b5.png_256" alt="image01" />
+            </div>
+            </div>
+            <div class="da-slide">
+                <h1>If comment contains the word 'slut'...</h1>
+                    <p><b>..is it more likely to contain the word 'ignorant'?</b><br>
+                        Answer this question and other like it with the <span class="brand-style"><span class="brand-color">Bwog</span>Stats</span></span> Correlations tool</p>
+                    <a href="/bwog/correlation/" class="da-link" title="">Run Correlations &rarr;</a>
 
-    <head>
-        <meta charset="utf-8">
-        <title>
-            BwogStats - {% block title %}{% endblock %}
-        </title>    
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
-        <script src="/static/jquery-1.8.0.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Statistical analysis of Columbia's Bwog comments">
-        <meta name="author" content="Patrick McGuire">
-        <meta property="og:site_name" content="BwogStats"/>
+            </div>
+            <div class="da-slide">
+                <h1>Try <span class="brand-style"><span class="brand-color">Bwog</span>Stats</span></span> Predictions</h1>
+                <p>Put your next bwog comment in new predictions tool and we'll tell you how many upvotes and downvotes you can expect</p>
+                <a href="/bwog/predictions/" class="da-link">Get Predictions &rarr;</a>
+                <div class="da-img"><img src="/static/img/3.png" alt="image01" /></div>
+            </div>
+            <nav class="da-arrows">
+                <span class="da-arrows-prev"></span>
+                <span class="da-arrows-next"></span>
+            </nav>
+        </div>
+    </div><!-- /row-fluid -->
+</div><!-- /container-fluid -->
 
-        <!-- styles -->
-            <link rel="shortcut icon" href="static/img/favicon.ico">
-<meta property="og:title" content="BwogStats - Statistical analysis of bwog comments" /><meta property="og:type" content="company" /><meta property="og:site_name" content="BwogStats" /><meta property="og:url" content="http://bwogstats.com" /><meta property="og:image" content="null" /><meta property="og:description" content="Imagine what someone else would want to post on your wall about signing up for your project." />
-        <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-        <link href="/static/css/da-slider.css" rel="stylesheet">
-        <link href="/static/css/custom.css" rel="stylesheet">
-        <link href="/static/css/font-awesome.css" rel="stylesheet">
+<div class="container">
+    <div class="row ">
+        <div class="page-header span12">
+            <h2>Explore the depths of Bwog comments with BwogStats. Statistical analysis of Bwog's comment corpus  <a href="tour.html"> Get Started</a></h2>
+        </div>
+    </div><!-- /row -->
 
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'
-        rel='stylesheet' type='text/css'>
+    <div class="row top-space">
+        <div class="span4">
+            <h3><i class="icon-arrow-up icon-large baseline" style="font-size:16px"></i>&nbsp;<i class="icon-arrow-down icon-large baseline" style="font-size:16px"></i>&nbsp; Rankings</h3>
+            <p>Ever wonder what the best bwog comments are? Read the best and worst comments by day, week, or all time.<br>
+            <a href="/bwog/correlation/" title="">See Rankings</a>
+            </b>
+        </div>
+        <div class="span4">
+            <h3><i class="icon-magnet icon-large baseline" style="font-size:16px"></i>&nbsp; Stats</h3>
+            <p>                    If a bwog comment mentions word X, how likely is it to mention word Y? How many upvotes and downvotes do thos comments get? Find out!
+                    <br>
+                    <a href="/bwog/correlation/" title="">Run Correlations</a>
+</p>
+        </div>
+        <div class="span4">
+            <h3><i class="icon-signal icon-large baseline" style="font-size:16px"></i>&nbsp; Trends</h3>
+            <p>  See the relative popularity of phrases over time in Bwog Comments (BETA)
+                <br>
+                    <a class="" href="/bwog/zeitgeist/" title="">Discover trends</a>
+                </p></p>
+        </div>
+    </div><!-- /row -->       
+</div>
 
-</head>
-<body>
-        <div rel="EZV8PJ0O" class="lrdiscoverwidget" data-logo="on" data-background="on" data-share-url="bwogstats.com" data-css="http://bwogstats.com/static/custom.css"></div>
-        <script type="text/javascript" src="http://launchrock-ignition.s3.amazonaws.com/ignition.1.1.js"></script>
-</body>
-</html>
+<!-- /container -->
 {% endblock %}
