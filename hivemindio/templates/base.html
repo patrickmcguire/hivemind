@@ -24,8 +24,9 @@
 		<link href="/static/css/custom.css" rel="stylesheet">
 		<link href="/static/css/font-awesome.css" rel="stylesheet">
 		<script type="text/javascript" src="/static/js/jqplot_to_image.js"></script>
-		<script type="text/javascript" src="/static/js/modernizr.custom.28468.js"></script><style type="text/css"></style>
-
+		<script type="text/javascript" src="/static/js/modernizr.custom.28468.js"></script>
+		
+		
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'
 		rel='stylesheet' type='text/css'>
 
@@ -105,8 +106,11 @@
 				    <div class="row">
 					    <div class="span4">
 						    <h4>Most recent <span class="brand-style"><span class="brand-color">Bwog</span>Stat:</span></h4><br>
-						    <p>Comments that include the word '<b>finance</b>' are <b>8.4x</b> more likely to include '<b>tool</b>' than the average bwog comment. The likelihood of this occuring by chance is <b>1%</b><br>
-						    <a href="http://10.0.1.10:8000/bwog/correlation/?term1=finance&term2=tool">Read more →</a></p>
+						    <div id=”twitter_update_list”>
+
+</div> 		
+ occuring by chance is <b>1%</b><br>
+						    <a href="http://twitter.com/bwogstats/">Read more →</a></p>
 					    </div>
 					    <div class="span2">
 						    <h4>Quick Links</h4><br>
@@ -115,14 +119,14 @@
 								    <ul class="unstyled">
 									    <li><a href="http://bwogstats.com">Home</a></li>
 									    <li><a href="/bwog/rankings">Rankings</a></li>
-									    <li><a href="/bwog/correlation">Correlations</a></li>
+									    <li><a href="/bwog/correlation">Statistics</a></li>
 								    </ul>
 							    </div>
 							    <div class="span1">
 								    <ul class="unstyled">
-									    <li><a href="/bwog/trends/">Trends</a></li>
-									    <li><a href="/bwog/bwogstats">Bwogstats</a></li>
-									    <li><a href="/bwog/">Bwog</a></li>
+									    <li><a href="/bwog/predictions/">Predictions</a></li>
+									    <li><a href="/bwog/">Bwogstats</a></li>
+									    <li><a href="http://bwog.com/">Bwog</a></li>
 								    </ul>
 							    </div>
 
@@ -132,7 +136,7 @@
 						    <h4>Talk about us!</h4><br>
 						    <ul class=>
 							    <li><a href="http://twitter.com/bwogstats">@bwogstats</a></li>
-							    <li><a href="http://twitter.com/bwogstats">Facebook</a></li>
+							    <li><a href="http://facebook.com/bwogstats">Facebook</a></li>
 							    <li><a href="http://bwog.com/submit-a-tip/">Tip Bwog</a></li>
 
 						    </ul>
@@ -141,11 +145,22 @@
 					    </div>
 					    <div class="span3">
 						    <h4><span class="brand-style"><span class="brand-color">Bwog</span>Stats</span> in your inbox</h4><br>
-						    <p>Two stats a week, no spam. We Promise.</p>
-						    <form id="form" class="form-inline" novalidate="novalidate">
-							    <input type="text" value="" name="email" class="input-medium email" id="email" placeholder="Your email address" data-original-title="">
-							    <input type="submit" value="Subscribe" name="Get Stats" class="btn btn-primary">
-						    </form>
+						    <p><!-- Begin MailChimp Signup Form -->
+<div id="mc_embed_signup">
+<form action="http://bwogstats.us5.list-manage1.com/subscribe/post?u=c1c14e32e641ddfdb5a256e6c&amp;id=bf0f1ba565" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" class="form-inline" novalidate>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+	<input type="email" value="" name="EMAIL" class="input-medium email"  id="mce-EMAIL">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>	<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+</form>
+</div>
+
+<!--End mc_embed_signup-->.</p>
 					    </div>
 				    </div><!-- /row -->
 			    </div><!-- /container -->
@@ -195,7 +210,10 @@
 	    </script>
 	    <script src="/static/bootstrap/js/bootstrap-typeahead.js">
 	    </script>
-
+	    	    <script src="”http://twitter.com/javascripts/blogger.js">
+	    </script>
+<script src ="http://twitter.com/statuses/user_timeline/bwogstats.json?callback=twitterCallback2&count=1"></script>
+	
 	    <script src="/static/jqplot/jquery.jqplot.js">
 	    </script>
 	    <script src="/static/jqplot/plugins/jqplot.dateAxisRenderer.js">
