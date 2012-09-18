@@ -1,5 +1,8 @@
-{% extends "base.html" %} {% block content %}
-<div class="container">
+{% extends "base.html" %} 
+
+{% block extra_head %}
+    {% endblock %}
+{% block content %}
     <!--jQuery References-->
         
     <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.1.min.js"
@@ -233,7 +236,7 @@
                <legend> <div class="ac"><h2> How it works</h2></div></legend>
                <ol>
                 <h4><li>Enter two words or phrases </h4></li>
-                <h4><li>We analyze every bwog that contains either phrase</h4></li>
+                <h4><li>We analyze every bwog comment that contains either phrase</h4></li>
                 <h4><li>The results show up below (this can take awhile, we're trying to make it faster)</h4></li>
                 </ol>
                 <br>
@@ -311,7 +314,7 @@
                         <h3>
                             There are {{ res.term1_count }} comments containing<span class="term1"> {{ res.term1 }}</span> and
                             {{ res.term2_count }} comments containing<span class="term2"> {{ res.term2 }}</span>. Comments with
-                           <span class="term1"> {{ res.term1 }}</span> have on average {{ res.term1_average_upvotes }} upvotes and {{ term2_average_downvotes }} downvotes, while
+                           <span class="term1"> {{ res.term1 }}</span> have on average {{ res.term1_average_upvotes }} upvotes and {{ res.term1_average_downvotes }} downvotes, while
                             comments with <span class="term2">{{ res.term2 }}</span> average {{ res.term2_average_upvotes }} upvotes and {{ res.term2_average_downvotes }} downvotes.
                         </h3>
                         <p class="pull-right">
@@ -509,5 +512,5 @@
     </div>
 
             {% endif %}
-        </div></div>
+        </div>
 {% endblock %}
