@@ -179,7 +179,8 @@
         });
     </script>
     <style type="text/css">
-        .term1 { color: #27719D; font-style: bold; } .term2 { color: #259F61;
+        .term1 { color: #27719D; font-style: strong; font-size: 1.2em; } .term2 { color: #259F61; font-size: 1.1em;
+            .bigtable { font-size: 2em; }
         font-style: bold; }
     </style>
     <div class="container">
@@ -239,12 +240,45 @@
                     <legend>
                         <div class="ac">
                             <h1>
-                                Results<span class="term1"> {{ res.term1 }}</span> vs.<span class="term2"> {{ res.term2 }}</span>
+                                Results: <span class="term1"> {{ res.term1 }}</span> vs.<span class="term2"> {{ res.term2 }}</span>
                             </h1>
                         </div>
                     </legend>
                 </div>
             </div>
+            <div class="row">
+            <div class="ac">
+                <h3>      
+                            There are {{ res.term1_count }} comments containing<span class="term1"> {{ res.term1 }}</span> and
+                            {{ res.term2_count }} comments containing<span class="term2"> {{ res.term2 }}</span>.</h3></div>
+                <div class="span4">
+                </div>
+                <div class="span4">                
+                     <table class="table table-condensed table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Term</th>
+                                    <th># Comments</th>
+                                </tr>
+
+                                </thead>
+                                <tbody> <span class="term1"> 
+                                    <tr class="term1">
+                                        <td><h3><b> {{ res.term1 }} </b></h3></td>
+                                        <td><h3><b> {{ res.term1_count }} </b></h3></td>
+                                    </tr>
+                                </span>
+                                    <tr class="term2">
+                                        <td> <h3><b> {{ res.term2 }} </b> </h3></td>
+
+                                        <td><h3><b> {{ res.term2_count }} </b></h3></td>
+                                    </tr>
+                                </tbody>
+                            </table></div>
+                            <div class="span4">
+                            </div>
+                            <legend>
+                            </legend>
             <div class="row">
                 <div class="span12">
                     <div class="ac">
@@ -428,7 +462,7 @@
         </div>
     </div>
     <div class="row">
-             <div class="span12">
+            <div class="span12">
                 <div class="ac">
                 <legend>
                             <h2>
@@ -437,8 +471,27 @@
                                 &nbsp;Trends
                 </h2>
                 </legend>
+                </div>
             </div>
-             </div>
+    </div>
+     <div class="row">
+                <div class="span2">
+                </div>
+                <div class="span8">
+                    <div class="ac">
+                        <h3>
+                            Popularity of <span class="term1">{{ res.term1 }}</span> and <span class="term2">{{ res.term2 }}</span> over time. 
+                        </h3>
+                        <p class="pull-right">
+                            <a href="tweet">Tweet</a>
+                            or
+                            <a href="fb">share</a>
+                            this
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         <div class="span12">
          
             <div id="plot">
