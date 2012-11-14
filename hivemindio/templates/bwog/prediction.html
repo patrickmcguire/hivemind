@@ -1,0 +1,70 @@
+{% extends "base.html" %} 
+{% block title %}
+Predictions 
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="ac">
+        <h1>
+            Upvote and Downvote Prediction
+        </h1>
+        <br />
+        <p>
+            Attempts to predict upvotes and downvotes on a comment based on historical
+            data. This is very much in an early stage and may not function
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="span6">
+        <legend>Put your comment here</legend>
+            <form 'action'='/bwog/prediction/' , method='get'>
+                {{ form.as_p }}
+                <input type='submit' value='submit' class="btn btn-primary btn-large">
+            </form>
+    </div>
+    <div class="span6">
+        {% if res %}
+        <legend>
+            Diagnosis:
+        </legend>
+        <ul>
+            {% if downvotes > upvotes %}
+            <li>
+                <h2>
+                    <b>
+                        You be trolling. Cut that shit out.
+                    </b>
+                </h2>
+            </li>
+            {% endif %}
+        </ul>
+        <table class="table table-bordered">
+            <tbody>
+                <tr class="success">
+                    <td>
+                        Expected upvotes
+                    </td>
+                    <td class="alert alert-success">
+                        {{ upvotes }}
+                    </td>
+                </tr>
+                <tr class="error">
+                    <td>
+                        Expected downvotes
+                    </td>
+                    <td class="alert alert-error">
+                        {{ downvotes }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {% endif %}
+
+</div>
+        </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,250 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container">
+	<div class="row ">
+		<div class="page-header span12">
+                                <p id='msg'></p>
+
+			<div class="ac">
+				<h1>
+					Compare Terms
+				</h1>
+			</div>
+		</div>
+	</div>
+	<!-- /row -->
+	<div class="row">
+		<div class="span4">
+		</div>
+		<div class="span4">
+			<form class="form-inline">
+				<div class="control-group">
+					<label class="control-label" for="inputTerm1">
+						<h4><div class="ac"> First Term</h4>
+					</label>
+					<div class="controls">
+						<input type="text" id="inputTerm1" placeholder="e.g. ranking">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="inputTerm2">
+						<h4>Second Term</h4>
+					</label>
+					<div class="controls">
+						<input type="text" id="inputTerm2" placeholder="e.g. barnard">
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<button type="submit" class="btn btn-primary btn-large"><i class="icon-white icon-filter"></i> Analyze Terms</a>
+
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	   <!-- Scores -->
+    <div class="row top-space">
+        <div class="span12">
+        <legend>
+            <div class="ac">
+                <h1>
+                    Results - {{ res.term1 }} vs. {{ res.term2 }}
+                </h1>
+            </div>
+        </legend>
+        </div>
+    </div>
+<div class="row">
+		<div class="span12">
+			<div class="ac">
+				<legend>
+					<h2>
+						<i class="icon-arrow-up icon-large baseline" style="font-size:16px"></i><i class="icon-arrow-down icon-large baseline" style="font-size:16px">
+						</i>
+						&nbsp;Score
+					</h2>
+				</legend>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span2">
+		</div>
+		<div class="span8">
+			<div class="ac">
+				<h3>
+					There are $$ comments containing "term1" and ## comments containing "term2".
+					Comments with term 1 have on average 15.4 upvotes and 13.2 downvotes, while
+					comments with term 2 average 3.7 upvotes and 3.4 downvotes.    
+				</h3>
+				<p class="pull-right"><a href="tweet">Tweet</a> or <a onclick='postToFeed(); return false;'>share</a> this</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6">
+			<h3>
+				<div class="ac"> Details </div>
+			</h3>
+			<table class="table" id='versus-table'>
+				<thead>
+					<tr>
+						<th>
+							Metric
+						</th>
+						<th>
+							{{ res.term1 }}
+						</th>
+						<th>
+                            {{ res.term2 }}
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class='num_comments'>
+						<td># Comments</td>
+						<td>{{ res.term1_count }}</td>
+						<td>{{ res.term2_count }}</td>
+					</tr>
+					<tr class='average_upvotes'>
+						<td>Average Upvotes</td>
+						<td>{{ res.term1_average_upvotes }}</td>
+						<td>{{ res.term1_average_upvotes }}</td>
+					</tr>
+					<tr class='average_downvotes'>
+						<td>Average downvotes</td>
+						<td>{{ res.term1_average_downvotes }}</td>
+						<td>{{ res.term2_average_downvotes }}</td>
+					</tr>
+					<tr class='average_score'>
+						<td>Average Score</td>
+						<td> {{ res.term1_average_score }} </td>
+						<td> {{ res.term2_average_downvotes }} </td>
+					</tr>
+				
+				</tbody>
+			</table>
+		</div>
+		<div class="span6">
+			<h3>
+				<div class="ac"> Graph </div>
+			</h3>
+			<div id="scoregraph" class="muted" style="width:550px; height:350px;"><img src="http://mste.illinois.edu/courses/ci330ms/youtsey/Bar2.gif" alt="bargraph"></img></div>
+		</div>
+	</div>
+	<!-- /scores -->
+	<!-- correlations -->
+	<div class="row top-space">
+		<div class="span12">
+			<div class="ac">
+				<legend>
+
+					<h2>
+						<i class="icon-magnet icon-large baseline" style="font-size:16px">
+						</i>
+						&nbsp;Correlations
+					</h2>             
+				</legend>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span2">
+		</div>
+		<div class="span8">
+			<div class="ac">
+				<h3>
+					Bwog comments that include "term1" are <b>"ratio"x</b> more likely to also include the phrase "term2". The likelihood of this result occuring by chance is.
+				</h3>
+				<p class="pull-right"><a href="tweet">Tweet</a> or <a href="fb">share</a> this</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6">
+			<h3>
+				<div class="ac"> Details </div>
+			</h3>
+                    <table class="table">
+                        <tr>
+                        <td>Expected occurences together</td>
+                        <td>15.4</td>
+                    </tr>
+                    <tr>
+                        <td>Actual occurences together</td>
+                        <td>13.4</td>
+                    </tr>
+					<tr>
+						<td>Ratio</td>
+						<td>13.4<td>
+					</tr>
+                    <tr>
+                        <td>P value</td>
+                            <td>.01<td>
+                    </tr>
+					<tr>
+						<td>Best comment with both</td>
+						<td><a href="term1.worstcomment">view</a></td>
+					</tr>
+					<tr>
+						<td>Worst comment with both</td>
+						<td><a href="term1.bestcomment">view</a></td>
+					</tr>
+					<tr>
+						<td>Most votes with both</td>
+						<td><a href="term1.bestcomment">view</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+    </div>
+    <div class="row">
+		<div class="span6">
+			<h3>
+				<div class="ac"> Graph </div>
+			</h3>
+			<div id="scoregraph" class="muted" style="width:550px; height:350px;">
+				<img src="http://mste.illinois.edu/courses/ci330ms/youtsey/Bar2.gif" alt="bargraph"></img>
+			</div>
+		</div>
+	</div>
+            <div class="span12">
+            <div class="ac">
+                <legend>
+
+                    <h2>
+                        <i class="icon-signal icon-large baseline" style="font-size:16px">
+                        </i>
+                        &nbsp;Trends
+                    </h2>             
+                </legend>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+        <div class="span12">
+            <h3>
+                <div class="ac"> # of appearances per month </div>
+            </h3><div class="ac">
+
+        </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="span12">
+            <div class="ac">
+                <img src="http://ianlangmore.com/wordpress/wp-content/uploads/2011/09/timeseries_wide_01.png" width="100%" height="400px" alt="bargraph"></img>
+                <p class="pull-right"><a href="tweet">Tweet</a> or <a href="fb">share</a> this</p>
+            </div>
+        </div>
+</div>
+<!-- /container -->
+<script scr='/static/js/mustache.js/mustache.js' type='text/javscript'></script>
+<script src='/static/bwog/versus.js' type='text/javascript'></script>
+<!-- <script src='/static/bwog/correlation.js' type='text/javascript'></script> -->
+
+{% endblock %}

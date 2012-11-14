@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+{% if comment %} Comment #{{ comment.bwog_id }} by {{ comment.author }} {% endif %} Comment
+{% endblock %}
+{% block content %}
+<div class="container">
+
+{% if comment %}
+<div class="row">
+  <div class="span12">
+    <div class="ac">
+    <h1>Comment # {{ comment.bwog_id }}: <i class="icon-arrow-up  baseline">
+                                </i> &nbsp;{{ comment.upvotes }}  |
+                                <i class="icon-arrow-down baseline">
+                                </i>&nbsp; {{ comment.downvotes }}
+                              </h1>
+    </div>
+  </div>
+</div>
+<div class="row top-space">
+  <div class="span4">
+  </div>
+  <div class="span4">
+    <p> <b> By: {{ comment.author }} </b></p>
+    <p>  {{ comment.body }} </p>
+  
+  </div>
+</div>
+
+</div>
+{% else %}
+
+{% endif %}
+{% endblock %}

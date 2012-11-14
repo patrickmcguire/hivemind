@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+{% if article %}
+<div class="row">
+  <div class="span12">
+    <div class="ac">
+	    <h1>Article: <a href="{{ article.url }}">{{ article.title }}</a></h1>
+    </div>
+  </div>
+</div>
+<div class="row top-space">
+  <div class="span2">
+  </div>
+  <div class="span8">
+    <p> {{ article.body }} </p>
+  </div>
+</div>
+
+{% endif %}
+
+</div>
+{% endblock %}

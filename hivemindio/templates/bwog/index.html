@@ -1,0 +1,79 @@
+{% extends "base.html" %} 
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid hidden-phone custom-fluid-cont">
+    <div class="row-fluid">
+        <div id="da-slider" class="da-slider">
+            <div class="da-slide">
+                <h1><span class="brand-style"><span class="brand-color">Bwog</span>Stat</span></span>
+
+ #37</h1>
+                <p>Bwog comments that use the word "frat" or "fraternity" receive <b>37%</b> more upvotes and <b>31%</b> more
+                        downvotes than comments mentioning sororities</p>
+                <a href="/bwog/correlation/?term1=frats&term2=sororities" class="da-link">See more stats &rarr;</a>
+                <div class="da-img"><img src="http://0.static.wix.com/media/a34a02_07e7817408aed377be4dd023b4bdd1b5.png_256" alt="image01" />
+            </div>
+            </div>
+            <div class="da-slide">
+                <h1>If comment contains the word 'slut'...</h1>
+                    <p><b>..is it more likely to contain the word 'ignorant'?</b><br>
+                        Answer this question and other like it with the <span class="brand-style"><span class="brand-color">Bwog</span>Stats</span></span> Analysis tool</p>
+                    <a href="/bwog/correlation/" class="da-link" title="">Run Correlations &rarr;</a>
+
+            </div>
+            <div class="da-slide">
+                <h1>Try <span class="brand-style"><span class="brand-color">Bwog</span>Stats</span></span> Predictions</h1>
+                <p>Put your next bwog comment in new predictions tool and we'll tell you how many upvotes and downvotes you can expect</p>
+                <a href="/bwog/predictions/" class="da-link">Get Predictions &rarr;</a>
+                <div class="da-img"><img src="/static/bootstrap/img/predictions.png" alt="image01" /></div>
+            </div>
+            <nav class="da-arrows">
+                <span class="da-arrows-prev"></span>
+                <span class="da-arrows-next"></span>
+            </nav>
+        </div>
+    </div><!-- /row-fluid -->
+</div><!-- /container-fluid -->
+
+<div class="container">
+    <div class="row ">
+        <div class="page-header">
+            <div class="span10">
+            <h2>Explore the depths of Bwog comments with BwogStats. Statistical analysis of Bwog's comment corpus  <a href="/bwog/correlation/"> Analyze bwog comments</a></h2>
+            </div>
+
+        </div>
+
+    </div><!-- /row -->
+
+
+    <div class="row top-space">
+        <div class="span4">
+            <h3><i class="icon-arrow-up icon-large baseline" style="font-size:16px"></i>&nbsp;<i class="icon-arrow-down icon-large baseline" style="font-size:16px"></i>&nbsp; Rankings</h3>
+            <p>Ever wonder what the best bwog comments are? Read the best and worst comments by day, week, or all time.<br>
+            <a href="/bwog/comments/best" title="">See Rankings</a>
+            </b>
+        </div>
+        <div class="span4">
+            <h3><i class="icon-signal icon-large baseline" style="font-size:16px"></i>&nbsp; Stats</h3>
+            <p>                    If a bwog comment mentions word X, how likely is it to mention word Y? How many upvotes and downvotes do thos comments get? Find out!
+                    <br>
+                    <a href="/bwog/correlation" title="">Discover BwogStats</a>
+</p>
+        </div>
+        <div class="span4">
+            <h3><i class="icon-pencil icon-large baseline" style="font-size:16px"></i>&nbsp; Predictions</h3>
+            <p>  How many upvotes and downvotes will your bwog comment get? We use some fancy comp sci stuff to try and find out. (BETA)
+                <br>
+                    <a class="" href="/bwog/predictions" title="">Get Predictions</a>
+                </p></p>
+        </div>
+    </div><!-- /row -->       
+</div>
+
+<!-- /container -->
+{% endblock %}

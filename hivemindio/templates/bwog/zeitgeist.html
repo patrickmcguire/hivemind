@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+<div class="row">
+    <div class="span12">
+        <div class="hero-unit">
+            <div class="ac">
+                <h1>
+                    Zeitgeist
+                </h1>
+                <br />
+                <p>
+                    See the relative popularity of words or phrases over time
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="span3 pull-left">
+        <div class="well">
+            <form "action"="/bwog/trend/" , method="get">
+                {{ form.as_p }}
+                <input type='submit' value='submit'>
+            </form>
+        </div>
+    </div>
+    <div class="span9 pull-right">
+		<div>
+			<input id="toimage" class="btn btn-primary" type="submit" name="Get Stats" value="To Image">
+		</div>
+        <div class="ac">
+            <legend>
+                Graph
+            </legend>
+            <div id="plot">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+	$('#toimage').click(function() {
+		newImage('plot');
+	})
+</script>
+{% endblock %}

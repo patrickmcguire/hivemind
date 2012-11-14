@@ -1,0 +1,10 @@
+*.pyc
+*.swp
+*.weight*
+*.pid
+*.DS_Store
+venv/*
+include/*
+init/*
+lib/*
+*.log

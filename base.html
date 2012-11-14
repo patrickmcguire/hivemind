@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" {% block extra_html %}{% endblock extra_html %}>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>
+            {% block title %}{% endblock %}
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Statistical analysis of Columbia's Bwog comments">
+        <meta name="author" content="Patrick McGuire">
+        <!-- Le styles -->
+        <!-- <link rel="stylesheet/less" type="text/css" href="/static/bootstrap/less/bootstrap.less"> -->
+        <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/fonts.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'
+        rel='stylesheet' type='text/css'>
+      
+        <link href="/static/jqplot/jquery.jqplot.css" %} rel="stylesheet" type="text/css">
+       
+        {% block extra_head %}{% endblock extra_head %}
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34773654-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+        </script>
+    </head>
+    
+    <body {% block extra_body %}{% endblock extra_body %}>
+        {% block nav %}{% endblock nav %}
+        <div class="container">
+            <div class="row">
+                {% if messages %} {% for message in messages %}
+                <div class="alert alert-success">
+                    <a class="close" data-dismiss="alert">×</a>
+                    <h4 class="alert-heading">
+                        {{ message.tags }}
+                    </h4>
+                    <p>
+                        {{ message }}
+                    </p>
+                </div>
+                {% endfor %} {% endif %}
+            </div>
+        </div>
+        <!-- Header==================================================- ->
+  <header id="header">
+
+    <!-- Navigation
+    ================================================== -->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+                    <div class="nav pull-left">
+                        <a class="brand" href="/bwog/">Bwog<b>Stats</b>          </a>
+                    </div>
+                    <div class="nav-collapse fr">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rankings</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/bwog/comments/best/">Best - All Time</a>
+                                    </li>
+                                    <li>
+                                        <a href="/bwog/comments/best/">Best - This Week</a>
+                                    </li>
+                                    <li>
+                                        <a href="/bwog/comments/worst/">Worst - All Time</a>
+                                    </li>
+                                    <li>
+                                        <a href="/bwog/comments/wirst/">Worst - This Week</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/bwog/correlation/">Correlations</a>
+                            </li>
+                            <li>
+                                <a href="/bwog/zeitgeist/">Zeitgeist (Beta)</a>
+                            </li>
+                            <li>
+                                <a href="/bwog/predictions/">Vote Predictor (Alpha) </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end .container -->
+            </div>
+            <!-- end .navbar-inner -->
+        </div>
+        <!-- end .navbar -->
+        </header>
+        <div id="content" role="main" class="container">
+            {% block content %}{% endblock %}
+        </div>
+        <!-- Page Footer -->
+        <footer class="row">
+            <div id="footer-extra">
+                <div class="container">
+                    <div class="row">
+                        <div class="span4">
+                            &copy; 2012 Patrick McGuire and Noah Pryor
+                        </div>
+                        <div class="span4">
+                            <i class="icon-envelope">
+                            </i>
+                            &nbsp; pjm1988@gmail.com
+                        </div>
+                        <div class="span4">
+                            <i class="icon-envelope">
+                            </i>
+                            &nbsp; noah@noahpryor.com
+                        </div>
+                    </div>
+                    <!-- end .row -->
+                </div>
+                <!-- end .container -->
+            </div>
+        </footer>
+        <!-- Le javascript==================================================-
+        ->
+<!-- Placed at the end of the document so the pages load faster -->
+        <script src="/static/jquery-1.8.0.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-transition.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-alert.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-modal.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-dropdown.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-scrollspy.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-tab.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-tooltip.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-popover.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-button.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-collapse.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-carousel.js">
+        </script>
+        <script src="/static/bootstrap/js/bootstrap-typeahead.js">
+        </script>
+
+        <script src="/static/jqplot/jquery.jqplot.js">
+        </script>
+        <script src="/static/jqplot/plugins/jqplot.dateAxisRenderer.js">
+        </script>
+        <script src="/static/jqplot/plugins/jqplot.canvasAxisTickRenderer.js">
+        </script>
+        <script src="/static/jqplot/plugins/jqplot.canvasTextRenderer.js">
+        </script>
+<script src="/static/bwog/zeitgeist.js">
+        </script>
+        <!-- <script src="/static/js/less-1.3.0.min.js"></script> -->
+        <script src="/static/js/functions.min.js">
+        <script src = "/static/js/jquery.isotope.min.js" > { % block extra_foot %
+} { % endblock extra_foot %
+} < /body>
+</html >

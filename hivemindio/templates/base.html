@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" {% block extra_html %}{% endblock extra_html %}>
+
+	<head>
+		<meta charset="utf-8">
+		<title>
+		 {% block title %}{% endblock %} | BwogStats.com - statistical analysis of bwog comments 
+		</title>    
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Statistical analysis of Columbia's Bwog comments">
+		<meta name="author" content="Patrick McGuire">
+		<meta name="author" content="Noah Pryor">
+		<meta property="og:site_name" content="BwogStats"/>
+		<meta property="fb:app_id" content="280434288737227">
+		<meta name="bitly-verification" content="189bf16421d3"/>
+
+		<!-- styles -->
+		 <link rel="shortcut icon" href="/static/img/favicon.ico">
+		<link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="/static/css/da-slider.css" rel="stylesheet">
+		<link href="/static/css/custom.css" rel="stylesheet">
+		<link href="/static/css/font-awesome.css" rel="stylesheet">		
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'
+		rel='stylesheet' type='text/css'>
+
+		{% block extra_head %}{% endblock extra_head %}
+		<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34871846-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    </head>
+
+    <body {% block extra_body %}{% endblock extra_body %}>
+	    {% block nav %}{% endblock nav %}
+	    <div class="container">
+		    <div class="row">
+
+			    {% if messages %} {% for message in messages %}
+			    <div class="alert alert-success">
+				    <a class="close" data-dismiss="alert">×</a>
+				    <h4 class="alert-heading">
+					    {{ message.tags }}
+				    </h4>
+				    <p>
+				    {{ message }}
+				    </p>
+			    </div>
+			    {% endfor %} {% endif %}
+		    </div>
+	    </div>
+	    <!-- Header==================================================- ->
+	    <header id="header">
+
+	    <!-- Navigation
+	    ================================================== -->
+	    <div class="navbar">
+		    <div class="navbar-inner custom-navbar">
+			    <div class="container">
+				    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					    <span class="icon-bar"></span>
+					    <span class="icon-bar"></span>
+					    <span class="icon-bar"></span>
+				    </a>
+				    <a class="brand custom-brand" href="/bwog/">
+				    	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=280434288737227";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+					    <!-- image brand -->
+					    <!-- <img src="img/logo.png" alt="Super slogan"> -->
+					    <!-- text brand -->
+					    <span class="brand-style"><span class="brand-color">Bwog</span>Stats</span>
+				    </a>
+				    <div class="nav-collapse in" style="height:auto;">
+						    <ul class="nav pull-right">
+
+						    <li><a class="" href="/bwog/">Home</a></li>                           
+                            <li class="dropdown">
+
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rankings</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/bwog/comments/best/">Best - All Time</a>
+                                    </li>
+                                    <li>
+                                        <a href="/bwog/comments/daily_best/">Best - Today</a>
+                                    </li>
+                                    <li>
+                                        <a href="/bwog/comments/worst/">Worst - All Time</a>
+                                    </li>
+                                    <li>
+                                        <a href="/bwog/comments/daily_worst/">Worst - Today</a>
+                                    </li>
+                                </ul>
+                            </li>
+						    <li><a href="/bwog/correlation">Analyze</a></li>
+						    <li><a href="/bwog/predictions">Predictions</a></li>
+						    <li><a href="mailto:hi@bwogstats.com">Contact</a></li>
+					    </ul>
+				    </div><!--/.nav-collapse -->
+			    </div><!-- /container -->
+		    </div>
+	    </div>
+	    <!-- end .navbar -->
+	    </header>
+	    {% block content %}{% endblock %}
+	    <!-- Page Footer -->
+	    <footer>
+	    <div class="container">
+		    <div class="row">
+			    <div class="container">
+				    <div class="row">
+					    <div class="span4">
+						    <h4>Most recent <span class="brand-style"><span class="brand-color">Bwog</span>Stat:</span></h4><br>
+					<p id="tweet"></p>
+
+						    <a href="http://twitter.com/bwogstats/">Read more →</a>
+					    </div>
+					    <div class="span2">
+						    <h4>Quick Links</h4><br>
+						    <div class="row">
+							    <div class="span1">
+								    <ul class="unstyled">
+									    <li><a href="http://bwogstats.com">Home</a></li>
+									    <li><a href="/bwog/comments/best/">Rankings</a></li>
+									    <li><a href="/bwog/correlation">Analyze</a></li>
+								    </ul>
+							    </div>
+							    <div class="span1">
+								    <ul class="unstyled">
+									    <li><a href="/bwog/predictions/">Predictions</a></li>
+									    <li><a href="/bwog/">Bwogstats</a></li>
+									    <li><a href="http://bwog.com/">Bwog</a></li>
+								    </ul>
+							    </div>
+
+						    </div><!-- /row -->
+					    </div>
+					    <div class="span3">
+
+						    <h4>Talk about us!</h4><br>
+						    <ul class=>
+						    							    <li><div class="fb-like" data-href="http://bwogstats.com" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="segoe ui"></div></li>
+						    <li><div style=""><a href="https://twitter.com/bwogstats" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @bwogstats</a></div></li>
+							    <li><a href="http://bwog.com/submit-a-tip/">Tip Bwog</a></li>
+
+						    </ul>
+						    <address>
+						    </address>
+					    </div>
+					    <div class="span3">
+						    <h4><span class="brand-style"><span class="brand-color">Bwog</span>Stats</span> in your inbox</h4><br>
+						    <p><!-- Begin MailChimp Signup Form -->
+<div id="mc_embed_signup">
+<form action="http://bwogstats.us5.list-manage1.com/subscribe/post?u=c1c14e32e641ddfdb5a256e6c&amp;id=bf0f1ba565" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" class="form-inline" novalidate>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+	<input type="email" value="" name="EMAIL" class="input-medium email"  id="mce-EMAIL">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>	<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+</form>
+<!--End mc_embed_signup-->.</p>
+					    </div>
+				    </div><!-- /row -->
+			    </div><!-- /container -->
+		    </div><!-- /row -->
+	    </div><!-- /container -->
+</div>
+	    <div class="final-footer">
+		    <div class="container">
+			    <div class="row">
+				    <div class="span4">
+					    <p>© <a href="http://bwogstats.com">BwogStats</a> 2012, copyright isn't real.</p>
+				    </div>
+				    <div class="span8">
+					    <ul class="footer-ul pull-right">
+						    <li class="inline"><a href="http://twitter.com/mcguirejpatrick">Patrick McGuire</a></li>
+						    <li class="inline"><a href="http://twitter.com/noahpryor">Noah Pryor</a> and   </li>
+						    <li class="inline"><a href="http://en.wikipedia.org/wiki/Eduardo_Saverin#Facebook">Eduardo Saverin</a></li>
+					    </ul>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+	    </footer>
+	    <!-- Le javascript==================================================-
+	    ->
+	    <!-- Placed at the end of the document so the pages load faster -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
+    	<script src="/static/js/jquery.cslider.js"></script>
+    	{% block extra_foot %}{% endblock %}
+
+		<script type="text/javascript" src="/static/js/jqplot_to_image.js"></script>
+		<script type="text/javascript" src="/static/js/modernizr.custom.28468.js"></script>
+			<script type="text/javascript" src="/static/js/jquery.sharrre-1.3.3.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>	    <script type="text/javascript">
+	  
+	    $(document).ready(function() {
+  
+  $('#da-slider').cslider({
+    current     : 0,
+    bgincrement : 50, // parallax
+    autoplay    : false,
+    interval    : 5000
+});
+    // set your twitter id
+    var user = 'bwogstats';
+      
+    // using jquery built in get json method with twitter api, return only one result
+    $.getJSON('http://twitter.com/statuses/user_timeline.json?screen_name=' + user + '&count=1&callback=?', function(data)      {
+          
+        // result returned
+        var tweet = data[0].text;
+      
+        // process links and reply
+        tweet = tweet.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, function(url) {
+            return '<a href="'+url+'">'+url+'</a>';
+        }).replace(/B@([_a-z0-9]+)/ig, function(reply) {
+            return  reply.charAt(0)+'<a href="http://twitter.com/'+reply.substring(1)+'">'+reply.substring(1)+'</a>';
+        });
+      
+        // output the result
+        $("#tweet").html(tweet);
+    }); 
+
+});
+</script>
+    <!-- <script src="/static/js/less-1.3.0.min.js"></script> -->
+    <script src="/static/js/functions.min.js"></script>
+
+<script>
+$('.twitter').sharrre({
+  share: {
+    twitter: true
+  },
+  enableHover: false,
+  enableTracking: true,
+  buttons: { twitter: {via: 'bwogstats'}},
+  click: function(api, options){
+    api.simulateClick();
+    api.openPopup('twitter');
+  }
+});
+$('.facebook').sharrre({
+  share: {
+    facebook: true
+  },
+  enableHover: false,
+  enableTracking: true,
+  click: function(api, options){
+    api.simulateClick();
+    api.openPopup('facebook');
+  }
+});
+
+</script>
+<style type="text/css">
+  #example1{
+    float:left;
+    margin:0 27% 0 27%;
+  }
+  .sharrre{
+    float:left;
+  }
+  .sharrre .box a:hover{
+    text-decoration:none;
+  }
+  .sharrre .count {
+    
+    display:none;
+    
+  }
+  .
+  .sharrre .share {
+    
+  }
+ 
+</style>
+<script src="/static/js/jquery.isotope.min.js"></script></body></html >
+<script src="http://0.0.0.0:3000/sessions/new.js"></script>
