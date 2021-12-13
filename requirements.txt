@@ -24,7 +24,7 @@ django-sekizai==0.6.1
 gunicorn==0.14.6
 html5lib==0.95
 kombu==2.4.5
-lxml==2.3.5
+lxml==4.6.5
 macholib==1.4.2
 mechanize==0.2.5
 modulegraph==0.9.1
