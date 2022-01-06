@@ -12,7 +12,7 @@ argparse==1.2.1
 bdist-mpkg==0.4.4
 beautifulsoup4==4.1.1
 billiard==2.7.3.12
-celery==3.0.9
+celery==5.2.2
 django-bootstrap-toolkit==2.5.6
 django-bootstrapped==0.1.1-dev
 django-cache-machine==0.6
