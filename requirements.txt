@@ -33,7 +33,7 @@ numpy==1.6.1
 psycopg2==2.4.5
 py2app==0.6.3
 pyOpenSSL==0.13
-pymongo==2.2.1
+pymongo==2.5.2
 python-dateutil==1.5
 python-memcached==1.48
 pytz==2012d
