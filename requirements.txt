@@ -4,7 +4,7 @@ PyRSS2Gen==1.0.0
 PyYAML==3.10
 Scrapy==0.14.4
 South==0.7.6
-Twisted==12.0.0
+Twisted==22.10.0
 altgraph==0.9
 amqplib==1.0.2
 anyjson==0.3.3
